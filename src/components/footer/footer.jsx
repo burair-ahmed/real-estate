@@ -48,7 +48,7 @@ const Footer = function () {
                           <FaMapMarkerAlt />
                         </div>
                         <div className="footer-address-info">
-                          <p>Brooklyn, New York, United States</p>
+                          <p>Office 720 DIC, Dubai</p>
                         </div>
                       </li>
                       <li>
@@ -57,7 +57,7 @@ const Footer = function () {
                         </div>
                         <div className="footer-address-info">
                           <p>
-                            <Link href="tel:+0123-456789">+0123-456789</Link>
+                            <Link href="tel:055-3575797">055-3575797</Link>
                           </p>
                         </div>
                       </li>
@@ -67,8 +67,8 @@ const Footer = function () {
                         </div>
                         <div className="footer-address-info">
                           <p>
-                            <Link href="mailto:example@example.com">
-                              example@example.com
+                            <Link href="mailto:info@prairieshills.com">
+                            info@prairieshills.com
                             </Link>
                           </p>
                         </div>

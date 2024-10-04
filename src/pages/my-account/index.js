@@ -148,7 +148,7 @@ function MyAccount() {
                                           </div>
                                           <div className="footer-address-info">
                                             <p>
-                                              Brooklyn, New York, United States
+                                            Office 720 DIC, Dubai
                                             </p>
                                           </div>
                                         </li>
@@ -158,8 +158,8 @@ function MyAccount() {
                                           </div>
                                           <div className="footer-address-info">
                                             <p>
-                                              <Link href="tel:+0123-456789">
-                                                +0123-456789
+                                              <Link href="tel:055-3575797">
+                                              055-3575797
                                               </Link>
                                             </p>
                                           </div>
@@ -170,8 +170,8 @@ function MyAccount() {
                                           </div>
                                           <div className="footer-address-info">
                                             <p>
-                                              <Link href="mailto:example@example.com">
-                                                example@example.com
+                                              <Link href="mailto:info@prairieshills.com">
+                                              info@prairieshills.com
                                               </Link>
                                             </p>
                                           </div>
@@ -347,7 +347,7 @@ function MyAccount() {
                                       <input
                                         type="email"
                                         name="ltn__lastname"
-                                        placeholder="example@example.com"
+                                        placeholder="info@prairieshills.com"
                                       />
                                     </Col>
                                   </div>
@@ -423,7 +423,7 @@ function MyAccount() {
                                           </h6>
                                           <small>
                                             <i className="icon-placeholder"></i>
-                                            Brooklyn, New York, United States
+                                            Office 720 DIC, Dubai
                                           </small>
                                           <div className="product-ratting">
                                             <ul>
@@ -499,7 +499,7 @@ function MyAccount() {
                                           </h6>
                                           <small>
                                             <i className="icon-placeholder"></i>
-                                            Brooklyn, New York, United States
+                                            Office 720 DIC, Dubai
                                           </small>
                                           <div className="product-ratting">
                                             <ul>
@@ -575,7 +575,7 @@ function MyAccount() {
                                           </h6>
                                           <small>
                                             <i className="icon-placeholder"></i>
-                                            Brooklyn, New York, United States
+                                            Office 720 DIC, Dubai
                                           </small>
                                           <div className="product-ratting">
                                             <ul>
@@ -701,7 +701,7 @@ function MyAccount() {
                                           </h6>
                                           <small>
                                             <i className="icon-placeholder"></i>
-                                            Brooklyn, New York, United States
+                                            Office 720 DIC, Dubai
                                           </small>
                                           <div className="product-ratting">
                                             <ul>
@@ -777,7 +777,7 @@ function MyAccount() {
                                           </h6>
                                           <small>
                                             <i className="icon-placeholder"></i>
-                                            Brooklyn, New York, United States
+                                            Office 720 DIC, Dubai
                                           </small>
                                           <div className="product-ratting">
                                             <ul>
@@ -853,7 +853,7 @@ function MyAccount() {
                                           </h6>
                                           <small>
                                             <i className="icon-placeholder"></i>
-                                            Brooklyn, New York, United States
+                                            Office 720 DIC, Dubai
                                           </small>
                                           <div className="product-ratting">
                                             <ul>
