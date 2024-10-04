@@ -14,17 +14,17 @@ function AboutUsStyleTwo({ sectionSpace }) {
 
   const slides = [
     {
-      src: "/img/img-slide/11.jpg",
+      src: "/img/img-slide/Untitled-3.jpg",
       width: 800,
       height: 570,
     },
     {
-      src: "/img/img-slide/12.jpg",
+      src: "/img/img-slide/Untitled-3.jpg",
       width: 800,
       height: 570,
     },
     {
-      src: "/img/img-slide/13.jpg",
+      src: "/img/img-slide/Untitled-3.jpg",
       width: 800,
       height: 570,
     },
@@ -102,7 +102,7 @@ function AboutUsStyleTwo({ sectionSpace }) {
             </Col>
             <Col xs={12} lg={6} className="align-self-center">
               <div className="about-us-img-wrap about-img-right">
-                <img src="/img/others/9.png" alt="About Us Image" />
+                <img src="/img/others/Untitled-3.jpg" alt="About Us Image" />
               </div>
             </Col>
           </Row>

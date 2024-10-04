@@ -21,10 +21,10 @@ function AboutUsStyleOne({ sectionSpace }) {
           <Row>
             <Col xs={12} lg={6} className="align-self-center">
               <div className="about-us-img-wrap about-img-left">
-                <img src="/img/others/7.png" alt="About Us Image" />
+                <img src="/img/others/Untitled-4.jpg" alt="About Us Image" />
                 <div className="about-us-img-info about-us-img-info-2 about-us-img-info-3">
                   <div className="ltn__video-img ltn__animation-pulse1">
-                    <img src="/img/others/8.png" alt="video popup bg image" />
+                    <img src="/img/others/Untitled-1.jpg" alt="video popup bg image" />
                     <button
                       onClick={() => setOpen(true)}
                       className="ltn__video-icon-2"

@@ -15,7 +15,7 @@ const VideoBanner = () => {
       />
       <div
         className="ltn__video-bg-img bg-overlay-black-30 bg-image bg-fixed ltn__animation-pulse1"
-        style={{ backgroundImage: `url("../img/bg/19.jpg")` }}
+        style={{ backgroundImage: `url("../img/bg/Untitled-bg.jpg")` }}
       >
         <button onClick={() => setOpen(true)} className="ltn__video-icon-2">
           <FaPlay />

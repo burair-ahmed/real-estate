@@ -18,7 +18,6 @@ function HeroSectionStyleOne({ data }) {
       <FaArrowLeft />
     </button>
   );
-
   const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
     <button
       {...props}
@@ -58,7 +57,7 @@ function HeroSectionStyleOne({ data }) {
         onClose={() => setOpen(false)}
       />
 
-      <div className="ltn__slider-area ltn__slider-3 section-bg-1">
+      <div className="ltn__slider-area ltn__slider-3  section-bg-1">
         <Slider
           {...Herosettings}
           className="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1"
@@ -104,11 +103,12 @@ function HeroSectionStyleOne({ data }) {
                                   onClick={() => setOpen(true)}
                                   className="ltn__video-play-btn bg-white"
                                 >
+                                  {/* <i className="icon-play  ltn__secondary-color"></i> */}
                                   <FaPlay className="icon-play  ltn__secondary-color" />
                                 </button>
                               ) : (
                                 <Link
-                                  href="/about"
+                                href="/about"
                                   className="btn btn-transparent btn-effect-3"
                                 >
                                   {item.learnMoreButtonText}
@@ -122,12 +122,7 @@ function HeroSectionStyleOne({ data }) {
                             item.variationLeft ? "slide-img-left" : ""
                           }`}
                         >
-                          {/* Dynamically load image from public/img/slider */}
-                          <img
-                            src={item.heroimage}
-                            alt={item.Title}
-                            className="img-fluid"
-                          />
+                          <img src={item.heroimage} alt="#" />
                         </div>
                       </div>
                     </div>
