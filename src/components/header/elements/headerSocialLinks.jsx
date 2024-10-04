@@ -15,9 +15,6 @@ const HeaderSocialLinks = function () {
         <li>
           <Link href="#">  <FaInstagram /> </Link>
         </li>
-        <li>
-          <Link href="#">  <FaDribbble /> </Link>
-        </li>
       </ul>
     </div>
   );

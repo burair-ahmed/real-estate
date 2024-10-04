@@ -12,7 +12,7 @@ const MenuList = ({ addListing }) => {
             <Link href="/">Home Style 01</Link>
             <img src="/img/home-demos/home-1.jpg" alt="#" />
           </li>
-          <li>
+          {/* <li>
             <Link href="/home/page-two">Home Style 02</Link>
             <img src="/img/home-demos/home-2.jpg" alt="#" />
           </li>
@@ -51,7 +51,7 @@ const MenuList = ({ addListing }) => {
           <li>
             <Link href="/home/page-eleven">Home Style 11</Link>
             <img src="/img/home-demos/home-11.jpg" alt="#" />
-          </li>
+          </li> */}
         </ul>
       </li>
       <li className="menu-icon">
