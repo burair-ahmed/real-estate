@@ -31,7 +31,7 @@ const Footer = function () {
             <Row>
               <Col xs={12} sm={6} xl={3}>
                 <div className="footer-widget footer-about-widget">
-                  <div className="footer-logo">
+                  <div className="footer-logo mb-1">
                     <div className="site-logo">
                       {/* <img src="/img/logo.png" alt="Logo" /> */}
                       <img src="/img/logo-2.png" alt="Logo" />
@@ -200,8 +200,8 @@ const Footer = function () {
                       </div>
                     </form>
                   </div>
-                  <h5 className="mt-30">We Accept</h5>
-                  <img src="/img/icons/payment-4.png" alt="Payment Image" />
+                  {/* <h5 className="mt-30">We Accept</h5>
+                  <img src="/img/icons/payment-4.png" alt="Payment Image" /> */}
                 </div>
               </Col>
             </Row>

@@ -122,7 +122,7 @@ function HeroSectionStyleOne({ data }) {
                             item.variationLeft ? "slide-img-left" : ""
                           }`}
                         >
-                          <img src="img/slider/21.png" alt="#" />
+                          <img src="img/slider/21.jpg" alt="#" />
                         </div>
                       </div>
                     </div>
