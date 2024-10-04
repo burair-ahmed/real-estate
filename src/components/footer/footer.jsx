@@ -12,8 +12,16 @@ import {
   FaMapMarkerAlt,
   FaPhoneAlt,
 } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
 const Footer = function () {
+  const [currentYear, setCurrentYear] = useState(null);
+
+  useEffect(() => {
+    const year = new Date().getFullYear();
+    setCurrentYear(year);
+  }, []);
+
   return (
     <>
       {/* <!-- FOOTER AREA START --> */}
@@ -205,8 +213,8 @@ const Footer = function () {
               <Col xs={12} md={6}>
                 <div className="ltn__copyright-design clearfix">
                   <p>
-                    All Rights Reserved @ Company{" "}
-                    <span className="current-year"></span>
+                    All Rights Reserved @ Viral Marketing Solutions{" "}
+                    <span>{currentYear}</span>
                   </p>
                 </div>
               </Col>
