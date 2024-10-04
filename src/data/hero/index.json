@@ -1,10 +1,10 @@
 [
   {
     "subtitle": "Real Estate Agency",
-    "Title": "Find Your Dream House By Us",
+    "Title": "ABCD",
     "Desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.",
     "icon": "FaHome",
-    "heroimage": "61.jpg",
+    "heroimage": "/img/slider/banner-1.1.1_.jpg",
     "id": "01",
     "buttonText": "Make An Enquiry",
     "videoButton": true,
@@ -16,7 +16,7 @@
     "Title": "The Right Place of House Finding",
     "Desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.",
     "icon": "FaHome",
-    "heroimage": "62.jpg",
+    "heroimage": "/img/slider/banner-1.1.2.jpg",
     "id": "02",
     "buttonText": "Make An Enquiry",
     "videoButton": false,
