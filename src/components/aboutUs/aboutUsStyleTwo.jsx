@@ -49,7 +49,7 @@ function AboutUsStyleTwo({ sectionSpace }) {
                   <h6 className="section-subtitle section-subtitle-2 ltn__secondary-color">
                     About Us
                   </h6>
-                  <h1 className="section-title">Today Sells Properties</h1>
+                  <h1 className="section-title">Properties Sold Today</h1>
                   <p>
                     Houzez allow you to design unlimited panels and real estate
                     custom forms to capture leads and keep record of all

@@ -45,9 +45,7 @@ function AboutUsStyleOne({ sectionSpace }) {
                     The Leading Real Estate Rental Marketplace<span>.</span>
                   </h1>
                   <p>
-                    Over 39,000 people work for us in more than 70 countries all
-                    over the This breadth of global coverage, combined with
-                    specialist services
+                  Welcome to Prairies Hills, Dubai's leading luxury real estate management company. We specialize in high-end property sales and rentals, offering tailored services to meet the needs of our elite clientele. Our expert team ensures seamless transactions and exceptional investment opportunities. Discover your dream home or next investment with us today!
                   </p>
                 </div>
                 <ul className="ltn__list-item-half clearfix">
@@ -70,8 +68,7 @@ function AboutUsStyleOne({ sectionSpace }) {
                 </ul>
                 <div className="ltn__callout bg-overlay-theme-05  mt-30">
                   <p>
-                    Enimad minim veniam quis nostrud exercitation <br />
-                    llamco laboris. Lorem ipsum dolor sit amet
+                  Your dream property is just a step away—let us help you find it.
                   </p>
                 </div>
                 <div className="btn-wrapper animated">

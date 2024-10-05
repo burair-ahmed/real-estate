@@ -277,11 +277,7 @@ function HomePage(props) {
                             <div className="apartments-plan-info ltn__secondary-bg text-color-white">
                               <h2>The Studio</h2>
                               <p>
-                                Enimad minim veniam quis nostrud exercitation
-                                ullamco laboris. Lorem ipsum dolor sit amet cons
-                                aetetur adipisicing elit sedo eiusmod
-                                tempor.Incididunt labore et dolore magna aliqua.
-                                sed ayd minim veniam.
+                              Discover modern living at its finest in The Studio, a thoughtfully designed space that offers 2800 sq. ft. of stylish comfort. This chic residence includes a cozy 150 sq. ft. bedroom, a contemporary 45 sq. ft. bathroom, and a spacious 650 sq. ft. lounge, perfect for both work and relaxation. The pet-friendly balcony offers a peaceful outdoor retreat, adding to the charm of this sophisticated studio. Whether you're looking for a creative haven or a luxurious sanctuary, The Studio provides a perfect balance of functionality and elegance for the modern lifestyle.
                               </p>
                               <div className="apartments-info-list apartments-info-list-color mt-40">
                                 <ul>
@@ -311,7 +307,7 @@ function HomePage(props) {
                           </Col>
                           <Col xs={12} lg={6}>
                             <div className="apartments-plan-img">
-                              <img src="/img/others/10.png" alt="#" />
+                              <img src="/img/others/10.1.png" alt="#" />
                             </div>
                           </Col>
                         </Row>
@@ -324,11 +320,7 @@ function HomePage(props) {
                             <div className="apartments-plan-info ltn__secondary-bg text-color-white">
                               <h2>Deluxe Portion</h2>
                               <p>
-                                Enimad minim veniam quis nostrud exercitation
-                                ullamco laboris. Lorem ipsum dolor sit amet cons
-                                aetetur adipisicing elit sedo eiusmod
-                                tempor.Incididunt labore et dolore magna aliqua.
-                                sed ayd minim veniam.
+                              Experience the epitome of luxury living with this stunning deluxe portion, designed to offer comfort and elegance in every corner. Spanning across 2800 sq. ft., this spacious residence boasts a beautifully crafted 150 sq. ft. bedroom, a modern 45 sq. ft. bathroom, and a relaxing lounge perfect for unwinding. With a pet-friendly balcony to enjoy fresh air, this home provides a serene escape while offering all the essentials for a contemporary lifestyle. Discover a harmonious blend of sophistication and convenience, making it an ideal choice for those who seek refined living.
                               </p>
                               <div className="apartments-info-list apartments-info-list-color mt-40">
                                 <ul>
@@ -371,11 +363,7 @@ function HomePage(props) {
                             <div className="apartments-plan-info ltn__secondary-bg text-color-white">
                               <h2>Penthouse</h2>
                               <p>
-                                Enimad minim veniam quis nostrud exercitation
-                                ullamco laboris. Lorem ipsum dolor sit amet cons
-                                aetetur adipisicing elit sedo eiusmod
-                                tempor.Incididunt labore et dolore magna aliqua.
-                                sed ayd minim veniam.
+                              Indulge in the ultimate luxury with this magnificent penthouse, where modern elegance meets expansive living. Covering a grand total of 2800 sq. ft., this exquisite space features a generously sized 150 sq. ft. bedroom, a sleek 45 sq. ft. bathroom, and a stunning 650 sq. ft. lounge perfect for entertaining or relaxing. The pet-friendly balcony offers breathtaking views, providing the perfect setting for tranquil moments. Designed for those who appreciate the finer things in life, this penthouse delivers a sophisticated and lavish lifestyle.
                               </p>
                               <div className="apartments-info-list apartments-info-list-color mt-40">
                                 <ul>
@@ -405,7 +393,7 @@ function HomePage(props) {
                           </Col>
                           <Col xs={12} lg={6}>
                             <div className="apartments-plan-img">
-                              <img src="/img/others/10.png" alt="#" />
+                              <img src="/img/others/10.1.png" alt="#" />
                             </div>
                           </Col>
                         </Row>
@@ -418,11 +406,7 @@ function HomePage(props) {
                             <div className="apartments-plan-info ltn__secondary-bg text-color-white">
                               <h2>Top Garden</h2>
                               <p>
-                                Enimad minim veniam quis nostrud exercitation
-                                ullamco laboris. Lorem ipsum dolor sit amet cons
-                                aetetur adipisicing elit sedo eiusmod
-                                tempor.Incididunt labore et dolore magna aliqua.
-                                sed ayd minim veniam.
+                              Step into serene luxury with this exquisite Top Garden residence, offering 2800 sq. ft. of refined living space. This elegant home features a spacious 150 sq. ft. bedroom, a modern 45 sq. ft. bathroom, and a grand 650 sq. ft. lounge, perfect for relaxing or hosting guests. The pet-friendly balcony invites you to enjoy peaceful moments surrounded by nature, blending outdoor beauty with indoor comfort. Crafted to meet the highest standards of living, this garden oasis offers a harmonious balance of sophistication and tranquility, ideal for those who seek a peaceful retreat.
                               </p>
                               <div className="apartments-info-list apartments-info-list-color mt-40">
                                 <ul>
@@ -465,11 +449,7 @@ function HomePage(props) {
                             <div className="apartments-plan-info ltn__secondary-bg text-color-white">
                               <h2>Double Height</h2>
                               <p>
-                                Enimad minim veniam quis nostrud exercitation
-                                ullamco laboris. Lorem ipsum dolor sit amet cons
-                                aetetur adipisicing elit sedo eiusmod
-                                tempor.Incididunt labore et dolore magna aliqua.
-                                sed ayd minim veniam.
+                              Immerse yourself in luxury with this stunning Double Height residence, designed to elevate your living experience. Spanning 2800 sq. ft., this remarkable home offers a 150 sq. ft. bedroom, a stylish 45 sq. ft. bathroom, and a spacious 650 sq. ft. lounge, perfect for relaxation or entertaining. The striking double-height ceilings create an airy, open atmosphere, while the pet-friendly balcony provides a peaceful outdoor escape. Blending modern sophistication with architectural elegance, this residence promises an unmatched living experience for those who appreciate space, light, and style.
                               </p>
                               <div className="apartments-info-list apartments-info-list-color mt-40">
                                 <ul>
@@ -499,7 +479,7 @@ function HomePage(props) {
                           </Col>
                           <Col xs={12} lg={6}>
                             <div className="apartments-plan-img">
-                              <img src="/img/others/10.png" alt="#" />
+                              <img src="/img/others/10.1.png" alt="#" />
                             </div>
                           </Col>
                         </Row>

@@ -38,8 +38,14 @@ const Footer = function () {
                     </div>
                   </div>
                   <p>
-                    Lorem Ipsum is simply dummy text of the and typesetting
-                    industry. Lorem Ipsum is dummy text of the printing.
+                  Prairies Hills: Your partner for effortless luxury real estate in Dubai.
+
+
+
+
+
+
+
                   </p>
                   <div className="footer-address">
                     <ul>
