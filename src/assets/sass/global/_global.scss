@@ -283,7 +283,12 @@ body{
   height: auto;
   color: #fff;
 }
-
+#scrollUp span svg{
+  color: #6d5c6a !important;
+}
+#scrollUp:hover span:hover svg:hover{
+  color: #FFF !important;
+}
 
 
 :root {
