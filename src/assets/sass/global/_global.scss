@@ -246,9 +246,19 @@ body{
 .slide-sub-title{
   color: #6d5c6a !important;
 }
-.ltn__header-sticky > a {
-  color: #6d5c6a !important;
+.ltn__header-sticky {
+  background-color: #121a2f !important;
 }
+.search-icon, .ltn__drop-menu > ul > li, .header-wishlist a{
+  background-color: #6d5c6a !important;
+}
+.ltn__header-options-2 .ltn__drop-menu > ul > li > a{
+  background-color: #6d5c6a !important;
+}
+.ltn__header-options-2 .mini-cart-icon button{
+  background-color: #6d5c6a !important;
+}
+
 
 :root {
   --ltn__primary-color: #000000;
