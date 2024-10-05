@@ -87,6 +87,9 @@ function HeroSectionStyleOne({ data }) {
                             <h1 className="slide-title animated">
                               {item.Title}
                             </h1>
+                            <h1 className="slide-title animated">
+                              {item.Title2}
+                            </h1>
                             <div className="slide-brief animated">
                               <p>{item.Desc}</p>
                             </div>
