@@ -2,7 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Slider from "react-slick";
 import ModalVideo from "react-modal-video";
-import { FaPlay, FaHome, FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { FaPlay, FaHome, FaArrowRight, FaArrowLeft, FaUser } from "react-icons/fa";
 
 function HeroSectionStyleOne({ data }) {
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (

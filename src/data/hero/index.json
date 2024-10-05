@@ -1,9 +1,9 @@
 [
   {
     "subtitle": "Real Estate Agency",
-    "Title": "ABCD",
-    "Desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.",
-    "icon": "FaHome",
+    "Title": "Welcome To Prairies Hills",
+    "Desc": "Discover luxury living in Dubai with our premier real estate services. Whether buying, selling, or renting, we deliver seamless transactions and exceptional investment opportunities. Your dream home awaits.",
+    "icon": "FaUser",
     "heroimage": "/img/slider/banner-1030.jpg",
     "id": "01",
     "buttonText": "Make An Enquiry",
