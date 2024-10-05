@@ -232,14 +232,29 @@ font-family: 'Poppins', sans-serif;
 /* ----------------------------------------------------
     Normalize    0B2C3D
 ---------------------------------------------------- */
+body{
+  background-color: #121a2f;
+}
+
+.slide-title, .count-text, .section-title,.ltn__feature-info > h3, .category-title {
+  color: #6d5c6a !important;
+}
+.category-title:hover, .ltn__category-item:hover {
+  color: #fff  !important;
+}
+
+.slide-sub-title{
+  color: #6d5c6a !important;
+}
+
 :root {
   --ltn__primary-color: #000000;
-  --ltn__primary-color-2: #041113; /* Darken */
-  --ltn__primary-color-3: #133236; /* Lighten */
-  --ltn__secondary-color: #ff5a3c;
-  --ltn__secondary-color-2: #cb3421; /* Darken */
-  --ltn__secondary-color-3: #fb412a; /* Lighten */
-  --ltn__heading-color: #071c1f;
+  --ltn__primary-color-2: #5cdef1; /* Darken */
+  --ltn__primary-color-3: #ffffff; /* Lighten */
+  --ltn__secondary-color: #6d5c6a;
+  --ltn__secondary-color-2: #acb9bf; /* Darken */
+  --ltn__secondary-color-3: #b1bdc3; /* Lighten */
+  --ltn__heading-color: #d9eefb;
   --ltn__paragraph-color: #5c727d;
 
   --ltn__heading-font: "Poppins", sans-serif;
@@ -284,7 +299,7 @@ font-family: 'Poppins', sans-serif;
   --section-bg-1: #f2f6f7; /* White */
   --section-bg-2: #171b2a; /* Black */
   --section-bg-5: #fff2f0; /* White */
-  --section-bg-6: #0b2c3d; /* Black */
+  --section-bg-6: #33334d; /* Black */
   --section-bg-7: #282b38; /* Black */
 
   /* Border Colors */
