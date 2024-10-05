@@ -115,7 +115,7 @@ const HeaderStyleFive = function ({ SetToggleClassName }) {
                     <div className="header-feature-info">
                       <h6>Phone</h6>
                       <p>
-                        <Link href="tel:0123456789">+0123-456-789</Link>
+                        <Link href="tel:055-3575797">055-3575797</Link>
                       </p>
                     </div>
                   </div>

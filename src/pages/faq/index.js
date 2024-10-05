@@ -242,7 +242,7 @@ function Faq() {
                     </div>
                     <h3>
                       <FaPhoneAlt />
-                      +0123-456-789
+                      055-3575797
                     </h3>
                   </div>
                 </div>
