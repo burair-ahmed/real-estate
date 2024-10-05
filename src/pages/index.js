@@ -277,7 +277,7 @@ function HomePage(props) {
                             <div className="apartments-plan-info ltn__secondary-bg text-color-white">
                               <h2>The Studio</h2>
                               <p>
-                              Discover modern living at its finest in The Studio, a thoughtfully designed space that offers 2800 sq. ft. of stylish comfort. This chic residence includes a cozy 150 sq. ft. bedroom, a contemporary 45 sq. ft. bathroom, and a spacious 650 sq. ft. lounge, perfect for both work and relaxation. The pet-friendly balcony offers a peaceful outdoor retreat, adding to the charm of this sophisticated studio. Whether you're looking for a creative haven or a luxurious sanctuary, The Studio provides a perfect balance of functionality and elegance for the modern lifestyle.
+                              Discover modern living at its finest in The Studio, a thoughtfully designed space that offers 2800 sq. ft. of stylish comfort. This chic residence includes a cozy 150 sq. ft. bedroom, a contemporary 45 sq. ft. bathroom, and a spacious 650 sq. ft. lounge, perfect for both work and relaxation. The pet-friendly balcony offers a peaceful outdoor retreat, adding to the charm of this sophisticated studio. Whether you&apos;re looking for a creative haven or a luxurious sanctuary, The Studio provides a perfect balance of functionality and elegance for the modern lifestyle.
                               </p>
                               <div className="apartments-info-list apartments-info-list-color mt-40">
                                 <ul>
