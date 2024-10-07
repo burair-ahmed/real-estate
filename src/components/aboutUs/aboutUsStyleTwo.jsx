@@ -51,7 +51,7 @@ function AboutUsStyleTwo({ sectionSpace }) {
                   </h6>
                   <h1 className="section-title">Properties Sold Today</h1>
                   <p>
-                    Houzez allow you to design unlimited panels and real estate
+                    Praieries Hills allows you to design unlimited panels and real estate
                     custom forms to capture leads and keep record of all
                     information
                   </p>
