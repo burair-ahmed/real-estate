@@ -8,22 +8,22 @@ import HeaderSocialLinks from "../elements/headerSocialLinks";
 const HeaderTopBarOne = function () {
   return (
     <>
-      <div className="ltn__header-top-area section-bg-6 top-area-color-white---">
+      <div className="ltn__header-top-area section-bg-6 top-area-color-white--- top-bar">
         <Container>
           <Row>
             <Col xs={12} md={7}>
-              <HeaderTopInfo/>
+              <HeaderTopInfo />
             </Col>
             <Col xs={12} md={5}>
               <div className="top-bar-right text-end">
                 <div className="ltn__top-bar-menu mx-auto">
                   <ul>
                     <li>
-                      {/* <!-- ltn__social-media --> */}
-                      <HeaderSocialLinks/>
+                      {/* Social media links */}
+                      <HeaderSocialLinks />
                     </li>
                     <li>
-                      {/* <!-- header-top-btn --> */}
+                      {/* Add Listing button */}
                       <div className="header-top-btn">
                         <Link href="/add-listing">Add Listing</Link>
                       </div>
@@ -35,6 +35,19 @@ const HeaderTopBarOne = function () {
           </Row>
         </Container>
       </div>
+
+      {/* Styled JSX for responsive behavior */}
+      <style jsx>{`
+        .top-bar {
+          display: block;
+        }
+
+        @media (max-width: 768px) {
+          .top-bar {
+            display: none;
+          }
+        }
+      `}</style>
     </>
   );
 };

@@ -206,7 +206,7 @@ const MobileMenu = function ({ offCanVastoggleBtn, closeSideBar }) {
                   </li>
                 </ul>
               </li>
-              <li>
+              {/* <li>
                 <Link href="#">News</Link>
                 <span
                   className="menu-expand"
@@ -227,8 +227,8 @@ const MobileMenu = function ({ offCanVastoggleBtn, closeSideBar }) {
                     <Link href="/blog/right-sidebar">News Right sidebar</Link>
                   </li>
                 </ul>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <Link href="#">Pages</Link>
                 <span
                   className="menu-expand"
@@ -276,7 +276,7 @@ const MobileMenu = function ({ offCanVastoggleBtn, closeSideBar }) {
                     <Link href="/coming-soon">Coming Soon</Link>
                   </li>
                 </ul>
-              </li>
+              </li> */}
               <li>
                 <Link href="/contact">Contact</Link>
               </li>
