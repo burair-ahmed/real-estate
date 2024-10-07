@@ -38,14 +38,7 @@ const Footer = function () {
                     </div>
                   </div>
                   <p>
-                  Prairies Hills: Your partner for effortless luxury real estate in Dubai.
-
-
-
-
-
-
-
+                  Prairies Hills: Your partner for effortless luxury real estate in Dubai
                   </p>
                   <div className="footer-address">
                     <ul>
@@ -107,7 +100,7 @@ const Footer = function () {
                   </div>
                 </div>
               </Col>
-              <Col xs={12} sm={6} xl={2}>
+              {/* <Col xs={12} sm={6} xl={2}>
                 <div className="footer-widget footer-menu-widget clearfix">
                   <h4 className="footer-title">Company</h4>
                   <div className="footer-menu">
@@ -133,8 +126,8 @@ const Footer = function () {
                     </ul>
                   </div>
                 </div>
-              </Col>
-              <Col xs={12} sm={6} xl={2}>
+              </Col> */}
+              {/* <Col xs={12} sm={6} xl={2}>
                 <div className="footer-widget footer-menu-widget clearfix">
                   <h4 className="footer-title">Services</h4>
                   <div className="footer-menu">
@@ -160,8 +153,8 @@ const Footer = function () {
                     </ul>
                   </div>
                 </div>
-              </Col>
-              <Col xs={12} sm={6} xl={2}>
+              </Col> */}
+              {/* <Col xs={12} sm={6} xl={2}>
                 <div className="footer-widget footer-menu-widget clearfix">
                   <h4 className="footer-title">Customer Care</h4>
                   <div className="footer-menu">
@@ -187,7 +180,7 @@ const Footer = function () {
                     </ul>
                   </div>
                 </div>
-              </Col>
+              </Col> */}
               <Col xs={12} sm={6} xl={3}>
                 <div className="footer-widget footer-newsletter-widget">
                   <h4 className="footer-title">Newsletter</h4>
@@ -213,11 +206,11 @@ const Footer = function () {
             </Row>
           </Container>
         </div>
-        <div className="ltn__copyright-area ltn__copyright-2 section-bg-7  plr--5">
-          <div className="container-fluid ltn__border-top-2">
+        <div className="ltn__copyright-area ltn__copyright-2 section-bg-7  plr--5 bg-black">
+          <div className="container-fluid ltn__border-top-2 bg-black">
             <Row>
               <Col xs={12} md={6}>
-                <div className="ltn__copyright-design clearfix">
+                <div className="ltn__copyright-design clearfix bg-black">
                   <p>
                     All Rights Reserved @ Viral Marketing Solutions{" "}
                     <span>{currentYear}</span>
