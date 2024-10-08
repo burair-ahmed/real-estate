@@ -63,7 +63,7 @@ const ProductItem = ({
           <div className="product-badge">
             <ul>
               <li
-                className={`sale-badge ${productData.rent ? "bg-green" : ""}`}
+                className={`${productData.new ? "sale-badge" : ""} ${productData.rent ? "rent-badge" : ""}`}
               >
                 {badgeText}
               </li>

@@ -57,7 +57,39 @@ const MenuList = ({ addListing }) => {
       </li>
       <li className="menu-icon">
         <Link href="/about">
-          About <FaPlus />
+          About 
+          {/* <FaPlus /> */}
+        </Link>
+        {/* <ul>
+          <li>
+            <Link href="/about">About</Link>
+          </li>
+          <li>
+            <Link href="/service">Services</Link>
+          </li>
+
+          <li>
+            <Link href="/portfolio">Portfolio</Link>
+          </li>
+          <li>
+              <Link href="/portfolio/page-two">Portfolio - 02</Link>
+            </li>
+
+          <li>
+            <Link href="/team">Team</Link>
+          </li>
+
+          <li>
+            <Link href="/faq">FAQ</Link>
+          </li>
+          <li>
+            <Link href="/locations">Google Map Locations</Link>
+          </li>
+        </ul> */}
+      </li>
+      <li className="menu-icon">
+        <Link href="/service">
+          Services <FaPlus />
         </Link>
         <ul>
           <li>

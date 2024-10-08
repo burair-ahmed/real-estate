@@ -310,6 +310,22 @@ body{
 .ltn__category-item-5:hover > a > span > i{
   color: #6d5c6a;
 }
+.product-title{
+  color: #6d5c6a;
+}
+
+.ltn__product-item-5 .product-badge li.rent-badge {
+  font-size: 16px;
+  background-color: #6d5c6a !important;
+  color: #fff !important;
+}
+
+.ltn__product-item-5 .product-badge li.sale-badge {
+  font-size: 16px;
+  background-color: #121a2f !important;
+  color: #fff !important;
+}
+
 
 :root {
   --ltn__primary-color: #000000;
