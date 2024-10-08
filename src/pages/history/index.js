@@ -14,6 +14,7 @@ import {
     FaAward,
     FaMedal,
 } from "react-icons/fa";
+import TitleSection2 from "@/components/titleSection/index2";
 
 
 function HistoryPage() {
@@ -106,8 +107,8 @@ function HistoryPage() {
                                                     <Col xs={12} lg={6} className="align-self-center">
                                                         <div className="about-us-info-wrap">
                                                             <div className="section-title-area">
-                                                                <h6 className="section-subtitle section-subtitle-2 ltn__secondary-color">Our History</h6>
-                                                                <h1 className="section-title">We Started Our Journey</h1>
+                                                                <h6 className="section-subtitle2 section-subtitle-custom ltn__secondary-color">Our History</h6>
+                                                                <h1 className="section-title2">We Started Our Journey</h1>
                                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
                                                             </div>
 
@@ -131,8 +132,8 @@ function HistoryPage() {
                                                     <Col xs={12} lg={6} className="align-self-center">
                                                         <div className="about-us-info-wrap">
                                                             <div className="section-title-area">
-                                                                <h6 className="section-subtitle section-subtitle-2 ltn__secondary-color">Get rewards</h6>
-                                                                <h1 className="section-title">It Was An Sweet
+                                                                <h6 className="section-subtitle2 section-subtitle-custom ltn__secondary-color">Get rewards</h6>
+                                                                <h1 className="section-title2">It Was An Sweet
                                                                     Journey Time</h1>
                                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
                                                             </div>
@@ -157,8 +158,8 @@ function HistoryPage() {
                                                     <Col xs={12} lg={6} className="align-self-center">
                                                         <div className="about-us-info-wrap">
                                                             <div className="section-title-area">
-                                                                <h6 className="section-subtitle section-subtitle-2 ltn__secondary-color">Get rewards</h6>
-                                                                <h1 className="section-title">It Was An Sweet
+                                                                <h6 className="section-subtitle2 section-subtitle-custom ltn__secondary-color">Get rewards</h6>
+                                                                <h1 className="section-title2">It Was An Sweet
                                                                     Journey Time</h1>
                                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
                                                             </div>
@@ -183,8 +184,8 @@ function HistoryPage() {
                                                     <Col xs={12} lg={6} className="align-self-center">
                                                         <div className="about-us-info-wrap">
                                                             <div className="section-title-area">
-                                                                <h6 className="section-subtitle section-subtitle-2 ltn__secondary-color">Get rewards</h6>
-                                                                <h1 className="section-title">It Was An Sweet
+                                                                <h6 className="section-subtitle2 section-subtitle-custom ltn__secondary-color">Get rewards</h6>
+                                                                <h1 className="section-title2">It Was An Sweet
                                                                     Journey Time</h1>
                                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
                                                             </div>
@@ -209,8 +210,8 @@ function HistoryPage() {
                                                     <Col xs={12} lg={6} className="align-self-center">
                                                         <div className="about-us-info-wrap">
                                                             <div className="section-title-area">
-                                                                <h6 className="section-subtitle section-subtitle-2 ltn__secondary-color">Get rewards</h6>
-                                                                <h1 className="section-title">It Was An Sweet
+                                                                <h6 className="section-subtitle2 section-subtitle-custom ltn__secondary-color">Get rewards</h6>
+                                                                <h1 className="section-title2">It Was An Sweet
                                                                     Journey Time</h1>
                                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
                                                             </div>
@@ -233,12 +234,12 @@ function HistoryPage() {
                 <Container>
                     <Row>
                         <Col xs={12}>
-                            <TitleSection
+                             <TitleSection2
                                 sectionClasses="text-center"
-                                headingClasses="section-subtitle-2"
-                                titleSectionData={{
-                                    subTitle: "Features",
-                                    title: "Why Choose Us",
+                                headingClasses="section-subtitle-custom"
+                                titleSectionData2={{
+                                    subTitle2: "Features",
+                                    title2: "Why Choose Us",
                                 }}
                             />
                         </Col>
@@ -293,7 +294,7 @@ function HistoryPage() {
                     <Row>
                         <Col xs={12}>
                             <div className="call-to-action-inner call-to-action-inner-5 text-decoration text-center">
-                                <h2 className="white-color">24/7 Availability, Make <Link href="https://quarter-nextjs.netlify.app/team/kelian-anderson">An Appointment</Link></h2>
+                                <h2 className="white-color">24/7 Availability, Make <Link className="appointment-class" href="#">An Appointment</Link></h2>
                             </div>
                         </Col>
                     </Row>
@@ -306,12 +307,12 @@ function HistoryPage() {
                 <Container>
                     <Row>
                         <Col lg={12}>
-                            <TitleSection
+                            <TitleSection2
                                 sectionClasses="text-center"
-                                headingClasses="section-subtitle-2"
-                                titleSectionData={{
-                                    subTitle: "News & Blogs",
-                                    title: "Leatest News Feeds",
+                                headingClasses="section-subtitle-custom"
+                                titleSectionData2={{
+                                    subTitle2: "News & Blogs",
+                                    title2: "Latest News Feeds",
                                 }}
                             />
                         </Col>
