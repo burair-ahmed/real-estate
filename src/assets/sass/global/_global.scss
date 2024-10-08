@@ -343,11 +343,16 @@ body{
   background: #acb9bf !important;
   border-radius: 5px;
 }
-
+.btn-effect-1:hover {
+  color: #6d5c6a !important;
+}
+.btn:hover {
+  border-color: #6d5c6a !important;
+}
 
 
 :root {
-  --ltn__primary-color: #000000;
+  --ltn__primary-color: #171b2a;
   --ltn__primary-color-2: #5cdef1; /* Darken */
   --ltn__primary-color-3: #ffffff; /* Lighten */
   --ltn__secondary-color: #6d5c6a;
