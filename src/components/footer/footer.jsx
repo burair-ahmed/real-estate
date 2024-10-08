@@ -29,7 +29,7 @@ const Footer = function () {
         <div className="footer-top-area  section-bg-2 plr--5">
           <Container fluid>
             <Row>
-              <Col xs={12} sm={6} xl={3}>
+              <Col xs={12} sm={6} xl={6}>
                 <div className="footer-widget footer-about-widget">
                   <div className="footer-logo mb-1">
                     <div className="site-logo">
@@ -181,7 +181,7 @@ const Footer = function () {
                   </div>
                 </div>
               </Col> */}
-              <Col xs={12} sm={6} xl={3}>
+              <Col xs={12} sm={6} xl={6}>
                 <div className="footer-widget footer-newsletter-widget">
                   <h4 className="footer-title">Newsletter</h4>
                   <p>
