@@ -51,8 +51,7 @@ const Contact = () => {
                 </div>
                 <h3>Office Address</h3>
                 <p>
-                  18/A, New Born Town Hall <br />
-                  New York, US
+                Office 720 DIC, Dubai
                 </p>
               </div>
             </div>
