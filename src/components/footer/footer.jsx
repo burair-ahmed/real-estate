@@ -13,6 +13,8 @@ import {
   FaPhoneAlt,
 } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import Image from 'next/image';
+
 
 const Footer = function () {
   const [currentYear, setCurrentYear] = useState(null);
@@ -34,8 +36,8 @@ const Footer = function () {
                   <div className="footer-logo mb-1">
                     <div className="site-logo">
                       {/* <img src="/img/logo.png" alt="Logo" /> */}
-                      <img src="/img/logo-2.png" alt="Logo" />
-                    </div>
+                      <Image src="/img/logo-2.png" alt="Logo" width={170} height={45} />
+                      </div>
                   </div>
                   <p>
                   Prairies Hills: Your partner for effortless luxury real estate in Dubai
