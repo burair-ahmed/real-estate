@@ -2,6 +2,8 @@ import Link from "next/link";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Image from 'next/image';
+
 
 function AboutUsSectionOne() {
   return (
@@ -10,7 +12,7 @@ function AboutUsSectionOne() {
         <Row>
           <Col xs={12} lg={6} className="align-self-center">
             <div className="about-us-img-wrap about-img-left">
-              <img src="/img/others/11.png" alt="About Us Image" />
+              <Image src="/img/others/11.png" alt="About Us Image" width={570} height={720} />
             </div>
           </Col>
           <Col xs={12} lg={6} className="align-self-center">
