@@ -326,6 +326,25 @@ body{
   color: #fff !important;
 }
 
+.horizontal-slider .filter-by-price-thumb {
+  top: 13px;
+  width: 12px;
+  height: 12px;
+  line-height: 0;
+  border-radius: 50%;
+  font-size: 0;
+  text-align: center;
+  background-color: #6d5c6a !important;
+  color: white;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.filter-by-price-track.filter-by-price-track-1 {
+  background: #acb9bf !important;
+  border-radius: 5px;
+}
+
+
 
 :root {
   --ltn__primary-color: #000000;
