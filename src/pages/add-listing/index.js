@@ -30,134 +30,133 @@ function AddListingPage() {
                       </Nav>
                     </div>
                     <Tab.Content>
-                      <Tab.Pane eventKey="first">
-                        <div className="ltn__apartments-tab-content-inner">
-                          <h6>Property Description</h6>
-                          <Row>
-                            <div className="col-md-12">
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="*Title (mandatory)"
-                                />
-                              </div>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <textarea
-                                  name="ltn__message"
-                                  placeholder="Description"
-                                ></textarea>
-                              </div>
-                            </div>
-                          </Row>
-                          <h6>Property Price</h6>
-                          <Row>
-                            <Col xs={12} md={6}>
-                              <div className="input-item  input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Price in $ (only numbers)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="After Price Label (ex: /month)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Before Price Label (ex: from)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Yearly Tax Rate"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Homeowners Association Fee(monthly)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                          </Row>
-                          <h6>Select Categories</h6>
-                          <Row>
-                            <Col xs={12} md={6} lg={4}>
-                              <div className="input-item ltn__custom-icon">
-                                <Form.Select className="nice-select">
-                                  <option>Make A Selection</option>
-                                  <option value="1">New York</option>
-                                  <option value="2">South Carolina</option>
-                                  <option value="3">Los Angeles</option>
-                                  <option value="4">Florida</option>
-                                  <option value="5">New Jersey</option>
-                                </Form.Select>
-
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <div className="input-item ltn__custom-icon">
-                                <Form.Select className="nice-select">
-                                  <option>Make A Selection</option>
-                                  <option value="1">New York</option>
-                                  <option value="2">South Carolina</option>
-                                  <option value="3">Los Angeles</option>
-                                  <option value="4">Florida</option>
-                                  <option value="5">New Jersey</option>
-                                </Form.Select>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <div className="input-item ltn__custom-icon">
-                                <Form.Select className="nice-select">
-                                  <option>Make A Selection</option>
-                                  <option value="1">New York</option>
-                                  <option value="2">South Carolina</option>
-                                  <option value="3">Los Angeles</option>
-                                  <option value="4">Florida</option>
-                                  <option value="5">New Jersey</option>
-                                </Form.Select>
-                              </div>
-                            </Col>
-                          </Row>
-                          <div className="btn-wrapper  mt-0">
-                            <button type="submit" className="btn theme-btn-1 btn-effect-1 text-uppercase" >Next Step</button>
-                          </div>
-                        </div>
-                      </Tab.Pane>
+                    <Tab.Pane eventKey="first">
+  <div className="ltn__apartments-tab-content-inner">
+    <h6>Property Description</h6>
+    <Row>
+      <div className="col-md-12">
+        <div className="input-item input-item-textarea ltn__custom-icon">
+          <input
+            type="text"
+            name="ltn__name"
+            placeholder="*Title (mandatory)"
+          />
+        </div>
+        <div className="input-item input-item-textarea ltn__custom-icon">
+          <textarea
+            name="ltn__message"
+            placeholder="Description"
+          ></textarea>
+        </div>
+      </div>
+    </Row>
+    <h6>Property Price</h6>
+    <Row>
+      <Col xs={12} md={6}>
+        <div className="input-item input-item-textarea ltn__custom-icon">
+          <input
+            type="text"
+            name="ltn__name"
+            placeholder="Price in $ (only numbers)"
+          />
+          <span className="inline-icon">
+            <FaPencilAlt />
+          </span>
+        </div>
+      </Col>
+      <Col xs={12} md={6}>
+        <div className="input-item input-item-textarea ltn__custom-icon">
+          <input
+            type="text"
+            name="ltn__name"
+            placeholder="After Price Label (ex: /month)"
+          />
+          <span className="inline-icon">
+            <FaPencilAlt />
+          </span>
+        </div>
+      </Col>
+      <Col xs={12} md={6}>
+        <div className="input-item input-item-textarea ltn__custom-icon">
+          <input
+            type="text"
+            name="ltn__name"
+            placeholder="Before Price Label (ex: from)"
+          />
+          <span className="inline-icon">
+            <FaPencilAlt />
+          </span>
+        </div>
+      </Col>
+      <Col xs={12} md={6}>
+        <div className="input-item input-item-textarea ltn__custom-icon">
+          <input
+            type="text"
+            name="ltn__name"
+            placeholder="Yearly Tax Rate"
+          />
+          <span className="inline-icon">
+            <FaPencilAlt />
+          </span>
+        </div>
+      </Col>
+      <Col xs={12} md={6}>
+        <div className="input-item input-item-textarea ltn__custom-icon">
+          <input
+            type="text"
+            name="ltn__name"
+            placeholder="Homeowners Association Fee(monthly)"
+          />
+          <span className="inline-icon">
+            <FaPencilAlt />
+          </span>
+        </div>
+      </Col>
+    </Row>
+    <h6>Select Categories</h6>
+    <Row>
+      <Col xs={12} md={6} lg={4}>
+        <div className="input-item ltn__custom-icon">
+          <Form.Select className="nice-select">
+            <option>Make A Selection</option>
+            <option value="1">New York</option>
+            <option value="2">South Carolina</option>
+            <option value="3">Los Angeles</option>
+            <option value="4">Florida</option>
+            <option value="5">New Jersey</option>
+          </Form.Select>
+        </div>
+      </Col>
+      <Col xs={12} md={6} lg={4}>
+        <div className="input-item ltn__custom-icon">
+          <Form.Select className="nice-select">
+            <option>Make A Selection</option>
+            <option value="1">New York</option>
+            <option value="2">South Carolina</option>
+            <option value="3">Los Angeles</option>
+            <option value="4">Florida</option>
+            <option value="5">New Jersey</option>
+          </Form.Select>
+        </div>
+      </Col>
+      <Col xs={12} md={6} lg={4}>
+        <div className="input-item ltn__custom-icon">
+          <Form.Select className="nice-select">
+            <option>Make A Selection</option>
+            <option value="1">New York</option>
+            <option value="2">South Carolina</option>
+            <option value="3">Los Angeles</option>
+            <option value="4">Florida</option>
+            <option value="5">New Jersey</option>
+          </Form.Select>
+        </div>
+      </Col>
+    </Row>
+    <div className="btn-wrapper mt-0">
+      <button type="submit" className="btn theme-btn-1 btn-effect-1 text-uppercase">Next Step</button>
+    </div>
+  </div>
+                    </Tab.Pane>
                       <Tab.Pane eventKey="second">
                         <div className="ltn__product-tab-content-inner">
                           <h6>Listing Media</h6>
