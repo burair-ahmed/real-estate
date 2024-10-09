@@ -15,7 +15,7 @@ const MenuList = ({ addListing }) => {
         </Link>
           <ul>
             <li>
-              <Link href="/history">History</Link>
+              <Link href="/history">HISTORY</Link>
             </li>
           </ul>
       </li>
@@ -123,10 +123,10 @@ const MenuList = ({ addListing }) => {
         </Link>
         <ul>
         <li>
-            <Link href="/shop">Property</Link>
+            <Link href="/shop">PROPERTY</Link>
           </li>
           <li>
-            <Link href="/locations">Google Map Locations</Link>
+            <Link href="/locations">GOOGLE MAP LOCATIONS</Link>
           </li>
         </ul>
       </li>
