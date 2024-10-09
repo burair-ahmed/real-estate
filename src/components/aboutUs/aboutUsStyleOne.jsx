@@ -40,10 +40,10 @@ function AboutUsStyleOne({ sectionSpace }) {
             <Col xs={12} lg={6} className="align-self-center">
               <div className="about-us-info-wrap">
                 <div className="section-title-area mb-20">
-                  <h6 className="section-subtitle section-subtitle-2 ltn__secondary-color">
+                  <h6 className="section-subtitle2 section-subtitle-custom ltn__secondary-color">
                     About Us
                   </h6>
-                  <h1 className="section-title">
+                  <h1 className="section-title2">
                     The Leading Real Estate Rental Marketplace<span>.</span>
                   </h1>
                   <p>
