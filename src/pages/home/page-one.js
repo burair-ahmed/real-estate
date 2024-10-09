@@ -196,14 +196,6 @@ function HomePage(props) {
                                     title2: "Featured Listings",
                                 }}
                             />
-                              <TitleSection
-                                sectionClasses="text-center"
-                                headingClasses="section-subtitle-2"
-                                titleSectionData={{
-                                    subTitle: "Properties",
-                                    title: "Featured Listings",
-                                }}
-                            />
                             </Col>
                         </Row>
 

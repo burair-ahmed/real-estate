@@ -23,6 +23,8 @@ import testimonialData from "@/data/testimonial";
 import BlogItem from "@/components/blog";
 import blogData from "@/data/blog";
 import featuresData from "@/data/service";
+import TitleSection2 from "@/components/titleSection/index2";
+
 
 function HomePage(props) {
   const { products } = useSelector((state) => state.product);
@@ -187,12 +189,12 @@ function HomePage(props) {
           <Container fluid>
             <Row>
               <Col lg={12}>
-                <TitleSection
+                <TitleSection2
                   sectionClasses="text-center"
-                  headingClasses="section-subtitle-2"
-                  titleSectionData={{
-                    subTitle: "Properties",
-                    title: "Featured Listings",
+                  headingClasses="section-subtitle-custom"
+                  titleSectionData2={{
+                    subTitle2: "Properties",
+                    title2: "Featured Listings",
                   }}
                 />
               </Col>
@@ -249,12 +251,12 @@ function HomePage(props) {
           <Container>
             <Row>
               <Col>
-                <TitleSection
+                <TitleSection2
                   sectionClasses="text-center"
-                  headingClasses="section-subtitle-2"
-                  titleSectionData={{
-                    subTitle: "Apartment Sketch",
-                    title: "Apartments Plan",
+                  headingClasses="section-subtitle-custom"
+                  titleSectionData2={{
+                    subTitle2: "Apartment Sketch",
+                    title2: "Apartments Plan",
                     additionalClassName: "",
                   }}
                 />
@@ -503,12 +505,12 @@ function HomePage(props) {
           <Container>
             <Row>
               <Col xs={12}>
-                <TitleSection
+                <TitleSection2
                   sectionClasses="text-center"
-                  headingClasses="section-subtitle-2"
-                  titleSectionData={{
-                    subTitle: "Our Aminities",
-                    title: "Building Aminities",
+                  headingClasses="section-subtitle-custom"
+                  titleSectionData2={{
+                    subTitle2: "Our Aminities",
+                    title2: "Building Aminities",
                     additionalClassName: "",
                   }}
                 />
