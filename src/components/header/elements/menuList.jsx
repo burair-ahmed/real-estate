@@ -5,59 +5,13 @@ const MenuList = ({ addListing }) => {
     <ul>
       <li className="menu-icon">
         <Link href="/">
-          Home 
+          HOME 
           {/* <FaPlus /> */}
         </Link>
-        {/* <ul className="sub-menu menu-pages-img-show">
-          <li>
-            <Link href="/">Home Style 01</Link>
-           
-          </li>
-          <li>
-            <Link href="/home/page-two">Home Style 02</Link>
-            <img src="/img/home-demos/home-2.jpg" alt="#" />
-          </li>
-          <li>
-            <Link href="/home/page-three">Home Style 03</Link>
-            <img src="/img/home-demos/home-3.jpg" alt="#" />
-          </li>
-          <li>
-            <Link href="/home/page-four">Home Style 04</Link>
-            <img src="/img/home-demos/home-4.jpg" alt="#" />
-          </li>
-          <li>
-            <Link href="/home/page-five">Home Style 05</Link>
-            <img src="/img/home-demos/home-5.jpg" alt="#" />
-          </li>
-          <li>
-            <Link href="/home/page-six">Home Style 06</Link>
-            <img src="/img/home-demos/home-6.jpg" alt="#" />
-          </li>
-          <li>
-            <Link href="/home/page-seven">Home Style 07</Link>
-            <img src="/img/home-demos/home-7.jpg" alt="#" />
-          </li>
-          <li>
-            <Link href="/home/page-eight">Home Style 08</Link>
-            <img src="/img/home-demos/home-8.jpg" alt="#" />
-          </li>
-          <li>
-            <Link href="/home/page-nine">Home Style 09</Link>
-            <img src="/img/home-demos/home-9.jpg" alt="#" />
-          </li>
-          <li>
-            <Link href="/home/page-ten">Home Style 10</Link>
-            <img src="/img/home-demos/home-10.jpg" alt="#" />
-          </li>
-          <li>
-            <Link href="/home/page-eleven">Home Style 11</Link>
-            <img src="/img/home-demos/home-11.jpg" alt="#" />
-          </li>
-        </ul> */}
       </li>
       <li className="menu-icon">
         <Link href="/about">
-          About <FaPlus />
+          ABOUT <FaPlus />
         </Link>
           <ul>
             <li>
@@ -66,8 +20,106 @@ const MenuList = ({ addListing }) => {
           </ul>
       </li>
       <li className="menu-icon">
+        <Link href="">
+          BUY <FaPlus />
+        </Link>
+          <ul>
+          <li>
+              <Link href="/france/sale">FRANCE</Link>
+            </li>
+            <li>
+              <Link href="/united-states/sale">UNITED STATES</Link>
+            </li>
+            <li>
+              <Link href="/italy/sale">ITALY</Link>
+            </li>
+            <li>
+              <Link href="/spain/sale">SPAIN</Link>
+            </li>
+            <li>
+              <Link href="/switzerland/sale">SWITZERLAND</Link>
+            </li>
+            <li>
+              <Link href="/principality-of-monaco">PRINCIPALITY OF MONACO</Link>
+            </li>
+            <li>
+              <Link href="/uae">UNITED ARAB OF EMIRATES</Link>
+            </li>
+            <li>
+              <Link href="/portugal">PORTUGAL</Link>
+            </li>
+            <li>
+              <Link href="/andorra">ANDORRA</Link>
+            </li>
+            <li>
+              <Link href="/morroco">MORROCO</Link>
+            </li>
+          </ul>
+      </li>
+      <li className="menu-icon">
+        <Link href="">
+          RENT <FaPlus />
+        </Link>
+          <ul>
+          <li>
+              <Link href="#">HOLIDAYS</Link>
+              <ul>
+                <li>
+                  <Link href="/france/seasonal-rental/">FRANCE</Link>
+                </li>
+                <li>
+                  <Link href="/switzerland/seasonal-rental/">SWITZERLAND</Link>
+                </li>
+                <li>
+                  <Link href="/spain/seasonal-rental/">SPAIN</Link>
+                </li>
+                <li>
+                  <Link href="/portugal/seasonal-rental/">PORTUGAL</Link>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <Link href="#">EVENTS</Link>
+              <ul>
+              <li>
+                  <Link href="/france/event/">FRANCE</Link>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <Link href="#">LONG TERM</Link>
+              <ul>
+              <li>
+                  <Link href="/united-states/rental/">UNITED STATES</Link>
+                </li>
+                <li>
+                  <Link href="/switzerland/rental/">SWITZERLAND</Link>
+                </li>
+                <li>
+                  <Link href="/italy/rental/">ITALY</Link>
+                </li>
+                <li>
+                  <Link href="/spain/rental/">SPAIN</Link>
+                </li>
+                <li>
+                  <Link href="/uae/rental/">UNITED ARAB OF EMIRATES</Link>
+                </li>
+                <li>
+                  <Link href="/principality-of-monaco/rental/">PRINCIPALITY OF MONACO</Link>
+                </li>
+                <li>
+                  <Link href="/france/rental/">FRANCE</Link>
+                </li>
+                <li>
+                  <Link href="/andorra/rental/">ANDORRA</Link>
+                </li>
+              </ul>
+            </li>
+          </ul>
+      </li>
+      <li className="menu-icon">
         <Link href="/service">
-          Services <FaPlus />
+          SERVICES <FaPlus />
         </Link>
         <ul>
         <li>
@@ -158,7 +210,7 @@ const MenuList = ({ addListing }) => {
         </ul>
       </li> */}
       <li>
-        <Link href="/contact">Contact</Link>
+        <Link href="/contact">CONTACT</Link>
       </li>
 
       {addListing ? (
