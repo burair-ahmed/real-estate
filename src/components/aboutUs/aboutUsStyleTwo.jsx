@@ -48,10 +48,10 @@ function AboutUsStyleTwo({ sectionSpace }) {
             <Col xs={12} lg={6} className="align-self-center">
               <div className="about-us-info-wrap">
                 <div className="section-title-area ltn__section-title-2--- mb-30">
-                  <h6 className="section-subtitle section-subtitle-2 ltn__secondary-color">
+                  <h6 className="section-subtitle2 section-subtitle-custom ltn__secondary-color">
                     About Us
                   </h6>
-                  <h1 className="section-title">Properties Sold Today</h1>
+                  <h1 className="section-title2">Properties Sold Today</h1>
                   <p>
                     Praieries Hills allows you to design unlimited panels and real estate
                     custom forms to capture leads and keep record of all
