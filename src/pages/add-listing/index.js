@@ -117,54 +117,65 @@ function AddListingPage() {
     setActiveKey((prev) => prev + 1);
   };
 
+  const handleImageChange = (event) => {
+    const files = Array.from(event.target.files);
+    const fileURLs = files.map(file => URL.createObjectURL(file)); // Create URLs for each file
+    setFormData(prevData => ({
+        ...prevData,
+        images: fileURLs, // Assuming you have an `images` field in your formData state
+    }));
+};
+const handleVideoChange = (event) => {
+  const file = event.target.files[0]; // Get the first selected video file
+  if (file) {
+      const fileURL = URL.createObjectURL(file); // Create a URL for the file
+      setFormData(prevData => ({
+          ...prevData,
+          video: fileURL, // Assuming you have a `video` field in your formData state
+      }));
+  }
+};
+
+
   const handlePrevStep = () => {
     if (activeKey > 0) setActiveKey((prev) => prev - 1);
   };
 
   // Handle form submission
   const handleCreateProperty = async () => {
-    // Create a FormData object for sending files
-    const data = new FormData();
+    // Logging current data before submission
+    console.log('Submitting form...');
+    console.log('Current form data:', formData);
 
-    // Append formData to FormData object
-    for (const key in formData) {
-      if (Array.isArray(formData[key])) {
-        formData[key].forEach((file) => data.append(key, file));
-      } else if (formData[key]) {
-        data.append(key, formData[key]);
-      }
+    // Validation
+    if (!formData.title || !formData.description || !formData.price || !formData.yearlyTaxRate || !formData.homeownersAssociationFee || !formData.categories.length) {
+        console.error('Please fill in all required fields');
+        return;
     }
 
-    // Append inputValues to FormData object
-    for (const key in inputValues) {
-      if (inputValues[key]) {
-        data.append(key, inputValues[key]);
-      }
-    }
-
+    // API request
     try {
-      const response = await axios.post("/api/properties", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      console.log("Property Created:", response.data);
-      // Optionally redirect or show success message here
+        const response = await fetch('/api/add-listing', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log(result.message);
+            // Reset form or perform other actions
+        } else {
+            const errorResponse = await response.json();
+            console.error('Failed to create property:', errorResponse);
+        }
     } catch (error) {
-      console.error("Error creating property:", error);
-      alert("There was an error submitting the form. Please try again.");
+        console.error('Error while submitting the form:', error);
     }
-  };
+};
 
-  const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
-    setFormData({ ...formData, images: files });
-  };
-
-  const handleVideoChange = (e) => {
-    const file = e.target.files[0];
-    setFormData({ ...formData, video: file });
-  };
 
   return (
     <>
@@ -901,12 +912,13 @@ function AddListingPage() {
                               Prev Step
                             </button>
                             <button
-                              type="button"
-                              className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                              onClick={handleCreateProperty}
-                            >
-                              Create Property
-                            </button>
+                type="button"
+                className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                onClick={handleCreateProperty}
+            >
+                Create Property
+            </button>
+
                           </div>
                         </div>
                       </Tab.Pane>
