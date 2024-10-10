@@ -232,10 +232,10 @@ const MobileMenu = function ({ offCanVastoggleBtn, closeSideBar }) {
                 ></span>
                 <ul className="sub-menu">
                   <li>
-                    <Link href="/shop">Property</Link>
+                    <Link href="/shop">PROPERTY</Link>
                   </li>
                   <li>
-                    <Link href="/locations">Google Map Locations</Link>
+                    <Link href="/locations">GOOGLE MAP LOCATIONS</Link>
                   </li>
                 </ul>
                 
@@ -326,7 +326,7 @@ const MobileMenu = function ({ offCanVastoggleBtn, closeSideBar }) {
                   My Account
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/wishlist" title="Wishlist">
                   <span className="utilize-btn-icon">
                     <FaRegHeart />
@@ -338,8 +338,8 @@ const MobileMenu = function ({ offCanVastoggleBtn, closeSideBar }) {
                   </span>
                   Wishlist
                 </Link>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <Link href="/cart" title="Shoping Cart">
                   <span className="utilize-btn-icon">
                     <FaShoppingCart />
@@ -351,7 +351,7 @@ const MobileMenu = function ({ offCanVastoggleBtn, closeSideBar }) {
                   </span>
                   Shoping Cart
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="ltn__social-media-2">
