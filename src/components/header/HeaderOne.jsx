@@ -188,15 +188,15 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
                         <li>
                           <Link href="/my-account">My Account</Link>
                         </li>
-                        <li>
+                        {/* <li>
                           <Link href="/wishlist">Wishlist</Link>
-                        </li>
+                        </li> */}
                       </ul>
                     </li>
                   </ul>
                 </div>
                 {/* <!-- mini-cart --> */}
-                <div className="mini-cart-icon">
+                {/* <div className="mini-cart-icon">
                   <button
                     onClick={cartMenu}
                     className={`ltn__utilize-toggle ${
@@ -204,7 +204,7 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
                     }`}
                   >
                     <FaCartArrowDown />
-                    {/* <sup>6</sup> */}
+                    <sup>6</sup>
 
                     {cartItems.length > 0 ? (
                       <sup>{cartItems.length}</sup>
@@ -212,7 +212,7 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
                       <sup>0</sup>
                     )}
                   </button>
-                </div>
+                </div> */}
                 {/* <!-- mini-cart --> */}
                 {/* <!-- Mobile Menu Button --> */}
                 <div className="mobile-menu-toggle d-xl-none">
