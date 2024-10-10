@@ -3,16 +3,17 @@ import { Container, Row, Col, Nav, Tab, Form } from "react-bootstrap";
 import { LayoutOne } from "@/layouts";
 import ShopBreadCrumb from "@/components/breadCrumbs/shop";
 import CallToAction from "@/components/callToAction";
-import { FaPencilAlt, } from "react-icons/fa";
-
+import { FaPencilAlt } from "react-icons/fa";
 
 function AddListingPage() {
-
-
   return (
     <>
       <LayoutOne topbar={true}>
-        <ShopBreadCrumb title="Add Listing" sectionPace="" currentSlug="Add Listing" />
+        <ShopBreadCrumb
+          title="Add Listing"
+          sectionPace=""
+          currentSlug="Add Listing"
+        />
         {/* // <!-- APPOINTMENT AREA START --> */}
         <div className="ltn__appointment-area pb-120">
           <Container>
@@ -22,141 +23,121 @@ function AddListingPage() {
                   <Tab.Container defaultActiveKey="first">
                     <div className="ltn__tab-menu ltn__tab-menu-3 text-center">
                       <Nav className="nav justify-content-center">
-                        <Nav.Link eventKey="first">1. Description</Nav.Link>
-                        <Nav.Link eventKey="second">2. Media</Nav.Link>
-                        <Nav.Link eventKey="third">3. Location</Nav.Link>
-                        <Nav.Link eventKey="fourth">4. Details</Nav.Link>
-                        <Nav.Link eventKey="five">5. Amenities</Nav.Link>
+                        <Nav.Link eventKey="first">
+                          1. Property Details
+                        </Nav.Link>
+                        <Nav.Link eventKey="second">2. Images</Nav.Link>
+                        <Nav.Link eventKey="third">3. Features</Nav.Link>
+                        <Nav.Link eventKey="fourth">4. Proximities</Nav.Link>
+                        {/* <Nav.Link eventKey="five">5. Amenities</Nav.Link> */}
                       </Nav>
                     </div>
                     <Tab.Content>
-                    <Tab.Pane eventKey="first">
-  <div className="ltn__apartments-tab-content-inner">
-    <h6>Property Description</h6>
-    <Row>
-      <div className="col-md-12">
-        <div className="input-item input-item-textarea ltn__custom-icon">
-          <input
-            type="text"
-            name="ltn__name"
-            placeholder="*Title (mandatory)"
-          />
-        </div>
-        <div className="input-item input-item-textarea ltn__custom-icon">
-          <textarea
-            name="ltn__message"
-            placeholder="Description"
-          ></textarea>
-        </div>
-      </div>
-    </Row>
-    <h6>Property Price</h6>
-    <Row>
-      <Col xs={12} md={6}>
-        <div className="input-item input-item-textarea ltn__custom-icon">
-          <input
-            type="text"
-            name="ltn__name"
-            placeholder="Price in $ (only numbers)"
-          />
-          <span className="inline-icon">
-            <FaPencilAlt />
-          </span>
-        </div>
-      </Col>
-      <Col xs={12} md={6}>
-        <div className="input-item input-item-textarea ltn__custom-icon">
-          <input
-            type="text"
-            name="ltn__name"
-            placeholder="After Price Label (ex: /month)"
-          />
-          <span className="inline-icon">
-            <FaPencilAlt />
-          </span>
-        </div>
-      </Col>
-      <Col xs={12} md={6}>
-        <div className="input-item input-item-textarea ltn__custom-icon">
-          <input
-            type="text"
-            name="ltn__name"
-            placeholder="Before Price Label (ex: from)"
-          />
-          <span className="inline-icon">
-            <FaPencilAlt />
-          </span>
-        </div>
-      </Col>
-      <Col xs={12} md={6}>
-        <div className="input-item input-item-textarea ltn__custom-icon">
-          <input
-            type="text"
-            name="ltn__name"
-            placeholder="Yearly Tax Rate"
-          />
-          <span className="inline-icon">
-            <FaPencilAlt />
-          </span>
-        </div>
-      </Col>
-      <Col xs={12} md={6}>
-        <div className="input-item input-item-textarea ltn__custom-icon">
-          <input
-            type="text"
-            name="ltn__name"
-            placeholder="Homeowners Association Fee(monthly)"
-          />
-          <span className="inline-icon">
-            <FaPencilAlt />
-          </span>
-        </div>
-      </Col>
-    </Row>
-    <h6>Select Categories</h6>
-    <Row>
-      <Col xs={12} md={6} lg={4}>
-        <div className="input-item ltn__custom-icon">
-          <Form.Select className="nice-select">
-            <option>Make A Selection</option>
-            <option value="1">New York</option>
-            <option value="2">South Carolina</option>
-            <option value="3">Los Angeles</option>
-            <option value="4">Florida</option>
-            <option value="5">New Jersey</option>
-          </Form.Select>
-        </div>
-      </Col>
-      <Col xs={12} md={6} lg={4}>
-        <div className="input-item ltn__custom-icon">
-          <Form.Select className="nice-select">
-            <option>Make A Selection</option>
-            <option value="1">New York</option>
-            <option value="2">South Carolina</option>
-            <option value="3">Los Angeles</option>
-            <option value="4">Florida</option>
-            <option value="5">New Jersey</option>
-          </Form.Select>
-        </div>
-      </Col>
-      <Col xs={12} md={6} lg={4}>
-        <div className="input-item ltn__custom-icon">
-          <Form.Select className="nice-select">
-            <option>Make A Selection</option>
-            <option value="1">New York</option>
-            <option value="2">South Carolina</option>
-            <option value="3">Los Angeles</option>
-            <option value="4">Florida</option>
-            <option value="5">New Jersey</option>
-          </Form.Select>
-        </div>
-      </Col>
-    </Row>
-    <div className="btn-wrapper mt-0">
-      <button type="submit" className="btn theme-btn-1 btn-effect-1 text-uppercase">Next Step</button>
-    </div>
-  </div>
-                    </Tab.Pane>
+                      <Tab.Pane eventKey="first">
+                        <div className="ltn__apartments-tab-content-inner">
+                          <h6>Property Description</h6>
+                          <Row>
+                            <div className="col-md-12">
+                              <div className="input-item input-item-textarea ltn__custom-icon">
+                                <input
+                                  type="text"
+                                  name="ltn__name"
+                                  placeholder="Property Title"
+                                />
+                              </div>
+                              <div className="input-item input-item-textarea ltn__custom-icon">
+                                <textarea
+                                  name="ltn__message"
+                                  placeholder="Description"
+                                ></textarea>
+                              </div>
+                            </div>
+                          </Row>
+                          <Row>
+                          <Col xs={12} md={6} lg={6}>
+                          <h6>Property Price</h6>
+
+                          </Col>
+                          <Col xs={12} md={6} lg={6}>
+                          <h6>Property ID</h6>
+
+                          </Col>
+                          </Row>
+                          <Row>
+                            <Col xs={12} md={6}>
+                              <div className="input-item input-item-textarea ltn__custom-icon">
+                                <input
+                                  type="text"
+                                  name="ltn__name"
+                                  placeholder="Price in $ (only numbers)"
+                                />
+                                <span className="inline-icon">
+                                  <FaPencilAlt />
+                                </span>
+                              </div>
+                            </Col>
+                            <Col xs={12} md={6}>
+                              <div className="input-item input-item-textarea ltn__custom-icon">
+                                <input
+                                  type="text"
+                                  name="ltn__name"
+                                  placeholder="Property ID"
+                                />
+                                <span className="inline-icon">
+                                  <FaPencilAlt />
+                                </span>
+                              </div>
+                            </Col>
+                            </Row>
+                            <Row>
+                          <Col xs={12} md={6} lg={6}>
+                          <h6>Property Category</h6>
+
+                          </Col>
+                          <Col xs={12} md={6} lg={6}>
+                          <h6>Property Type</h6>
+
+                          </Col>
+                          </Row>
+                            <Row>
+                            <Col xs={12} md={6}>
+                            <div className="input-item ltn__custom-icon">
+                                <Form.Select className="nice-select">
+                                  <option>Make A Selection</option>
+                                  <option value="1">Appartment</option>
+                                  <option value="2">Villa</option>
+                                  <option value="3">Mansion</option>
+                                  <option value="4">Chalet</option>
+                                  <option value="5">Land</option>
+                                  <option value="6">Townhouse</option>
+                                  <option value="7">Business Premise</option>
+                                  <option value="8">Office</option>
+                                </Form.Select>
+                              </div>
+                            </Col>
+                            <Col xs={12} md={6}>
+                            <div className="input-item ltn__custom-icon">
+                                <Form.Select className="nice-select">
+                                  <option>Make A Selection</option>
+                                  <option value="1">Buy</option>
+                                  <option value="2">Rent</option>
+                                  <option value="3">Development</option>
+                                </Form.Select>
+                              </div>
+                            </Col>
+   
+                          </Row>
+
+                          <div className="btn-wrapper mt-0">
+                            <button
+                              type="submit"
+                              className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                            >
+                              Next Step
+                            </button>
+                          </div>
+                        </div>
+                      </Tab.Pane>
                       <Tab.Pane eventKey="second">
                         <div className="ltn__product-tab-content-inner">
                           <h6>Listing Media</h6>
@@ -299,7 +280,11 @@ function AddListingPage() {
                             </Col>
                             <Col xs={12} md={6}>
                               <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input type="text" name="ltn__name" placeholder="Zip" />
+                                <input
+                                  type="text"
+                                  name="ltn__name"
+                                  placeholder="Zip"
+                                />
                                 <span className="inline-icon">
                                   <FaPencilAlt />
                                 </span>
@@ -354,9 +339,7 @@ function AddListingPage() {
                                 </span>
                               </div>
                             </Col>
-
                           </Row>
-
                         </div>
 
                         <div className="btn-wrapper  mt-0">
@@ -378,240 +361,190 @@ function AddListingPage() {
 
                       <Tab.Pane eventKey="fourth">
                         <div className="ltn__product-tab-content-inner">
-                          <h6>Listing Details</h6>
+                          <h6>Proximities</h6>
                           <Row>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Size in ft2 (*only numbers)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Bus
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
                             </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Lot Size in ft2 (*only numbers)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Shops
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
                             </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Rooms (*only numbers)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Metro
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
                             </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Bedrooms (*only numbers)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Bathrooms (*only numbers)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Custom ID (*text)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Garages (*text)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Year Built (*numeric)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Garage Size (*text)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Available from (*date)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Basement (*text)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Extra Details (*text)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Roofing (*text)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Exterior Material (*text)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item ltn__custom-icon">
-                                <Form.Select className="nice-select">
-                                  <option>Make A Selection</option>
-                                  <option value="1">New York</option>
-                                  <option value="2">South Carolina</option>
-                                  <option value="3">Los Angeles</option>
-                                  <option value="4">Florida</option>
-                                  <option value="5">New Jersey</option>
-                                </Form.Select>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item ltn__custom-icon">
-                                <Form.Select className="nice-select">
-                                  <option>Make A Selection</option>
-                                  <option value="1">New York</option>
-                                  <option value="2">South Carolina</option>
-                                  <option value="3">Los Angeles</option>
-                                  <option value="4">Florida</option>
-                                  <option value="5">New Jersey</option>
-                                </Form.Select>
-                              </div>
-                            </Col>
-                            <div className="col-lg-12">
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <textarea
-                                  name="ltn__message"
-                                  placeholder="Owner/Agent notes (*not visible on front end)"
-                                ></textarea>
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </div>
-                          </Row>
-                          <h6>Select Energy Class</h6>
-                          <Row>
-                            <Col xs={12} md={6}>
-                              <div className="input-item ltn__custom-icon">
-                                <Form.Select className="nice-select">
-                                  <option>Make A Selection</option>
-                                  <option value="1">New York</option>
-                                  <option value="2">South Carolina</option>
-                                  <option value="3">Los Angeles</option>
-                                  <option value="4">Florida</option>
-                                  <option value="5">New Jersey</option>
-                                </Form.Select>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Energy Index in kWh/m2a"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Super Markets
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
                             </Col>
                           </Row>
-                          <div className="btn-wrapper  mt-0">
+                          <Row>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Town centre
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Sports centre
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Park
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                TGV Station
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Doctor
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Taxi
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Convention centre
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Highway
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Airport
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Tennis
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Sea
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Bus hub
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Seaport
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Station
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Hospital
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Clinic
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Golf
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Movies
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Beach
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6} lg={3}>
+                              <label className="checkbox-item">
+                                Public parking
+                                <input type="checkbox" />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                          </Row>
+
+                        
+                          <div className="btn-wrapper  mt-40">
                             {/* <!-- <button type="submit" className="btn theme-btn-1 btn-effect-1 text-uppercase" >Next Step</button> --> */}
                             <Link
                               href="#"
@@ -623,201 +556,12 @@ function AddListingPage() {
                               href="#"
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
                             >
-                              Next Step
+                              Create Property
                             </Link>
                           </div>
                         </div>
                       </Tab.Pane>
-                      <Tab.Pane eventKey="five">
-                        <div className="ltn__product-tab-content-inner">
-                          <h6>Amenities and Features</h6>
-                          <h6>Interior Details</h6>
-                          <Row>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Equipped Kitchen
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Gym
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Laundry
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Media Room
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                          </Row>
-                          <h6 className="mt-20">Outdoor Details</h6>
-                          <Row>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Back yard
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Basketball court
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Front yard
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Garage Attached
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Hot Bath
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Pool
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                          </Row>
-                          <h6 className="mt-20">Utilities</h6>
-                          <Row>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Central Air
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Electricity
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Heating
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Natural Gas
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Ventilation
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Water
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                          </Row>
-                          <h6 className="mt-20">Other Features</h6>
-                          <Row>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Chair Accessible
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Elevator
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Fireplace
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Smoke detectors
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                Washer and dryer
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6} lg={4}>
-                              <label className="checkbox-item">
-                                WiFi
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                          </Row>
-                          <div className="alert alert-warning d-none" role="alert">
-                            Please note that the date and time you requested may not
-                            be available. We will contact you to confirm your actual
-                            appointment details.
-                          </div>
-                          <div className="btn-wrapper  mt-30">
-                            <Link
-                              href="#"
-                              className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                            >
-                              Prev Step
-                            </Link>
-                            <button
-                              className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                              type="submit"
-                            >
-                              Submit Property
-                            </button>
-                          </div>
-                        </div>
-                      </Tab.Pane>
+
                     </Tab.Content>
                   </Tab.Container>
                 </form>
