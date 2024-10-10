@@ -6,53 +6,96 @@ import CallToAction from "@/components/callToAction";
 import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 
-
 function AddListingPage() {
-
-
- // Define state for formData and inputValues
- const [formData, setFormData] = useState({
-  area: false,
-  bedrooms: false,
-  rooms: false,
-  bathrooms: false,
-  furnished: false,
-  airconditioned: false,
-  view: false,
-  floor: false,
-  direction: false,
-  fireplace: false,
-});
-
-const [inputValues, setInputValues] = useState({
-  areaValue: "",
-  bedroomsValue: "",
-  roomsValue: "",
-  bathroomsValue: "",
-  viewValue: "",
-  floorValue: "",
-  directionValue: "",
-});
-
-// Handle checkbox changes
-const handleCheckboxChange = (e) => {
-  const { name, checked } = e.target;
-  setFormData({
-    ...formData,
-    [name]: checked,
+  // Define state for formData and inputValues
+  const [formData, setFormData] = useState({
+    area: false,
+    bedrooms: false,
+    rooms: false,
+    bathrooms: false,
+    furnished: false,
+    airconditioned: false,
+    view: false,
+    floor: false,
+    direction: false,
+    fireplace: false,
+    proximities: {
+      bus: false,
+      shops: false,
+      metro: false,
+      supermarkets: false,
+      townCentre: false,
+      sportsCentre: false,
+      park: false,
+      tgvStation: false,
+      doctor: false,
+      taxi: false,
+      conventionCentre: false,
+      highway: false,
+      airport: false,
+      tennis: false,
+      sea: false,
+      busHub: false,
+      seaport: false,
+      station: false,
+      hospital: false,
+      clinic: false,
+      golf: false,
+      movies: false,
+      beach: false,
+      publicParking: false,
+    },
   });
-};
 
-// Handle input changes
-const handleInputChange = (e) => {
-  const { name, value } = e.target;
-  setInputValues({
-    ...inputValues,
-    [name]: value,
+  const [inputValues, setInputValues] = useState({
+    areaValue: "",
+    bedroomsValue: "",
+    roomsValue: "",
+    bathroomsValue: "",
+    viewValue: "",
+    floorValue: "",
+    directionValue: "",
+    priceValue: "",
+    propertyID: "",
   });
-};
 
+  // Handle checkbox changes
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: checked,
+    });
+  };
 
+  // Handle proximity checkbox changes
+  const handleProximityChange = (e) => {
+    const { name, checked } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      proximities: {
+        ...prevState.proximities,
+        [name]: checked,
+      },
+    }));
+  };
+
+  // Handle input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setInputValues({
+      ...inputValues,
+      [name]: value,
+    });
+  };
+
+  const handlePrevStep = () => {
+    // Logic to navigate to the previous step
+  };
+
+  const handleCreateProperty = () => {
+    // Logic to submit the property data
+  };
 
   return (
     <>
@@ -62,7 +105,6 @@ const handleInputChange = (e) => {
           sectionPace=""
           currentSlug="Add Listing"
         />
-        {/* // <!-- APPOINTMENT AREA START --> */}
         <div className="ltn__appointment-area pb-120">
           <Container>
             <Row>
@@ -71,13 +113,10 @@ const handleInputChange = (e) => {
                   <Tab.Container defaultActiveKey="first">
                     <div className="ltn__tab-menu ltn__tab-menu-3 text-center">
                       <Nav className="nav justify-content-center">
-                        <Nav.Link eventKey="first">
-                          1. Property Details
-                        </Nav.Link>
+                        <Nav.Link eventKey="first">1. Property Details</Nav.Link>
                         <Nav.Link eventKey="second">2. Images</Nav.Link>
                         <Nav.Link eventKey="third">3. Features</Nav.Link>
                         <Nav.Link eventKey="fourth">4. Proximities</Nav.Link>
-                        {/* <Nav.Link eventKey="five">5. Amenities</Nav.Link> */}
                       </Nav>
                     </div>
                     <Tab.Content>
@@ -89,35 +128,35 @@ const handleInputChange = (e) => {
                               <div className="input-item input-item-textarea ltn__custom-icon">
                                 <input
                                   type="text"
-                                  name="ltn__name"
+                                  name="propertyTitle"
                                   placeholder="Property Title"
                                 />
                               </div>
                               <div className="input-item input-item-textarea ltn__custom-icon">
                                 <textarea
-                                  name="ltn__message"
+                                  name="description"
                                   placeholder="Description"
                                 ></textarea>
                               </div>
                             </div>
                           </Row>
                           <Row>
-                          <Col xs={12} md={6} lg={6}>
-                          <h6>Property Price</h6>
-
-                          </Col>
-                          <Col xs={12} md={6} lg={6}>
-                          <h6>Property ID</h6>
-
-                          </Col>
+                            <Col xs={12} md={6} lg={6}>
+                              <h6>Property Price</h6>
+                            </Col>
+                            <Col xs={12} md={6} lg={6}>
+                              <h6>Property ID</h6>
+                            </Col>
                           </Row>
                           <Row>
                             <Col xs={12} md={6}>
                               <div className="input-item input-item-textarea ltn__custom-icon">
                                 <input
                                   type="text"
-                                  name="ltn__name"
+                                  name="priceValue"
                                   placeholder="Price in $ (only numbers)"
+                                  value={inputValues.priceValue}
+                                  onChange={handleInputChange}
                                 />
                                 <span className="inline-icon">
                                   <FaPencilAlt />
@@ -128,31 +167,31 @@ const handleInputChange = (e) => {
                               <div className="input-item input-item-textarea ltn__custom-icon">
                                 <input
                                   type="text"
-                                  name="ltn__name"
+                                  name="propertyID"
                                   placeholder="Property ID"
+                                  value={inputValues.propertyID}
+                                  onChange={handleInputChange}
                                 />
                                 <span className="inline-icon">
                                   <FaPencilAlt />
                                 </span>
                               </div>
                             </Col>
-                            </Row>
-                            <Row>
-                          <Col xs={12} md={6} lg={6}>
-                          <h6>Property Category</h6>
-
-                          </Col>
-                          <Col xs={12} md={6} lg={6}>
-                          <h6>Property Type</h6>
-
-                          </Col>
                           </Row>
-                            <Row>
+                          <Row>
+                            <Col xs={12} md={6} lg={6}>
+                              <h6>Property Category</h6>
+                            </Col>
+                            <Col xs={12} md={6} lg={6}>
+                              <h6>Property Type</h6>
+                            </Col>
+                          </Row>
+                          <Row>
                             <Col xs={12} md={6}>
-                            <div className="input-item ltn__custom-icon">
+                              <div className="input-item ltn__custom-icon">
                                 <Form.Select className="nice-select">
                                   <option>Make A Selection</option>
-                                  <option value="1">Appartment</option>
+                                  <option value="1">Apartment</option>
                                   <option value="2">Villa</option>
                                   <option value="3">Mansion</option>
                                   <option value="4">Chalet</option>
@@ -164,7 +203,7 @@ const handleInputChange = (e) => {
                               </div>
                             </Col>
                             <Col xs={12} md={6}>
-                            <div className="input-item ltn__custom-icon">
+                              <div className="input-item ltn__custom-icon">
                                 <Form.Select className="nice-select">
                                   <option>Make A Selection</option>
                                   <option value="1">Buy</option>
@@ -173,262 +212,261 @@ const handleInputChange = (e) => {
                                 </Form.Select>
                               </div>
                             </Col>
-   
                           </Row>
-
                           <div className="btn-wrapper mt-0">
-                            <button
-                              type="submit"
-                              className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                            >
-                              Next Step
-                            </button>
-                          </div>
-                        </div>
-                      </Tab.Pane>
-                      <Tab.Pane eventKey="second">
-                        <div className="ltn__product-tab-content-inner">
-                     
-                          <div className="btn-wrapper  mt-0">
-                            {/* <!-- <button type="submit" className="btn theme-btn-1 btn-effect-1 text-uppercase" >Next Step</button> --> */}
                             <Link
                               href="#"
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                              onClick={() => { /* Handle Navigation to Next Step */ }}
+                            >
+                              Next Step
+                            </Link>
+                          </div>
+                        </div>
+                      </Tab.Pane>
+
+                      <Tab.Pane eventKey="second">
+                        <div className="ltn__product-tab-content-inner">
+                          <div className="btn-wrapper mt-0">
+                            <Link
+                              href="#"
+                              className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                              onClick={handlePrevStep}
                             >
                               Prev Step
                             </Link>
                             <Link
                               href="#"
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                              onClick={() => { /* Handle Navigation to Next Step */ }}
                             >
                               Next Step
                             </Link>
                           </div>
                         </div>
                       </Tab.Pane>
+
                       <Tab.Pane eventKey="third">
-  <div className="ltn__product-tab-content-inner">
-    <h6>Property Features</h6>
-    <Row>
-      <Col xs={12} md={6}>
-        <label className="checkbox-item">
-          Area
-          <input 
-            type="checkbox" 
-            name="area" 
-            checked={formData.area}
-            onChange={handleCheckboxChange}
-          />
-          <span className="checkmark"></span>
-        </label>
-        {formData.area && (
-          <Form.Control
-            className="input-item"
-            type="text"
-            placeholder="Enter area"
-            name="areaValue"
-            value={inputValues.areaValue}
-            onChange={handleInputChange}
-          />
-        )}
-      </Col>
-
-      <Col xs={12} md={6}>
-        <label className="checkbox-item">
-          No. of Bedrooms
-          <input 
-            type="checkbox" 
-            name="bedrooms" 
-            checked={formData.bedrooms}
-            onChange={handleCheckboxChange}
-          />
-          <span className="checkmark"></span>
-        </label>
-        {formData.bedrooms && (
-          <Form.Control
-            className="input-item"
-            type="text"
-            placeholder="Enter number of bedrooms"
-            name="bedroomsValue"
-            value={inputValues.bedroomsValue}
-            onChange={handleInputChange}
-          />
-        )}
-      </Col>
-    </Row>
-
-    <Row>
-      <Col xs={12} md={6}>
-        <label className="checkbox-item">
-          No. of Rooms
-          <input 
-            type="checkbox" 
-            name="rooms" 
-            checked={formData.rooms}
-            onChange={handleCheckboxChange}
-          />
-          <span className="checkmark"></span>
-        </label>
-        {formData.rooms && (
-          <Form.Control
-            className="input-item"
-            type="text"
-            placeholder="Enter number of rooms"
-            name="roomsValue"
-            value={inputValues.roomsValue}
-            onChange={handleInputChange}
-          />
-        )}
-      </Col>
-
-      <Col xs={12} md={6}>
-        <label className="checkbox-item">
-          No. of Bathrooms
-          <input 
-            type="checkbox" 
-            name="bathrooms" 
-            checked={formData.bathrooms}
-            onChange={handleCheckboxChange}
-          />
-          <span className="checkmark"></span>
-        </label>
-        {formData.bathrooms && (
-          <Form.Control
-            className="input-item"
-            type="text"
-            placeholder="Enter number of bathrooms"
-            name="bathroomsValue"
-            value={inputValues.bathroomsValue}
-            onChange={handleInputChange}
-          />
-        )}
-      </Col>
-    </Row>
-
-    <Row>
-      <Col xs={12} md={6}>
-        <label className="checkbox-item">
-          Furnished
-          <input 
-            type="checkbox" 
-            name="furnished"
-            checked={formData.furnished}
-            onChange={handleCheckboxChange}
-          />
-          <span className="checkmark"></span>
-        </label>
-      </Col>
-
-      <Col xs={12} md={6}>
-        <label className="checkbox-item">
-          Airconditioned
-          <input 
-            type="checkbox" 
-            name="airconditioned"
-            checked={formData.airconditioned}
-            onChange={handleCheckboxChange}
-          />
-          <span className="checkmark"></span>
-        </label>
-      </Col>
-    </Row>
-
-    <Row>
-      <Col xs={12} md={6}>
-        <label className="checkbox-item">
-          View
-          <input 
-            type="checkbox" 
-            name="view"
-            checked={formData.view}
-            onChange={handleCheckboxChange}
-          />
-          <span className="checkmark"></span>
-        </label>
-        {formData.view && (
-          <Form.Control
-            className="input-item"
-            type="text"
-            placeholder="Enter view"
-            name="viewValue"
-            value={inputValues.viewValue}
-            onChange={handleInputChange}
-          />
-        )}
-      </Col>
-
-      <Col xs={12} md={6}>
-        <label className="checkbox-item">
-          Floor
-          <input 
-            type="checkbox" 
-            name="floor"
-            checked={formData.floor}
-            onChange={handleCheckboxChange}
-          />
-          <span className="checkmark"></span>
-        </label>
-        {formData.floor && (
-          <Form.Control
-            className="input-item"
-            type="text"
-            placeholder="Enter floor"
-            name="floorValue"
-            value={inputValues.floorValue}
-            onChange={handleInputChange}
-          />
-        )}
-      </Col>
-    </Row>
-
-    <Row>
-      <Col xs={12} md={6}>
-        <label className="checkbox-item">
-          Direction
-          <input 
-            type="checkbox" 
-            name="direction"
-            checked={formData.direction}
-            onChange={handleCheckboxChange}
-          />
-          <span className="checkmark"></span>
-        </label>
-        {formData.direction && (
-          <Form.Control
-            className="input-item"
-            type="text"
-            placeholder="Enter direction"
-            name="directionValue"
-            value={inputValues.directionValue}
-            onChange={handleInputChange}
-          />
-        )}
-      </Col>
-
-      <Col xs={12} md={6}>
-        <label className="checkbox-item">
-          Fireplace
-          <input 
-            type="checkbox" 
-            name="fireplace"
-            checked={formData.fireplace}
-            onChange={handleCheckboxChange}
-          />
-          <span className="checkmark"></span>
-        </label>
-      </Col>
-    </Row>
-
-    <div className="btn-wrapper  mt-0">
-      <Link href="#" className="btn theme-btn-1 btn-effect-1 text-uppercase">
-        Prev Step
-      </Link>
-      <Link href="#" className="btn theme-btn-1 btn-effect-1 text-uppercase">
-        Next Step
-      </Link>
-    </div>
-  </div>
-</Tab.Pane>
+                        <div className="ltn__product-tab-content-inner">
+                          <h6>Property Features</h6>
+                          <Row>
+                            <Col xs={12} md={6}>
+                              <label className="checkbox-item">
+                                Area
+                                <input
+                                  type="checkbox"
+                                  name="area"
+                                  checked={formData.area}
+                                  onChange={handleCheckboxChange}
+                                />
+                                <span className="checkmark"></span>
+                              </label>
+                              {formData.area && (
+                                <Form.Control
+                                  className="input-item"
+                                  type="text"
+                                  placeholder="Enter area"
+                                  name="areaValue"
+                                  value={inputValues.areaValue}
+                                  onChange={handleInputChange}
+                                />
+                              )}
+                            </Col>
+                            <Col xs={12} md={6}>
+                              <label className="checkbox-item">
+                                No. of Bedrooms
+                                <input
+                                  type="checkbox"
+                                  name="bedrooms"
+                                  checked={formData.bedrooms}
+                                  onChange={handleCheckboxChange}
+                                />
+                                <span className="checkmark"></span>
+                              </label>
+                              {formData.bedrooms && (
+                                <Form.Control
+                                  className="input-item"
+                                  type="text"
+                                  placeholder="Enter number of bedrooms"
+                                  name="bedroomsValue"
+                                  value={inputValues.bedroomsValue}
+                                  onChange={handleInputChange}
+                                />
+                              )}
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col xs={12} md={6}>
+                              <label className="checkbox-item">
+                                No. of Rooms
+                                <input
+                                  type="checkbox"
+                                  name="rooms"
+                                  checked={formData.rooms}
+                                  onChange={handleCheckboxChange}
+                                />
+                                <span className="checkmark"></span>
+                              </label>
+                              {formData.rooms && (
+                                <Form.Control
+                                  className="input-item"
+                                  type="text"
+                                  placeholder="Enter number of rooms"
+                                  name="roomsValue"
+                                  value={inputValues.roomsValue}
+                                  onChange={handleInputChange}
+                                />
+                              )}
+                            </Col>
+                            <Col xs={12} md={6}>
+                              <label className="checkbox-item">
+                                No. of Bathrooms
+                                <input
+                                  type="checkbox"
+                                  name="bathrooms"
+                                  checked={formData.bathrooms}
+                                  onChange={handleCheckboxChange}
+                                />
+                                <span className="checkmark"></span>
+                              </label>
+                              {formData.bathrooms && (
+                                <Form.Control
+                                  className="input-item"
+                                  type="text"
+                                  placeholder="Enter number of bathrooms"
+                                  name="bathroomsValue"
+                                  value={inputValues.bathroomsValue}
+                                  onChange={handleInputChange}
+                                />
+                              )}
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col xs={12} md={6}>
+                              <label className="checkbox-item">
+                                Furnished
+                                <input
+                                  type="checkbox"
+                                  name="furnished"
+                                  checked={formData.furnished}
+                                  onChange={handleCheckboxChange}
+                                />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                            <Col xs={12} md={6}>
+                              <label className="checkbox-item">
+                                Air-conditioned
+                                <input
+                                  type="checkbox"
+                                  name="airconditioned"
+                                  checked={formData.airconditioned}
+                                  onChange={handleCheckboxChange}
+                                />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col xs={12} md={6}>
+                              <label className="checkbox-item">
+                                View
+                                <input
+                                  type="checkbox"
+                                  name="view"
+                                  checked={formData.view}
+                                  onChange={handleCheckboxChange}
+                                />
+                                <span className="checkmark"></span>
+                              </label>
+                              {formData.view && (
+                                <Form.Control
+                                  className="input-item"
+                                  type="text"
+                                  placeholder="Enter view"
+                                  name="viewValue"
+                                  value={inputValues.viewValue}
+                                  onChange={handleInputChange}
+                                />
+                              )}
+                            </Col>
+                            <Col xs={12} md={6}>
+                              <label className="checkbox-item">
+                                Floor
+                                <input
+                                  type="checkbox"
+                                  name="floor"
+                                  checked={formData.floor}
+                                  onChange={handleCheckboxChange}
+                                />
+                                <span className="checkmark"></span>
+                              </label>
+                              {formData.floor && (
+                                <Form.Control
+                                  className="input-item"
+                                  type="text"
+                                  placeholder="Enter floor"
+                                  name="floorValue"
+                                  value={inputValues.floorValue}
+                                  onChange={handleInputChange}
+                                />
+                              )}
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col xs={12} md={6}>
+                              <label className="checkbox-item">
+                                Direction
+                                <input
+                                  type="checkbox"
+                                  name="direction"
+                                  checked={formData.direction}
+                                  onChange={handleCheckboxChange}
+                                />
+                                <span className="checkmark"></span>
+                              </label>
+                              {formData.direction && (
+                                <Form.Control
+                                  className="input-item"
+                                  type="text"
+                                  placeholder="Enter direction"
+                                  name="directionValue"
+                                  value={inputValues.directionValue}
+                                  onChange={handleInputChange}
+                                />
+                              )}
+                            </Col>
+                            <Col xs={12} md={6}>
+                              <label className="checkbox-item">
+                                Fireplace
+                                <input
+                                  type="checkbox"
+                                  name="fireplace"
+                                  checked={formData.fireplace}
+                                  onChange={handleCheckboxChange}
+                                />
+                                <span className="checkmark"></span>
+                              </label>
+                            </Col>
+                          </Row>
+                          <div className="btn-wrapper mt-40">
+                            <Link
+                              href="#"
+                              className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                              onClick={handlePrevStep}
+                            >
+                              Prev Step
+                            </Link>
+                            <Link
+                              href="#"
+                              className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                              onClick={() => { /* Handle Navigation to Next Step */ }}
+                            >
+                              Next Step
+                            </Link>
+                          </div>
+                        </div>
+                      </Tab.Pane>
 
                       <Tab.Pane eventKey="fourth">
                         <div className="ltn__product-tab-content-inner">
@@ -437,28 +475,48 @@ const handleInputChange = (e) => {
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Bus
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="bus"
+                                  checked={formData.proximities.bus}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Shops
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="shops"
+                                  checked={formData.proximities.shops}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Metro
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="metro"
+                                  checked={formData.proximities.metro}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Super Markets
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="supermarkets"
+                                  checked={formData.proximities.supermarkets}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
@@ -466,29 +524,49 @@ const handleInputChange = (e) => {
                           <Row>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
-                                Town centre
-                                <input type="checkbox" />
+                                Town Centre
+                                <input
+                                  type="checkbox"
+                                  name="townCentre"
+                                  checked={formData.proximities.townCentre}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
-                                Sports centre
-                                <input type="checkbox" />
+                                Sports Centre
+                                <input
+                                  type="checkbox"
+                                  name="sportsCentre"
+                                  checked={formData.proximities.sportsCentre}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Park
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="park"
+                                  checked={formData.proximities.park}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 TGV Station
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="tgvStation"
+                                  checked={formData.proximities.tgvStation}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
@@ -497,28 +575,48 @@ const handleInputChange = (e) => {
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Doctor
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="doctor"
+                                  checked={formData.proximities.doctor}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Taxi
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="taxi"
+                                  checked={formData.proximities.taxi}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
-                                Convention centre
-                                <input type="checkbox" />
+                                Convention Centre
+                                <input
+                                  type="checkbox"
+                                  name="conventionCentre"
+                                  checked={formData.proximities.conventionCentre}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Highway
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="highway"
+                                  checked={formData.proximities.highway}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
@@ -527,28 +625,48 @@ const handleInputChange = (e) => {
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Airport
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="airport"
+                                  checked={formData.proximities.airport}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Tennis
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="tennis"
+                                  checked={formData.proximities.tennis}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Sea
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="sea"
+                                  checked={formData.proximities.sea}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
-                                Bus hub
-                                <input type="checkbox" />
+                                Bus Hub
+                                <input
+                                  type="checkbox"
+                                  name="busHub"
+                                  checked={formData.proximities.busHub}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
@@ -557,28 +675,48 @@ const handleInputChange = (e) => {
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Seaport
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="seaport"
+                                  checked={formData.proximities.seaport}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Station
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="station"
+                                  checked={formData.proximities.station}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Hospital
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="hospital"
+                                  checked={formData.proximities.hospital}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Clinic
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="clinic"
+                                  checked={formData.proximities.clinic}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
@@ -587,52 +725,70 @@ const handleInputChange = (e) => {
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Golf
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="golf"
+                                  checked={formData.proximities.golf}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Movies
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="movies"
+                                  checked={formData.proximities.movies}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
                                 Beach
-                                <input type="checkbox" />
+                                <input
+                                  type="checkbox"
+                                  name="beach"
+                                  checked={formData.proximities.beach}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
-                                Public parking
-                                <input type="checkbox" />
+                                Public Parking
+                                <input
+                                  type="checkbox"
+                                  name="publicParking"
+                                  checked={formData.proximities.publicParking}
+                                  onChange={handleProximityChange}
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </Col>
                           </Row>
-
-                        
-                          <div className="btn-wrapper  mt-40">
-                            {/* <!-- <button type="submit" className="btn theme-btn-1 btn-effect-1 text-uppercase" >Next Step</button> --> */}
+                          <div className="btn-wrapper mt-40">
                             <Link
                               href="#"
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                              onClick={handlePrevStep}
                             >
                               Prev Step
                             </Link>
                             <Link
                               href="#"
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                              onClick={handleCreateProperty}
                             >
                               Create Property
                             </Link>
                           </div>
                         </div>
                       </Tab.Pane>
-
                     </Tab.Content>
                   </Tab.Container>
                 </form>
@@ -640,16 +796,7 @@ const handleInputChange = (e) => {
             </Row>
           </Container>
         </div>
-        {/* // <!-- APPOINTMENT AREA END --> */}
-        <div className="ltn__call-to-action-area call-to-action-6 before-bg-bottom">
-          <Container>
-            <Row>
-              <Col xs={12}>
-                <CallToAction />
-              </Col>
-            </Row>
-          </Container>
-        </div>
+        <CallToAction />
       </LayoutOne>
     </>
   );
