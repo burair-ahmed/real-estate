@@ -68,6 +68,8 @@ function AddListingPage() {
     });
   };
 
+  const [activeKey, setActiveKey] = useState("first");
+
   // Handle proximity checkbox changes
   const handleProximityChange = (e) => {
     const { name, checked } = e.target;
@@ -89,12 +91,34 @@ function AddListingPage() {
     });
   };
 
-  const handlePrevStep = () => {
-    // Logic to navigate to the previous step
+  // Handle tab change
+  const handleNextStep = () => {
+    if (activeKey === "first") setActiveKey("second");
+    else if (activeKey === "second") setActiveKey("third");
+    else if (activeKey === "third") setActiveKey("fourth");
+    else if (activeKey === "fourth") handleCreateProperty();
   };
 
+  const handlePrevStep = () => {
+    if (activeKey === "second") setActiveKey("first");
+    else if (activeKey === "third") setActiveKey("second");
+    else if (activeKey === "fourth") setActiveKey("third");
+  };
+
+  // Handle form submission
   const handleCreateProperty = () => {
-    // Logic to submit the property data
+    // Add your form submission logic here
+    console.log("Property Created:", { formData, inputValues });
+  };
+
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files);
+    setFormData({ ...formData, images: files });
+  };
+
+  const handleVideoChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({ ...formData, video: file });
   };
 
   return (
@@ -110,10 +134,12 @@ function AddListingPage() {
             <Row>
               <Col xs={12}>
                 <form action="#">
-                  <Tab.Container defaultActiveKey="first">
+                  <Tab.Container activeKey={activeKey}>
                     <div className="ltn__tab-menu ltn__tab-menu-3 text-center">
                       <Nav className="nav justify-content-center">
-                        <Nav.Link eventKey="first">1. Property Details</Nav.Link>
+                        <Nav.Link eventKey="first">
+                          1. Property Details
+                        </Nav.Link>
                         <Nav.Link eventKey="second">2. Images</Nav.Link>
                         <Nav.Link eventKey="third">3. Features</Nav.Link>
                         <Nav.Link eventKey="fourth">4. Proximities</Nav.Link>
@@ -214,34 +240,59 @@ function AddListingPage() {
                             </Col>
                           </Row>
                           <div className="btn-wrapper mt-0">
-                            <Link
-                              href="#"
+                            <button
+                              type="button"
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                              onClick={() => { /* Handle Navigation to Next Step */ }}
+                              onClick={handleNextStep}
                             >
                               Next Step
-                            </Link>
+                            </button>
                           </div>
                         </div>
                       </Tab.Pane>
 
                       <Tab.Pane eventKey="second">
                         <div className="ltn__product-tab-content-inner">
-                          <div className="btn-wrapper mt-0">
-                            <Link
-                              href="#"
+                          {/* File Upload Section for Images and Video */}
+                          <Row>
+                            <Col xs={12}>
+                              <Form.Group>
+                                <Form.Label>Upload Images</Form.Label>
+                                <Form.Control
+                                  type="file"
+                                  multiple
+                                  accept="image/*"
+                                  onChange={handleImageChange}
+                                />
+                              </Form.Group>
+                            </Col>
+                            <Col xs={12}>
+                              <Form.Group>
+                                <Form.Label>Upload Video</Form.Label>
+                                <Form.Control
+                                  type="file"
+                                  accept="video/*"
+                                  onChange={handleVideoChange}
+                                />
+                              </Form.Group>
+                            </Col>
+                          </Row>
+
+                          <div className="btn-wrapper mt-80">
+                            <button
+                              type="button"
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
                               onClick={handlePrevStep}
                             >
                               Prev Step
-                            </Link>
-                            <Link
-                              href="#"
+                            </button>
+                            <button
+                              type="button"
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                              onClick={() => { /* Handle Navigation to Next Step */ }}
+                              onClick={handleNextStep}
                             >
                               Next Step
-                            </Link>
+                            </button>
                           </div>
                         </div>
                       </Tab.Pane>
@@ -450,20 +501,20 @@ function AddListingPage() {
                             </Col>
                           </Row>
                           <div className="btn-wrapper mt-40">
-                            <Link
-                              href="#"
+                            <button
+                              type="button"
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
                               onClick={handlePrevStep}
                             >
                               Prev Step
-                            </Link>
-                            <Link
-                              href="#"
+                            </button>
+                            <button
+                              type="button"
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                              onClick={() => { /* Handle Navigation to Next Step */ }}
+                              onClick={handleNextStep}
                             >
                               Next Step
-                            </Link>
+                            </button>
                           </div>
                         </div>
                       </Tab.Pane>
@@ -602,7 +653,9 @@ function AddListingPage() {
                                 <input
                                   type="checkbox"
                                   name="conventionCentre"
-                                  checked={formData.proximities.conventionCentre}
+                                  checked={
+                                    formData.proximities.conventionCentre
+                                  }
                                   onChange={handleProximityChange}
                                 />
                                 <span className="checkmark"></span>
@@ -772,13 +825,13 @@ function AddListingPage() {
                             </Col>
                           </Row>
                           <div className="btn-wrapper mt-40">
-                            <Link
-                              href="#"
+                            <button
+                              type="button"
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
                               onClick={handlePrevStep}
                             >
                               Prev Step
-                            </Link>
+                            </button>
                             <Link
                               href="#"
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
