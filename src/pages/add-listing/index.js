@@ -4,8 +4,56 @@ import { LayoutOne } from "@/layouts";
 import ShopBreadCrumb from "@/components/breadCrumbs/shop";
 import CallToAction from "@/components/callToAction";
 import { FaPencilAlt } from "react-icons/fa";
+import { useState } from "react";
+
 
 function AddListingPage() {
+
+
+ // Define state for formData and inputValues
+ const [formData, setFormData] = useState({
+  area: false,
+  bedrooms: false,
+  rooms: false,
+  bathrooms: false,
+  furnished: false,
+  airconditioned: false,
+  view: false,
+  floor: false,
+  direction: false,
+  fireplace: false,
+});
+
+const [inputValues, setInputValues] = useState({
+  areaValue: "",
+  bedroomsValue: "",
+  roomsValue: "",
+  bathroomsValue: "",
+  viewValue: "",
+  floorValue: "",
+  directionValue: "",
+});
+
+// Handle checkbox changes
+const handleCheckboxChange = (e) => {
+  const { name, checked } = e.target;
+  setFormData({
+    ...formData,
+    [name]: checked,
+  });
+};
+
+// Handle input changes
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  setInputValues({
+    ...inputValues,
+    [name]: value,
+  });
+};
+
+
+
   return (
     <>
       <LayoutOne topbar={true}>
@@ -140,63 +188,7 @@ function AddListingPage() {
                       </Tab.Pane>
                       <Tab.Pane eventKey="second">
                         <div className="ltn__product-tab-content-inner">
-                          <h6>Listing Media</h6>
-                          <input
-                            type="file"
-                            id="myFile"
-                            name="filename"
-                            className="btn theme-btn-3 mb-10"
-                          />
-                          <br />
-                          <p>
-                            <small>
-                              * At least 1 image is required for a valid
-                              submission.Minimum size is 500/500px.
-                            </small>
-                            <br />
-                            <small>* PDF files upload supported as well.</small>
-                            <br />
-                            <small>
-                              * Images might take longer to be processed.
-                            </small>
-                          </p>
-                          <h6>Video Option</h6>
-                          <Row>
-                            <Col xs={12} md={6}>
-                              <div className="input-item ltn__custom-icon">
-                                <Form.Select className="nice-select">
-                                  <option>Make A Selection</option>
-                                  <option value="1">New York</option>
-                                  <option value="2">South Carolina</option>
-                                  <option value="3">Los Angeles</option>
-                                  <option value="4">Florida</option>
-                                  <option value="5">New Jersey</option>
-                                </Form.Select>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Embed Video ID"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                          </Row>
-                          <h6>Virtual Tour</h6>
-                          <div className="input-item input-item-textarea ltn__custom-icon">
-                            <textarea
-                              name="ltn__message"
-                              placeholder="Virtual Tour:"
-                            ></textarea>
-                            <span className="inline-icon">
-                              <FaPencilAlt />
-                            </span>
-                          </div>
+                     
                           <div className="btn-wrapper  mt-0">
                             {/* <!-- <button type="submit" className="btn theme-btn-1 btn-effect-1 text-uppercase" >Next Step</button> --> */}
                             <Link
@@ -215,149 +207,228 @@ function AddListingPage() {
                         </div>
                       </Tab.Pane>
                       <Tab.Pane eventKey="third">
-                        <div className="ltn__product-tab-content-inner">
-                          <h6>Listing Location</h6>
-                          <Row>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="*Address"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Country"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="County / State"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="City"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Neighborhood"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Zip"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
+  <div className="ltn__product-tab-content-inner">
+    <h6>Property Features</h6>
+    <Row>
+      <Col xs={12} md={6}>
+        <label className="checkbox-item">
+          Area
+          <input 
+            type="checkbox" 
+            name="area" 
+            checked={formData.area}
+            onChange={handleCheckboxChange}
+          />
+          <span className="checkmark"></span>
+        </label>
+        {formData.area && (
+          <Form.Control
+            className="input-item"
+            type="text"
+            placeholder="Enter area"
+            name="areaValue"
+            value={inputValues.areaValue}
+            onChange={handleInputChange}
+          />
+        )}
+      </Col>
 
-                            <Col xs={12}>
-                              <div className="property-details-google-map mb-60">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9334.271551495209!2d-73.97198251485975!3d40.668170674982946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0456b5a2e7%3A0x68bdf865dda0b669!2sBrooklyn%20Botanic%20Garden%20Shop!5e0!3m2!1sen!2sbd!4v1590597267201!5m2!1sen!2sbd"></iframe>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Latitude (for Google Maps)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Longitude (for Google Maps)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <label className="checkbox-item">
-                                Enable Google Street View
-                                <input type="checkbox" />
-                                <span className="checkmark"></span>
-                              </label>
-                            </Col>
-                            <Col xs={12} md={6}>
-                              <div className="input-item input-item-textarea ltn__custom-icon">
-                                <input
-                                  type="text"
-                                  name="ltn__name"
-                                  placeholder="Google Street View - Camera Angle (value from 0 to 360)"
-                                />
-                                <span className="inline-icon">
-                                  <FaPencilAlt />
-                                </span>
-                              </div>
-                            </Col>
-                          </Row>
-                        </div>
+      <Col xs={12} md={6}>
+        <label className="checkbox-item">
+          No. of Bedrooms
+          <input 
+            type="checkbox" 
+            name="bedrooms" 
+            checked={formData.bedrooms}
+            onChange={handleCheckboxChange}
+          />
+          <span className="checkmark"></span>
+        </label>
+        {formData.bedrooms && (
+          <Form.Control
+            className="input-item"
+            type="text"
+            placeholder="Enter number of bedrooms"
+            name="bedroomsValue"
+            value={inputValues.bedroomsValue}
+            onChange={handleInputChange}
+          />
+        )}
+      </Col>
+    </Row>
 
-                        <div className="btn-wrapper  mt-0">
-                          {/* <!-- <button type="submit" className="btn theme-btn-1 btn-effect-1 text-uppercase" >Next Step</button> --> */}
-                          <Link
-                            href="#"
-                            className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                          >
-                            Prev Step
-                          </Link>
-                          <Link
-                            href="#"
-                            className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                          >
-                            Next Step
-                          </Link>
-                        </div>
-                      </Tab.Pane>
+    <Row>
+      <Col xs={12} md={6}>
+        <label className="checkbox-item">
+          No. of Rooms
+          <input 
+            type="checkbox" 
+            name="rooms" 
+            checked={formData.rooms}
+            onChange={handleCheckboxChange}
+          />
+          <span className="checkmark"></span>
+        </label>
+        {formData.rooms && (
+          <Form.Control
+            className="input-item"
+            type="text"
+            placeholder="Enter number of rooms"
+            name="roomsValue"
+            value={inputValues.roomsValue}
+            onChange={handleInputChange}
+          />
+        )}
+      </Col>
+
+      <Col xs={12} md={6}>
+        <label className="checkbox-item">
+          No. of Bathrooms
+          <input 
+            type="checkbox" 
+            name="bathrooms" 
+            checked={formData.bathrooms}
+            onChange={handleCheckboxChange}
+          />
+          <span className="checkmark"></span>
+        </label>
+        {formData.bathrooms && (
+          <Form.Control
+            className="input-item"
+            type="text"
+            placeholder="Enter number of bathrooms"
+            name="bathroomsValue"
+            value={inputValues.bathroomsValue}
+            onChange={handleInputChange}
+          />
+        )}
+      </Col>
+    </Row>
+
+    <Row>
+      <Col xs={12} md={6}>
+        <label className="checkbox-item">
+          Furnished
+          <input 
+            type="checkbox" 
+            name="furnished"
+            checked={formData.furnished}
+            onChange={handleCheckboxChange}
+          />
+          <span className="checkmark"></span>
+        </label>
+      </Col>
+
+      <Col xs={12} md={6}>
+        <label className="checkbox-item">
+          Airconditioned
+          <input 
+            type="checkbox" 
+            name="airconditioned"
+            checked={formData.airconditioned}
+            onChange={handleCheckboxChange}
+          />
+          <span className="checkmark"></span>
+        </label>
+      </Col>
+    </Row>
+
+    <Row>
+      <Col xs={12} md={6}>
+        <label className="checkbox-item">
+          View
+          <input 
+            type="checkbox" 
+            name="view"
+            checked={formData.view}
+            onChange={handleCheckboxChange}
+          />
+          <span className="checkmark"></span>
+        </label>
+        {formData.view && (
+          <Form.Control
+            className="input-item"
+            type="text"
+            placeholder="Enter view"
+            name="viewValue"
+            value={inputValues.viewValue}
+            onChange={handleInputChange}
+          />
+        )}
+      </Col>
+
+      <Col xs={12} md={6}>
+        <label className="checkbox-item">
+          Floor
+          <input 
+            type="checkbox" 
+            name="floor"
+            checked={formData.floor}
+            onChange={handleCheckboxChange}
+          />
+          <span className="checkmark"></span>
+        </label>
+        {formData.floor && (
+          <Form.Control
+            className="input-item"
+            type="text"
+            placeholder="Enter floor"
+            name="floorValue"
+            value={inputValues.floorValue}
+            onChange={handleInputChange}
+          />
+        )}
+      </Col>
+    </Row>
+
+    <Row>
+      <Col xs={12} md={6}>
+        <label className="checkbox-item">
+          Direction
+          <input 
+            type="checkbox" 
+            name="direction"
+            checked={formData.direction}
+            onChange={handleCheckboxChange}
+          />
+          <span className="checkmark"></span>
+        </label>
+        {formData.direction && (
+          <Form.Control
+            className="input-item"
+            type="text"
+            placeholder="Enter direction"
+            name="directionValue"
+            value={inputValues.directionValue}
+            onChange={handleInputChange}
+          />
+        )}
+      </Col>
+
+      <Col xs={12} md={6}>
+        <label className="checkbox-item">
+          Fireplace
+          <input 
+            type="checkbox" 
+            name="fireplace"
+            checked={formData.fireplace}
+            onChange={handleCheckboxChange}
+          />
+          <span className="checkmark"></span>
+        </label>
+      </Col>
+    </Row>
+
+    <div className="btn-wrapper  mt-0">
+      <Link href="#" className="btn theme-btn-1 btn-effect-1 text-uppercase">
+        Prev Step
+      </Link>
+      <Link href="#" className="btn theme-btn-1 btn-effect-1 text-uppercase">
+        Next Step
+      </Link>
+    </div>
+  </div>
+</Tab.Pane>
 
                       <Tab.Pane eventKey="fourth">
                         <div className="ltn__product-tab-content-inner">

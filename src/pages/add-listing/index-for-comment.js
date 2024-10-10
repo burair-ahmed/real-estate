@@ -473,4 +473,197 @@
     <FaPencilAlt />
   </span>
 </div>
+
 </Col> */}
+
+
+
+
+// Tab Pane 3
+
+
+{/* <h6>Listing Location</h6>
+<Row>
+  <Col xs={12} md={6}>
+    <div className="input-item input-item-textarea ltn__custom-icon">
+      <input
+        type="text"
+        name="ltn__name"
+        placeholder="*Address"
+      />
+      <span className="inline-icon">
+        <FaPencilAlt />
+      </span>
+    </div>
+  </Col>
+  <Col xs={12} md={6}>
+    <div className="input-item input-item-textarea ltn__custom-icon">
+      <input
+        type="text"
+        name="ltn__name"
+        placeholder="Country"
+      />
+      <span className="inline-icon">
+        <FaPencilAlt />
+      </span>
+    </div>
+  </Col>
+  <Col xs={12} md={6}>
+    <div className="input-item input-item-textarea ltn__custom-icon">
+      <input
+        type="text"
+        name="ltn__name"
+        placeholder="County / State"
+      />
+      <span className="inline-icon">
+        <FaPencilAlt />
+      </span>
+    </div>
+  </Col>
+  <Col xs={12} md={6}>
+    <div className="input-item input-item-textarea ltn__custom-icon">
+      <input
+        type="text"
+        name="ltn__name"
+        placeholder="City"
+      />
+      <span className="inline-icon">
+        <FaPencilAlt />
+      </span>
+    </div>
+  </Col>
+  <Col xs={12} md={6}>
+    <div className="input-item input-item-textarea ltn__custom-icon">
+      <input
+        type="text"
+        name="ltn__name"
+        placeholder="Neighborhood"
+      />
+      <span className="inline-icon">
+        <FaPencilAlt />
+      </span>
+    </div>
+  </Col>
+  <Col xs={12} md={6}>
+    <div className="input-item input-item-textarea ltn__custom-icon">
+      <input
+        type="text"
+        name="ltn__name"
+        placeholder="Zip"
+      />
+      <span className="inline-icon">
+        <FaPencilAlt />
+      </span>
+    </div>
+  </Col>
+
+  <Col xs={12}>
+    <div className="property-details-google-map mb-60">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9334.271551495209!2d-73.97198251485975!3d40.668170674982946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0456b5a2e7%3A0x68bdf865dda0b669!2sBrooklyn%20Botanic%20Garden%20Shop!5e0!3m2!1sen!2sbd!4v1590597267201!5m2!1sen!2sbd"></iframe>
+    </div>
+  </Col>
+  <Col xs={12} md={6}>
+    <div className="input-item input-item-textarea ltn__custom-icon">
+      <input
+        type="text"
+        name="ltn__name"
+        placeholder="Latitude (for Google Maps)"
+      />
+      <span className="inline-icon">
+        <FaPencilAlt />
+      </span>
+    </div>
+  </Col>
+  <Col xs={12} md={6}>
+    <div className="input-item input-item-textarea ltn__custom-icon">
+      <input
+        type="text"
+        name="ltn__name"
+        placeholder="Longitude (for Google Maps)"
+      />
+      <span className="inline-icon">
+        <FaPencilAlt />
+      </span>
+    </div>
+  </Col>
+  <Col xs={12} md={6}>
+    <label className="checkbox-item">
+      Enable Google Street View
+      <input type="checkbox" />
+      <span className="checkmark"></span>
+    </label>
+  </Col>
+  <Col xs={12} md={6}>
+    <div className="input-item input-item-textarea ltn__custom-icon">
+      <input
+        type="text"
+        name="ltn__name"
+        placeholder="Google Street View - Camera Angle (value from 0 to 360)"
+      />
+      <span className="inline-icon">
+        <FaPencilAlt />
+      </span>
+    </div>
+  </Col>
+</Row> */}
+
+
+
+//Tab Pane 2
+
+{/* <h6>Listing Media</h6>
+<input
+  type="file"
+  id="myFile"
+  name="filename"
+  className="btn theme-btn-3 mb-10"
+/>
+<br />
+<p>
+  <small>
+    * At least 1 image is required for a valid
+    submission.Minimum size is 500/500px.
+  </small>
+  <br />
+  <small>* PDF files upload supported as well.</small>
+  <br />
+  <small>
+    * Images might take longer to be processed.
+  </small>
+</p>
+<h6>Video Option</h6>
+<Row>
+  <Col xs={12} md={6}>
+    <div className="input-item ltn__custom-icon">
+      <Form.Select className="nice-select">
+        <option>Make A Selection</option>
+        <option value="1">New York</option>
+        <option value="2">South Carolina</option>
+        <option value="3">Los Angeles</option>
+        <option value="4">Florida</option>
+        <option value="5">New Jersey</option>
+      </Form.Select>
+    </div>
+  </Col>
+  <Col xs={12} md={6}>
+    <div className="input-item input-item-textarea ltn__custom-icon">
+      <input
+        type="text"
+        name="ltn__name"
+        placeholder="Embed Video ID"
+      />
+      <span className="inline-icon">
+        <FaPencilAlt />
+      </span>
+    </div>
+  </Col>
+</Row>
+<h6>Virtual Tour</h6>
+<div className="input-item input-item-textarea ltn__custom-icon">
+  <textarea
+    name="ltn__message"
+    placeholder="Virtual Tour:"
+  ></textarea>
+  <span className="inline-icon">
+    <FaPencilAlt />
+  </span> */}
