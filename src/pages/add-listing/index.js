@@ -7,7 +7,6 @@ import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 
 function AddListingPage() {
-  // Define state for formData and inputValues
   const [formData, setFormData] = useState({
     area: false,
     bedrooms: false,
@@ -45,9 +44,13 @@ function AddListingPage() {
       beach: false,
       publicParking: false,
     },
+    images: [],
+    video: null,
   });
 
   const [inputValues, setInputValues] = useState({
+    propertyTitle: "",
+    description: "",
     areaValue: "",
     bedroomsValue: "",
     roomsValue: "",
@@ -59,6 +62,9 @@ function AddListingPage() {
     propertyID: "",
   });
 
+  // Active tab state
+  const [activeKey, setActiveKey] = useState(0);
+
   // Handle checkbox changes
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
@@ -67,8 +73,6 @@ function AddListingPage() {
       [name]: checked,
     });
   };
-
-  const [activeKey, setActiveKey] = useState("first");
 
   // Handle proximity checkbox changes
   const handleProximityChange = (e) => {
@@ -91,24 +95,65 @@ function AddListingPage() {
     });
   };
 
-  // Handle tab change
+  // Handle tab change with validation
   const handleNextStep = () => {
-    if (activeKey === "first") setActiveKey("second");
-    else if (activeKey === "second") setActiveKey("third");
-    else if (activeKey === "third") setActiveKey("fourth");
-    else if (activeKey === "fourth") handleCreateProperty();
+    // Step-specific validation
+    if (activeKey === 0) {
+      // Validate Step 1: Property Title, Description, Area, and Price
+      const { propertyTitle, description, priceValue } = inputValues;
+      if (!propertyTitle || !description || !priceValue) {
+        alert("Please fill in all required fields in Step 1.");
+        return;
+      }
+    } else if (activeKey === 1) {
+      // Validate Step 2: Images and Video
+      if (!formData.images.length || !formData.video) {
+        alert("Please upload at least one image and one video in Step 2.");
+        return;
+      }
+    }
+
+    // Move to the next step
+    setActiveKey((prev) => prev + 1);
   };
 
   const handlePrevStep = () => {
-    if (activeKey === "second") setActiveKey("first");
-    else if (activeKey === "third") setActiveKey("second");
-    else if (activeKey === "fourth") setActiveKey("third");
+    if (activeKey > 0) setActiveKey((prev) => prev - 1);
   };
 
   // Handle form submission
-  const handleCreateProperty = () => {
-    // Add your form submission logic here
-    console.log("Property Created:", { formData, inputValues });
+  const handleCreateProperty = async () => {
+    // Create a FormData object for sending files
+    const data = new FormData();
+
+    // Append formData to FormData object
+    for (const key in formData) {
+      if (Array.isArray(formData[key])) {
+        formData[key].forEach((file) => data.append(key, file));
+      } else if (formData[key]) {
+        data.append(key, formData[key]);
+      }
+    }
+
+    // Append inputValues to FormData object
+    for (const key in inputValues) {
+      if (inputValues[key]) {
+        data.append(key, inputValues[key]);
+      }
+    }
+
+    try {
+      const response = await axios.post("/api/properties", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log("Property Created:", response.data);
+      // Optionally redirect or show success message here
+    } catch (error) {
+      console.error("Error creating property:", error);
+      alert("There was an error submitting the form. Please try again.");
+    }
   };
 
   const handleImageChange = (e) => {
@@ -137,16 +182,14 @@ function AddListingPage() {
                   <Tab.Container activeKey={activeKey}>
                     <div className="ltn__tab-menu ltn__tab-menu-3 text-center">
                       <Nav className="nav justify-content-center">
-                        <Nav.Link eventKey="first">
-                          1. Property Details
-                        </Nav.Link>
-                        <Nav.Link eventKey="second">2. Images</Nav.Link>
-                        <Nav.Link eventKey="third">3. Features</Nav.Link>
-                        <Nav.Link eventKey="fourth">4. Proximities</Nav.Link>
+                        <Nav.Link eventKey={0}>1. Property Details</Nav.Link>
+                        <Nav.Link eventKey={1}>2. Images</Nav.Link>
+                        <Nav.Link eventKey={2}>3. Features</Nav.Link>
+                        <Nav.Link eventKey={3}>4. Proximities</Nav.Link>
                       </Nav>
                     </div>
                     <Tab.Content>
-                      <Tab.Pane eventKey="first">
+                      <Tab.Pane eventKey={0}>
                         <div className="ltn__apartments-tab-content-inner">
                           <h6>Property Description</h6>
                           <Row>
@@ -156,12 +199,18 @@ function AddListingPage() {
                                   type="text"
                                   name="propertyTitle"
                                   placeholder="Property Title"
+                                  value={inputValues.propertyTitle}
+                                  onChange={handleInputChange}
+                                  required
                                 />
                               </div>
                               <div className="input-item input-item-textarea ltn__custom-icon">
                                 <textarea
                                   name="description"
                                   placeholder="Description"
+                                  value={inputValues.description}
+                                  onChange={handleInputChange}
+                                  required
                                 ></textarea>
                               </div>
                             </div>
@@ -183,6 +232,7 @@ function AddListingPage() {
                                   placeholder="Price in $ (only numbers)"
                                   value={inputValues.priceValue}
                                   onChange={handleInputChange}
+                                  required
                                 />
                                 <span className="inline-icon">
                                   <FaPencilAlt />
@@ -197,6 +247,7 @@ function AddListingPage() {
                                   placeholder="Property ID"
                                   value={inputValues.propertyID}
                                   onChange={handleInputChange}
+                                  required
                                 />
                                 <span className="inline-icon">
                                   <FaPencilAlt />
@@ -215,7 +266,12 @@ function AddListingPage() {
                           <Row>
                             <Col xs={12} md={6}>
                               <div className="input-item ltn__custom-icon">
-                                <Form.Select className="nice-select">
+                                <Form.Select
+                                  className="nice-select"
+                                  name="category"
+                                  onChange={handleInputChange}
+                                  required
+                                >
                                   <option>Make A Selection</option>
                                   <option value="1">Apartment</option>
                                   <option value="2">Villa</option>
@@ -230,7 +286,12 @@ function AddListingPage() {
                             </Col>
                             <Col xs={12} md={6}>
                               <div className="input-item ltn__custom-icon">
-                                <Form.Select className="nice-select">
+                                <Form.Select
+                                  className="nice-select"
+                                  name="propertyType"
+                                  onChange={handleInputChange}
+                                  required
+                                >
                                   <option>Make A Selection</option>
                                   <option value="1">Buy</option>
                                   <option value="2">Rent</option>
@@ -251,7 +312,7 @@ function AddListingPage() {
                         </div>
                       </Tab.Pane>
 
-                      <Tab.Pane eventKey="second">
+                      <Tab.Pane eventKey={1}>
                         <div className="ltn__product-tab-content-inner">
                           {/* File Upload Section for Images and Video */}
                           <Row>
@@ -297,7 +358,7 @@ function AddListingPage() {
                         </div>
                       </Tab.Pane>
 
-                      <Tab.Pane eventKey="third">
+                      <Tab.Pane eventKey={2}>
                         <div className="ltn__product-tab-content-inner">
                           <h6>Property Features</h6>
                           <Row>
@@ -320,6 +381,7 @@ function AddListingPage() {
                                   name="areaValue"
                                   value={inputValues.areaValue}
                                   onChange={handleInputChange}
+                                  required={formData.area}
                                 />
                               )}
                             </Col>
@@ -342,6 +404,7 @@ function AddListingPage() {
                                   name="bedroomsValue"
                                   value={inputValues.bedroomsValue}
                                   onChange={handleInputChange}
+                                  required={formData.bedrooms}
                                 />
                               )}
                             </Col>
@@ -366,6 +429,7 @@ function AddListingPage() {
                                   name="roomsValue"
                                   value={inputValues.roomsValue}
                                   onChange={handleInputChange}
+                                  required={formData.rooms}
                                 />
                               )}
                             </Col>
@@ -388,6 +452,7 @@ function AddListingPage() {
                                   name="bathroomsValue"
                                   value={inputValues.bathroomsValue}
                                   onChange={handleInputChange}
+                                  required={formData.bathrooms}
                                 />
                               )}
                             </Col>
@@ -438,6 +503,7 @@ function AddListingPage() {
                                   name="viewValue"
                                   value={inputValues.viewValue}
                                   onChange={handleInputChange}
+                                  required={formData.view}
                                 />
                               )}
                             </Col>
@@ -460,6 +526,7 @@ function AddListingPage() {
                                   name="floorValue"
                                   value={inputValues.floorValue}
                                   onChange={handleInputChange}
+                                  required={formData.floor}
                                 />
                               )}
                             </Col>
@@ -484,6 +551,7 @@ function AddListingPage() {
                                   name="directionValue"
                                   value={inputValues.directionValue}
                                   onChange={handleInputChange}
+                                  required={formData.direction}
                                 />
                               )}
                             </Col>
@@ -519,7 +587,7 @@ function AddListingPage() {
                         </div>
                       </Tab.Pane>
 
-                      <Tab.Pane eventKey="fourth">
+                      <Tab.Pane eventKey={3}>
                         <div className="ltn__product-tab-content-inner">
                           <h6>Proximities</h6>
                           <Row>
@@ -813,11 +881,11 @@ function AddListingPage() {
                             </Col>
                             <Col xs={12} md={6} lg={3}>
                               <label className="checkbox-item">
-                                Public Parking
+                                Zoo
                                 <input
                                   type="checkbox"
-                                  name="publicParking"
-                                  checked={formData.proximities.publicParking}
+                                  name="zoo"
+                                  checked={formData.proximities.zoo}
                                   onChange={handleProximityChange}
                                 />
                                 <span className="checkmark"></span>
@@ -832,13 +900,13 @@ function AddListingPage() {
                             >
                               Prev Step
                             </button>
-                            <Link
-                              href="#"
+                            <button
+                              type="button"
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
                               onClick={handleCreateProperty}
                             >
                               Create Property
-                            </Link>
+                            </button>
                           </div>
                         </div>
                       </Tab.Pane>
