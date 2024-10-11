@@ -26,6 +26,7 @@
     "imagesloaded": "^4.1.4",
     "isotope-layout": "^3.0.6",
     "isotope-masonry-horizontal": "^2.0.1",
+    "jsonwebtoken": "^9.0.2",
     "mongo": "^0.1.0",
     "mongodb": "^6.9.0",
     "mongoose": "^8.7.0",
