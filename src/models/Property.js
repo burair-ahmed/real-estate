@@ -1,13 +1,16 @@
 // src/models/Property.js
 import mongoose from 'mongoose';
 
+const categoryEnum = ['Apartment', 'Villa', 'Mansion', 'Chalet', 'Land', 'Townhouse', 'Business Premise', 'Office'];
+
+
 const propertySchema = new mongoose.Schema({
     title: { type: String, required: true },                     // Property Title
     description: { type: String, required: true },               // Property Description
     price: { type: Number, required: true },                     // Property Price
     priceAfterLabel: { type: String },                           // After Price Label (optional)
     priceBeforeLabel: { type: String },                          // Before Price Label (optional)
-    categories: { type: [String], required: true },              // Selected Categories (Array of Strings)
+    categories: { type: [String], enum: categoryEnum, required: true }, // Ensure categories are from the predefined set
     images: { type: [String], required: true },                  // Array of Image URLs
     video: { type: String },                                      // Video URL (optional)
     features: {
@@ -48,7 +51,7 @@ const propertySchema = new mongoose.Schema({
         beach: { type: Boolean, default: false },
         publicParking: { type: Boolean, default: false },
     },
-});
+} , { timestamps: true });
 
 const Property = mongoose.models.Property || mongoose.model('Property', propertySchema);
 export default Property;

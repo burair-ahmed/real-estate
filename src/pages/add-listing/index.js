@@ -60,6 +60,7 @@ function AddListingPage() {
     directionValue: "",
     priceValue: "",
     propertyID: "",
+    categories: [],
   });
 
   // Active tab state
@@ -147,7 +148,7 @@ function AddListingPage() {
       title: inputValues.propertyTitle,
       description: inputValues.description,
       price: parseFloat(inputValues.priceValue),
-      categories: [], // Add categories as per your requirements
+      categories: inputValues.categories, // Make sure to use the categories from inputValues
       images: formData.images,
       video: formData.video,
       features: {
@@ -294,22 +295,29 @@ function AddListingPage() {
                           <Row>
                             <Col xs={12} md={6}>
                               <div className="input-item ltn__custom-icon">
-                                <Form.Select
-                                  className="nice-select"
-                                  name="category"
-                                  onChange={handleInputChange}
-                                  required
-                                >
-                                  <option>Make A Selection</option>
-                                  <option value="1">Apartment</option>
-                                  <option value="2">Villa</option>
-                                  <option value="3">Mansion</option>
-                                  <option value="4">Chalet</option>
-                                  <option value="5">Land</option>
-                                  <option value="6">Townhouse</option>
-                                  <option value="7">Business Premise</option>
-                                  <option value="8">Office</option>
-                                </Form.Select>
+                              <Form.Select
+      className="nice-select"
+      name="categories"
+      value={inputValues.categories}
+      onChange={(e) => {
+        const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value);
+        setInputValues(prevValues => ({
+          ...prevValues,
+          categories: selectedOptions, // Set as array
+        }));
+      }}
+      required
+    >
+      <option value="">Make A Selection</option>
+      <option value="Apartment">Apartment</option>
+      <option value="Villa">Villa</option>
+      <option value="Mansion">Mansion</option>
+      <option value="Chalet">Chalet</option>
+      <option value="Land">Land</option>
+      <option value="Townhouse">Townhouse</option>
+      <option value="Business Premise">Business Premise</option>
+      <option value="Office">Office</option>
+    </Form.Select>
                               </div>
                             </Col>
                             <Col xs={12} md={6}>
