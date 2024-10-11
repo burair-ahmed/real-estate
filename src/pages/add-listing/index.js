@@ -61,6 +61,7 @@ function AddListingPage() {
     priceValue: "",
     propertyID: "",
     categories: [],
+    propertytype: [],
   });
 
   // Active tab state
@@ -108,8 +109,8 @@ function AddListingPage() {
       }
     } else if (activeKey === 1) {
       // Validate Step 2: Images and Video
-      if (!formData.images.length || !formData.video) {
-        alert("Please upload at least one image and one video in Step 2.");
+      if (!formData.images.length && !formData.video) {
+        alert("Please upload at least one image Or one video in Step 2.");
         return;
       }
     }
@@ -147,15 +148,16 @@ function AddListingPage() {
     const completeFormData = {
       title: inputValues.propertyTitle,
       description: inputValues.description,
-      price: parseFloat(inputValues.priceValue),
-      categories: inputValues.categories, // Make sure to use the categories from inputValues
+      price: parseFloat(inputValues.priceValue), // Ensure price is a number
+      categories: inputValues.categories,
+      propertytype: inputValues.propertytype,
       images: formData.images,
       video: formData.video,
       features: {
-        area: formData.area ? inputValues.areaValue : undefined,
-        bedrooms: formData.bedrooms ? inputValues.bedroomsValue : undefined,
-        rooms: formData.rooms ? inputValues.roomsValue : undefined,
-        bathrooms: formData.bathrooms ? inputValues.bathroomsValue : undefined,
+        area: formData.area ? parseFloat(inputValues.areaValue) : undefined, // Ensure area is a number
+        bedrooms: formData.bedrooms ? parseInt(inputValues.bedroomsValue) : undefined, // Convert to number
+        rooms: formData.rooms ? parseInt(inputValues.roomsValue) : undefined, // Convert to number
+        bathrooms: formData.bathrooms ? parseInt(inputValues.bathroomsValue) : undefined, // Convert to number
         furnished: formData.furnished,
         airConditioned: formData.airconditioned,
         view: formData.view ? inputValues.viewValue : undefined,
@@ -193,7 +195,6 @@ function AddListingPage() {
       console.error('Error while submitting the form:', error);
     }
   };
-  // Testing MongoDB comment
 
   return (
     <>
@@ -322,17 +323,27 @@ function AddListingPage() {
                             </Col>
                             <Col xs={12} md={6}>
                               <div className="input-item ltn__custom-icon">
-                                <Form.Select
-                                  className="nice-select"
-                                  name="propertyType"
-                                  onChange={handleInputChange}
-                                  required
-                                >
-                                  <option>Make A Selection</option>
-                                  <option value="1">Buy</option>
-                                  <option value="2">Rent</option>
-                                  <option value="3">Development</option>
-                                </Form.Select>
+                              <Form.Select
+    className="nice-select"
+    name="propertytype"
+    value={inputValues.propertytype} // Should be an array
+    onChange={(e) => {
+        const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value);
+        setInputValues(prevValues => ({
+            ...prevValues,
+            propertytype: selectedOptions, // Store as an array
+        }));
+    }}
+   
+    required
+>
+    <option value="">Make A Selection</option>
+    <option value="Buy">Buy</option>
+    <option value="Rent">Rent</option>
+    <option value="Development">Development</option>
+</Form.Select>
+
+
                               </div>
                             </Col>
                           </Row>

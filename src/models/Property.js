@@ -2,6 +2,7 @@
 import mongoose from 'mongoose';
 
 const categoryEnum = ['Apartment', 'Villa', 'Mansion', 'Chalet', 'Land', 'Townhouse', 'Business Premise', 'Office'];
+const propertytypeEnum = ['Buy', 'Rent', 'Development'];
 
 
 const propertySchema = new mongoose.Schema({
@@ -11,6 +12,7 @@ const propertySchema = new mongoose.Schema({
     priceAfterLabel: { type: String },                           // After Price Label (optional)
     priceBeforeLabel: { type: String },                          // Before Price Label (optional)
     categories: { type: [String], enum: categoryEnum, required: true }, // Ensure categories are from the predefined set
+    propertytype: { type: [String], enum: propertytypeEnum, required: true },
     images: { type: [String], required: true },                  // Array of Image URLs
     video: { type: String },                                      // Video URL (optional)
     features: {
