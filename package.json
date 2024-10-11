@@ -12,6 +12,7 @@
     "@hasanm95/cogo-toast": "https://github.com/hasanm95/cogo-toast",
     "@reduxjs/toolkit": "^1.9.1",
     "animate.css": "^3.7.0",
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.3",
     "clsx": "^2.0.0",
     "cors": "^2.8.5",
@@ -48,7 +49,7 @@
     "redux-persist": "^6.0.0",
     "slick-carousel": "^1.8.1",
     "slugify": "^1.6.6",
-    "uuid": "^9.0.0",
+    "uuid": "^9.0.1",
     "yarn": "^1.22.19",
     "yet-another-react-lightbox": "^3.12.1"
   },
