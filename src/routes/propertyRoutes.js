@@ -5,7 +5,7 @@ import Property from '../models/Property.js';
 const router = express.Router();
 
 // Route to create a new property
-router.post('/api/properties', async (req, res) => {
+router.post('/add-listing', async (req, res) => {
     try {
         const propertyData = req.body; // Ensure your frontend sends data in the expected format
         const newProperty = new Property(propertyData);

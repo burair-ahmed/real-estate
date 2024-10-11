@@ -68,10 +68,10 @@ function AddListingPage() {
   // Handle checkbox changes
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevData) => ({
+      ...prevData,
       [name]: checked,
-    });
+    }));
   };
 
   // Handle proximity checkbox changes
@@ -89,17 +89,17 @@ function AddListingPage() {
   // Handle input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setInputValues({
-      ...inputValues,
+    setInputValues((prevValues) => ({
+      ...prevValues,
       [name]: value,
-    });
+    }));
   };
 
   // Handle tab change with validation
   const handleNextStep = () => {
     // Step-specific validation
     if (activeKey === 0) {
-      // Validate Step 1: Property Title, Description, Area, and Price
+      // Validate Step 1: Property Title, Description, and Price
       const { propertyTitle, description, priceValue } = inputValues;
       if (!propertyTitle || !description || !priceValue) {
         alert("Please fill in all required fields in Step 1.");
@@ -119,23 +119,23 @@ function AddListingPage() {
 
   const handleImageChange = (event) => {
     const files = Array.from(event.target.files);
-    const fileURLs = files.map(file => URL.createObjectURL(file)); // Create URLs for each file
+    const fileURLs = files.map(file => URL.createObjectURL(file));
     setFormData(prevData => ({
-        ...prevData,
-        images: fileURLs, // Assuming you have an `images` field in your formData state
+      ...prevData,
+      images: fileURLs,
     }));
-};
-const handleVideoChange = (event) => {
-  const file = event.target.files[0]; // Get the first selected video file
-  if (file) {
-      const fileURL = URL.createObjectURL(file); // Create a URL for the file
-      setFormData(prevData => ({
-          ...prevData,
-          video: fileURL, // Assuming you have a `video` field in your formData state
-      }));
-  }
-};
+  };
 
+  const handleVideoChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const fileURL = URL.createObjectURL(file);
+      setFormData(prevData => ({
+        ...prevData,
+        video: fileURL,
+      }));
+    }
+  };
 
   const handlePrevStep = () => {
     if (activeKey > 0) setActiveKey((prev) => prev - 1);
@@ -143,39 +143,55 @@ const handleVideoChange = (event) => {
 
   // Handle form submission
   const handleCreateProperty = async () => {
-    // Logging current data before submission
-    console.log('Submitting form...');
-    console.log('Current form data:', formData);
+    const completeFormData = {
+      title: inputValues.propertyTitle,
+      description: inputValues.description,
+      price: parseFloat(inputValues.priceValue),
+      categories: [], // Add categories as per your requirements
+      images: formData.images,
+      video: formData.video,
+      features: {
+        area: formData.area ? inputValues.areaValue : undefined,
+        bedrooms: formData.bedrooms ? inputValues.bedroomsValue : undefined,
+        rooms: formData.rooms ? inputValues.roomsValue : undefined,
+        bathrooms: formData.bathrooms ? inputValues.bathroomsValue : undefined,
+        furnished: formData.furnished,
+        airConditioned: formData.airconditioned,
+        view: formData.view ? inputValues.viewValue : undefined,
+        floor: formData.floor ? inputValues.floorValue : undefined,
+        direction: formData.direction ? inputValues.directionValue : undefined,
+        fireplace: formData.fireplace,
+      },
+      proximities: formData.proximities,
+    };
 
-    // Validation
-    if (!formData.title || !formData.description || !formData.price || !formData.yearlyTaxRate || !formData.homeownersAssociationFee || !formData.categories.length) {
-        console.error('Please fill in all required fields');
-        return;
+    // Validate required fields
+    if (!completeFormData.title || !completeFormData.description || !completeFormData.price || !completeFormData.images.length) {
+      console.error('Please fill in all required fields');
+      return; // Prevent submission if required fields are missing
     }
 
-    // API request
     try {
-        const response = await fetch('/api/add-listing', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        });
+      const response = await fetch('/api/add-listing', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(completeFormData),
+      });
 
-        if (response.ok) {
-            const result = await response.json();
-            console.log(result.message);
-            // Reset form or perform other actions
-        } else {
-            const errorResponse = await response.json();
-            console.error('Failed to create property:', errorResponse);
-        }
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result.message); // Success message
+        // Reset form or redirect as needed
+      } else {
+        const errorResponse = await response.json();
+        console.error('Failed to create property:', errorResponse);
+      }
     } catch (error) {
-        console.error('Error while submitting the form:', error);
+      console.error('Error while submitting the form:', error);
     }
-};
-
+  };
 
   return (
     <>
@@ -912,7 +928,7 @@ const handleVideoChange = (event) => {
                               Prev Step
                             </button>
                             <button
-                type="button"
+                type="submit"
                 className="btn theme-btn-1 btn-effect-1 text-uppercase"
                 onClick={handleCreateProperty}
             >
