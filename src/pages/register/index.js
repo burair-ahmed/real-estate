@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/router"; // Import useRouter
 import { LayoutOne } from "@/layouts";
 import { Container, Row, Col } from "react-bootstrap";
 import ShopBreadCrumb from "@/components/breadCrumbs/shop";
@@ -6,6 +7,7 @@ import CallToAction from "@/components/callToAction";
 import Link from "next/link";
 
 function Register() {
+  const router = useRouter(); // Initialize the router
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
@@ -51,6 +53,9 @@ function Register() {
 
       setSuccessMessage(data.message);
       setError(null); // Clear any previous error
+
+      // Redirect to the login page after successful registration
+      router.push('/login');
     } catch (error) {
       setError(error.message); // Set error message
       setSuccessMessage(null); // Clear any previous success message
