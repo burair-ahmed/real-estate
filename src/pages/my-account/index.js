@@ -24,8 +24,43 @@ import {
   FaGlobe,
 } from "react-icons/fa";
 import Link from "next/link";
+import jwt_decode from 'jwt-decode';
+import { useEffect, useState } from 'react';
+
 
 function MyAccount() {
+  
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await fetch('/api/getUser', {
+        method: 'GET',
+        credentials: 'include', // Important to send cookies
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setUser(data); // Set the user info from the response
+      } else {
+        console.error('Failed to fetch user data');
+      }
+
+      setLoading(false);
+    };
+
+    fetchUser();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>; // Show loading state if user isn't loaded
+  }
+
+  if (!user) {
+    return <div>Please log in.</div>; // If no user data, prompt to log in
+  }
+
   return (
     <>
       <LayoutOne topbar={true}>
@@ -108,13 +143,9 @@ function MyAccount() {
                           <Tab.Pane eventKey="ltn_tab_1_1">
                             <div className="ltn__myaccount-tab-content-inner">
                               <p>
-                                Hello <strong>UserName</strong> (not
-                                <strong>UserName</strong>?
-                                <small>
-                                  <Link href="/login">Log out</Link>
-                                </small>
-                                )
-                              </p>
+                              <div>
+        Hello <strong>{user.firstname}</strong>! {/* Change 'firstName' to 'firstname' */}
+    </div>                              </p>
                               <p>
                                 From your account dashboard you can view your
                                 <span>recent orders</span>, manage your
