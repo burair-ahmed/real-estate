@@ -24,27 +24,27 @@ import {
   FaGlobe,
 } from "react-icons/fa";
 import Link from "next/link";
-import jwt_decode from 'jwt-decode';
-import { useEffect, useState } from 'react';
-
+import jwt_decode from "jwt-decode";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 function MyAccount() {
-  
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await fetch('/api/getUser', {
-        method: 'GET',
-        credentials: 'include', // Important to send cookies
+      const res = await fetch("/api/getUser", {
+        method: "GET",
+        credentials: "include", // Important to send cookies
       });
 
       if (res.ok) {
         const data = await res.json();
         setUser(data); // Set the user info from the response
       } else {
-        console.error('Failed to fetch user data');
+        console.error("Failed to fetch user data");
       }
 
       setLoading(false);
@@ -52,6 +52,19 @@ function MyAccount() {
 
     fetchUser();
   }, []);
+
+  const handleLogout = async () => {
+    const res = await fetch("/api/logout", {
+      method: "POST", // Use POST for logout
+    });
+
+    if (res.ok) {
+      // Redirect to login page after successful logout
+      router.push("/login");
+    } else {
+      console.error("Failed to log out");
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>; // Show loading state if user isn't loaded
@@ -131,7 +144,7 @@ function MyAccount() {
                               </Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                              <Nav.Link href="/login">
+                              <Nav.Link onClick={handleLogout}>
                                 Logout <FaSignOutAlt />
                               </Nav.Link>
                             </Nav.Item>
@@ -143,9 +156,10 @@ function MyAccount() {
                           <Tab.Pane eventKey="ltn_tab_1_1">
                             <div className="ltn__myaccount-tab-content-inner">
                               <p>
-                              <div>
-        Hello <strong>{user.firstname}</strong>! {/* Change 'firstName' to 'firstname' */}
-    </div>                              </p>
+                                <div>
+                                  Hello <strong>{user.firstname}</strong>! (Not <strong>{user.firstname}</strong>? <a href="" onClick={handleLogout}>Logout</a>)
+                                </div>
+                              </p>
                               <p>
                                 From your account dashboard you can view your
                                 <span>recent orders</span>, manage your
@@ -178,9 +192,7 @@ function MyAccount() {
                                             <i className="icon-placeholder"></i>
                                           </div>
                                           <div className="footer-address-info">
-                                            <p>
-                                            Office 720 DIC, Dubai
-                                            </p>
+                                            <p>Office 720 DIC, Dubai</p>
                                           </div>
                                         </li>
                                         <li>
@@ -190,7 +202,7 @@ function MyAccount() {
                                           <div className="footer-address-info">
                                             <p>
                                               <Link href="tel:055-3575797">
-                                              055-3575797
+                                                055-3575797
                                               </Link>
                                             </p>
                                           </div>
@@ -202,7 +214,7 @@ function MyAccount() {
                                           <div className="footer-address-info">
                                             <p>
                                               <Link href="mailto:info@prairieshills.com">
-                                              info@prairieshills.com
+                                                info@prairieshills.com
                                               </Link>
                                             </p>
                                           </div>
@@ -494,7 +506,10 @@ function MyAccount() {
                                                 </Link>
                                               </li>
                                               <li className="review-total">
-                                                <Link href="#"> ( 95 Reviews )</Link>
+                                                <Link href="#">
+                                                  {" "}
+                                                  ( 95 Reviews )
+                                                </Link>
                                               </li>
                                             </ul>
                                           </div>
@@ -570,7 +585,10 @@ function MyAccount() {
                                                 </Link>
                                               </li>
                                               <li className="review-total">
-                                                <Link href="#"> ( 95 Reviews )</Link>
+                                                <Link href="#">
+                                                  {" "}
+                                                  ( 95 Reviews )
+                                                </Link>
                                               </li>
                                             </ul>
                                           </div>
@@ -646,7 +664,10 @@ function MyAccount() {
                                                 </Link>
                                               </li>
                                               <li className="review-total">
-                                                <Link href="#"> ( 95 Reviews )</Link>
+                                                <Link href="#">
+                                                  {" "}
+                                                  ( 95 Reviews )
+                                                </Link>
                                               </li>
                                             </ul>
                                           </div>
@@ -772,7 +793,10 @@ function MyAccount() {
                                                 </Link>
                                               </li>
                                               <li className="review-total">
-                                                <Link href="#"> ( 95 Reviews )</Link>
+                                                <Link href="#">
+                                                  {" "}
+                                                  ( 95 Reviews )
+                                                </Link>
                                               </li>
                                             </ul>
                                           </div>
@@ -848,7 +872,10 @@ function MyAccount() {
                                                 </Link>
                                               </li>
                                               <li className="review-total">
-                                                <Link href="#"> ( 95 Reviews )</Link>
+                                                <Link href="#">
+                                                  {" "}
+                                                  ( 95 Reviews )
+                                                </Link>
                                               </li>
                                             </ul>
                                           </div>
@@ -924,7 +951,10 @@ function MyAccount() {
                                                 </Link>
                                               </li>
                                               <li className="review-total">
-                                                <Link href="#"> ( 95 Reviews )</Link>
+                                                <Link href="#">
+                                                  {" "}
+                                                  ( 95 Reviews )
+                                                </Link>
                                               </li>
                                             </ul>
                                           </div>
