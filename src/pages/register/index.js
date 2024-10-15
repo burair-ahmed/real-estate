@@ -11,17 +11,32 @@ function Register() {
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
+    username: '',
     email: '',
     password: '',
     confirmpassword: '',
+    profilePicture: '', // Holds Base64 representation of the profile picture
   });
 
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
 
+  // Handle changes in text input fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Handle file input changes
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData((prev) => ({ ...prev, profilePicture: reader.result })); // Update profile picture in formData
+      };
+      reader.readAsDataURL(file); // Convert file to Base64
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -33,7 +48,7 @@ function Register() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData), // Send as JSON, including profilePicture
       });
 
       const data = await res.json();
@@ -46,9 +61,11 @@ function Register() {
       setFormData({
         firstname: '',
         lastname: '',
+        username: '',
         email: '',
         password: '',
         confirmpassword: '',
+        profilePicture: '', // Reset profile picture field
       });
 
       setSuccessMessage(data.message);
@@ -102,6 +119,21 @@ function Register() {
                       value={formData.lastname}
                       onChange={handleChange}
                       placeholder="Last Name"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="username"
+                      value={formData.username}
+                      onChange={handleChange}
+                      placeholder="Username"
+                      required
+                    />
+                    <input
+                      type="file"
+                      name="profilePicture"
+                      onChange={handleFileChange}
+                      accept="image/*"
                       required
                     />
                     <input

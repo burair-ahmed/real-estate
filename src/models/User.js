@@ -3,11 +3,13 @@ import mongoose from 'mongoose';
 import { v4 as uuidv4 } from 'uuid'; // Import uuid for generating unique user IDs
 
 const userSchema = new mongoose.Schema({
-  userId: { type: String, default: uuidv4, unique: true }, // Automatically generate unique user ID
+  userId: { type: String, default: uuidv4, unique: true },
   firstname: { type: String, required: true },
   lastname: { type: String, required: true },
-  email: { type: String, required: true, unique: true }, // Ensure unique email
+  username: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  profilePicture: { type: String }, // Store Base64 encoded image
 });
 
 // Ensure that the userId is set when a new user is created

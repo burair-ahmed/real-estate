@@ -39,16 +39,18 @@ function MyAccount() {
         method: "GET",
         credentials: "include", // Important to send cookies
       });
-
+    
       if (res.ok) {
         const data = await res.json();
-        setUser(data); // Set the user info from the response
+        console.log("Fetched user data:", data); // Log user data
+        setUser(data);
       } else {
-        console.error("Failed to fetch user data");
+        console.error("Failed to fetch user data", await res.text());
       }
-
+    
       setLoading(false);
     };
+    
 
     fetchUser();
   }, []);
@@ -178,7 +180,7 @@ function MyAccount() {
                                 <div className="ltn-author-introducing clearfix">
                                   <div className="author-img">
                                     <img
-                                      src="img/blog/author.jpg"
+                                      src={user.profilePicture}
                                       alt="Author Image"
                                     />
                                   </div>
