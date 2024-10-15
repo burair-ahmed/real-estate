@@ -108,7 +108,7 @@ const ProductItem = ({
           <div className="product-price">
             <span>
               {`$ ${productData.price}`}
-              <label>/Month</label>
+              <label>/Year</label>
             </span>
           </div>
           <h2 className="product-title">
@@ -123,7 +123,7 @@ const ProductItem = ({
                 {productData.propertyDetails.bedrooms}
                 <i className="flaticon-bed"></i>
               </span>
-              Bedrooms
+              Drawing Rooms
             </li>
             <li>
               <span>

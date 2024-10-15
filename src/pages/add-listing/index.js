@@ -62,6 +62,10 @@ function AddListingPage() {
     propertyID: "",
     categories: [],
     propertytype: [],
+    state: "", // New input field
+    country: "", // New input field
+    address: "", // New input field
+    zipCode: "", // New input field
   });
 
   // Active tab state
@@ -121,8 +125,8 @@ function AddListingPage() {
 
   const handleImageChange = (event) => {
     const files = Array.from(event.target.files);
-    const fileURLs = files.map(file => URL.createObjectURL(file));
-    setFormData(prevData => ({
+    const fileURLs = files.map((file) => URL.createObjectURL(file));
+    setFormData((prevData) => ({
       ...prevData,
       images: fileURLs,
     }));
@@ -132,7 +136,7 @@ function AddListingPage() {
     const file = event.target.files[0];
     if (file) {
       const fileURL = URL.createObjectURL(file);
-      setFormData(prevData => ({
+      setFormData((prevData) => ({
         ...prevData,
         video: fileURL,
       }));
@@ -151,13 +155,21 @@ function AddListingPage() {
       price: parseFloat(inputValues.priceValue), // Ensure price is a number
       categories: inputValues.categories,
       propertytype: inputValues.propertytype,
+      state: inputValues.state,
+      country: inputValues.country,
+      address: inputValues.address,
+      zipCode: inputValues.zipCode,
       images: formData.images,
       video: formData.video,
       features: {
         area: formData.area ? parseFloat(inputValues.areaValue) : undefined, // Ensure area is a number
-        bedrooms: formData.bedrooms ? parseInt(inputValues.bedroomsValue) : undefined, // Convert to number
+        bedrooms: formData.bedrooms
+          ? parseInt(inputValues.bedroomsValue)
+          : undefined, // Convert to number
         rooms: formData.rooms ? parseInt(inputValues.roomsValue) : undefined, // Convert to number
-        bathrooms: formData.bathrooms ? parseInt(inputValues.bathroomsValue) : undefined, // Convert to number
+        bathrooms: formData.bathrooms
+          ? parseInt(inputValues.bathroomsValue)
+          : undefined, // Convert to number
         furnished: formData.furnished,
         airConditioned: formData.airconditioned,
         view: formData.view ? inputValues.viewValue : undefined,
@@ -169,16 +181,21 @@ function AddListingPage() {
     };
 
     // Validate required fields
-    if (!completeFormData.title || !completeFormData.description || !completeFormData.price || !completeFormData.images.length) {
-      console.error('Please fill in all required fields');
+    if (
+      !completeFormData.title ||
+      !completeFormData.description ||
+      !completeFormData.price ||
+      !completeFormData.images.length
+    ) {
+      console.error("Please fill in all required fields");
       return; // Prevent submission if required fields are missing
     }
 
     try {
-      const response = await fetch('/api/add-listing', {
-        method: 'POST',
+      const response = await fetch("/api/add-listing", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(completeFormData),
       });
@@ -189,10 +206,10 @@ function AddListingPage() {
         // Reset form or redirect as needed
       } else {
         const errorResponse = await response.json();
-        console.error('Failed to create property:', errorResponse);
+        console.error("Failed to create property:", errorResponse);
       }
     } catch (error) {
-      console.error('Error while submitting the form:', error);
+      console.error("Error while submitting the form:", error);
     }
   };
 
@@ -246,14 +263,6 @@ function AddListingPage() {
                             </div>
                           </Row>
                           <Row>
-                            <Col xs={12} md={6} lg={6}>
-                              <h6>Property Price</h6>
-                            </Col>
-                            <Col xs={12} md={6} lg={6}>
-                              <h6>Property ID</h6>
-                            </Col>
-                          </Row>
-                          <Row>
                             <Col xs={12} md={6}>
                               <div className="input-item input-item-textarea ltn__custom-icon">
                                 <input
@@ -287,63 +296,131 @@ function AddListingPage() {
                           </Row>
                           <Row>
                             <Col xs={12} md={6} lg={6}>
-                              <h6>Property Category</h6>
+                              <h6>Property Category & Property type</h6>
                             </Col>
-                            <Col xs={12} md={6} lg={6}>
-                              <h6>Property Type</h6>
-                            </Col>
+                            
                           </Row>
                           <Row>
                             <Col xs={12} md={6}>
                               <div className="input-item ltn__custom-icon">
-                              <Form.Select
-      className="nice-select"
-      name="categories"
-      value={inputValues.categories}
-      onChange={(e) => {
-        const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value);
-        setInputValues(prevValues => ({
-          ...prevValues,
-          categories: selectedOptions, // Set as array
-        }));
-      }}
-      required
-    >
-      <option value="">Make A Selection</option>
-      <option value="Apartment">Apartment</option>
-      <option value="Villa">Villa</option>
-      <option value="Mansion">Mansion</option>
-      <option value="Chalet">Chalet</option>
-      <option value="Land">Land</option>
-      <option value="Townhouse">Townhouse</option>
-      <option value="Business Premise">Business Premise</option>
-      <option value="Office">Office</option>
-    </Form.Select>
+                                <Form.Select
+                                  className="nice-select"
+                                  name="categories"
+                                  value={inputValues.categories}
+                                  onChange={(e) => {
+                                    const selectedOptions = Array.from(
+                                      e.target.selectedOptions
+                                    ).map((option) => option.value);
+                                    setInputValues((prevValues) => ({
+                                      ...prevValues,
+                                      categories: selectedOptions, // Set as array
+                                    }));
+                                  }}
+                                  required
+                                >
+                                  <option value="">Make A Selection</option>
+                                  <option value="Apartment">Apartment</option>
+                                  <option value="Villa">Villa</option>
+                                  <option value="Mansion">Mansion</option>
+                                  <option value="Chalet">Chalet</option>
+                                  <option value="Land">Land</option>
+                                  <option value="Townhouse">Townhouse</option>
+                                  <option value="Business Premise">
+                                    Business Premise
+                                  </option>
+                                  <option value="Office">Office</option>
+                                </Form.Select>
                               </div>
                             </Col>
                             <Col xs={12} md={6}>
                               <div className="input-item ltn__custom-icon">
-                              <Form.Select
-    className="nice-select"
-    name="propertytype"
-    value={inputValues.propertytype} // Should be an array
-    onChange={(e) => {
-        const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value);
-        setInputValues(prevValues => ({
-            ...prevValues,
-            propertytype: selectedOptions, // Store as an array
-        }));
-    }}
-   
-    required
->
-    <option value="">Make A Selection</option>
-    <option value="Buy">Buy</option>
-    <option value="Rent">Rent</option>
-    <option value="Development">Development</option>
-</Form.Select>
-
-
+                                <Form.Select
+                                  className="nice-select"
+                                  name="propertytype"
+                                  value={inputValues.propertytype} // Should be an array
+                                  onChange={(e) => {
+                                    const selectedOptions = Array.from(
+                                      e.target.selectedOptions
+                                    ).map((option) => option.value);
+                                    setInputValues((prevValues) => ({
+                                      ...prevValues,
+                                      propertytype: selectedOptions, // Store as an array
+                                    }));
+                                  }}
+                                  required
+                                >
+                                  <option value="">Make A Selection</option>
+                                  <option value="Buy">Buy</option>
+                                  <option value="Rent">Rent</option>
+                                  <option value="Development">
+                                    Development
+                                  </option>
+                                </Form.Select>
+                              </div>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col xs={12} md={12} lg={12}>
+                              <h6>Location</h6>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col md={6}>
+                              <div className="input-item input-item-textarea ltn__custom-icon">
+                                <input
+                                  type="text"
+                                  name="address"
+                                  placeholder="Address"
+                                  value={inputValues.address}
+                                  onChange={handleInputChange}
+                                />
+                                <span className="inline-icon">
+                                  <FaPencilAlt />
+                                </span>
+                              </div>
+                            </Col>
+                            <Col md={6}>
+                              <div className="input-item input-item-textarea ltn__custom-icon">
+                                <input
+                                  type="text"
+                                  name="state"
+                                  placeholder="State"
+                                  value={inputValues.state}
+                                  onChange={handleInputChange}
+                                />
+                                <span className="inline-icon">
+                                  <FaPencilAlt />
+                                </span>
+                              </div>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col md={6}>
+                              <div className="input-item input-item-textarea ltn__custom-icon">
+                                <input
+                                  type="text"
+                                  name="country"
+                                  placeholder="Country"
+                                  value={inputValues.country}
+                                  onChange={handleInputChange}
+                                />
+                                <span className="inline-icon">
+                                  <FaPencilAlt />
+                                </span>
+                              </div>
+                            </Col>
+                            <Col md={6}>
+                              <div className="input-item input-item-textarea ltn__custom-icon">
+                                <input
+                                  type="text"
+                                  name="zipCode"
+                                  placeholder="Zip Code"
+                                  value={inputValues.zipCode}
+                                  onChange={handleInputChange}
+                                />
+                                <span className="inline-icon">
+                                  <FaPencilAlt />
+                                </span>
                               </div>
                             </Col>
                           </Row>
@@ -948,13 +1025,12 @@ function AddListingPage() {
                               Prev Step
                             </button>
                             <button
-                type="submit"
-                className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                onClick={handleCreateProperty}
-            >
-                Create Property
-            </button>
-
+                              type="submit"
+                              className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                              onClick={handleCreateProperty}
+                            >
+                              Create Property
+                            </button>
                           </div>
                         </div>
                       </Tab.Pane>

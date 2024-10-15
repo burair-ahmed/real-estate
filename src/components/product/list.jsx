@@ -98,7 +98,7 @@ const ProductList = ({
             </li>
             <li>
               <span>{productData.propertyDetails.baths}</span>
-              <span className="ms-1">Bathrooms</span>
+              <span className="ms-1">ABC</span>
             </li>
             <li>
               <span>{productData.propertyDetails.area}</span>

@@ -13,6 +13,10 @@ const propertySchema = new mongoose.Schema({
     priceBeforeLabel: { type: String },                          // Before Price Label (optional)
     categories: { type: [String], enum: categoryEnum, required: true }, // Ensure categories are from the predefined set
     propertytype: { type: [String], enum: propertytypeEnum, required: true },
+    state: { type: String, required: true },       // New field
+    country: { type: String, required: true },     // New field
+    address: { type: String, required: true },     // New field
+    zipCode: { type: String, required: true },     // New field
     images: { type: [String], required: true },                  // Array of Image URLs
     video: { type: String },                                      // Video URL (optional)
     features: {
