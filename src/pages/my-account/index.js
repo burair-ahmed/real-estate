@@ -184,7 +184,7 @@ function MyAccount() {
                                   </div>
                                   <div className="author-info">
                                     <h6>Agent of Property</h6>
-                                    <h2>Rosalina D. William</h2>
+                                    <h2>{user.firstname} {user.lastname}</h2>
                                     <div className="footer-address">
                                       <ul>
                                         <li>
@@ -371,11 +371,11 @@ function MyAccount() {
                                   <div className="row mb-50">
                                     <Col xs={12} md={6}>
                                       <label>First name:</label>
-                                      <input type="text" name="ltn__name" />
+                                      <input type="text" name="ltn__name" defaultValue={user.firstname} disabled />
                                     </Col>
                                     <Col xs={12} md={6}>
                                       <label>Last name:</label>
-                                      <input type="text" name="ltn__lastname" />
+                                      <input type="text" name="ltn__lastname" defaultValue={user.lastname} disabled />
                                     </Col>
                                     <Col xs={12} md={6}>
                                       <label>Display Name:</label>
@@ -390,7 +390,9 @@ function MyAccount() {
                                       <input
                                         type="email"
                                         name="ltn__lastname"
-                                        placeholder="info@prairieshills.com"
+                                        // placeholder="info@prairieshills.com"
+                                        defaultValue={user.email}
+                                        disabled
                                       />
                                     </Col>
                                   </div>

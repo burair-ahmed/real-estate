@@ -10,7 +10,9 @@ export default async function handler(req, res) {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    return res.status(200).json({ firstname: decoded.firstname });
+    return res.status(200).json({ firstname: decoded.firstname,  lastname: decoded.lastname,  email: decoded.email });
+
+
   } catch (error) {
     return res.status(401).json({ error: 'Invalid token' });
   }

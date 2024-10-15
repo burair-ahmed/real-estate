@@ -23,7 +23,7 @@ export default async function handler(req, res) {
 
       // Create a JWT token with user's firstName
       const token = jwt.sign(
-        { id: user._id, firstname: user.firstname }, // Use 'firstname'
+        { id: user._id, firstname: user.firstname, lastname: user.lastname, email: user.email }, // Use 'firstname'
         process.env.JWT_SECRET,
         {
             expiresIn: '1h',
