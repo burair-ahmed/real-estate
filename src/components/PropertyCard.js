@@ -39,7 +39,7 @@ const PropertyCard = ({ propertyData, slug, baseUrl, wishlistItem }) => {
         <div className="product-info">
           <div className="product-badge">
             <ul>
-              <li className={`${propertyData.new ? "sale-badge" : ""}`}>
+              <li className={`${propertyData.propertytype ? "sale-badge" : ""}`}>
                 {badgeText}
               </li>
             </ul>
