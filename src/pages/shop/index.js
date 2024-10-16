@@ -112,6 +112,24 @@ function Shop() {
                       </Row>
                     </div>
                   </Tab.Pane>
+                  <Tab.Pane eventKey="second">
+                    <div className="ltn__product-tab-content-inner ltn__product-list-view">
+                      <Row>
+                      
+                          {currentItems.map((property, key) => (
+                            <Col key={key} xs={12}>
+                             <PropertyCard
+                              key={property._id}
+                              propertyData={property}
+                              slug={property.slug}
+                              baseUrl="properties"
+                            />
+                            </Col>
+                          
+                        ))}
+                      </Row>
+                    </div>
+                  </Tab.Pane>
                 </Tab.Content>
               </Tab.Container>
 
