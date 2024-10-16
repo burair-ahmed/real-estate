@@ -3,7 +3,6 @@ import {
   getIndividualAminities,
   getIndividualAminitiesList,
   priceRange,
-  bedBath,
   setActiveSort,
 } from "@/lib/product";
 import FilterByPrice from "../FilterByPrice";
@@ -12,7 +11,6 @@ const SideBar = ({ properties, getSortParams }) => {
   const aminities = getIndividualAminities(properties);
   const aminitiesList = getIndividualAminitiesList(properties);
   const priceRanges = priceRange(properties);
-  const bedBaths = bedBath(properties);
 
   // Function to get individual categories from the properties
   const getIndividualCategoriesList = (properties) => {
@@ -152,31 +150,29 @@ const SideBar = ({ properties, getSortParams }) => {
           </div>
 
           <hr />
-          {/* Bed/Bath Filter */}
-          <h4 className="ltn__widget-title">Bed/Bath</h4>
-          {bedBaths.length > 0 ? (
-            <ul>
-              {bedBaths.map((bath, key) => (
-                <li key={key}>
-                  <div>
-                    <label className="checkbox-item">
-                      {bath.name}
-                      <input
-                        onClick={(e) => {
-                          getSortParams("bedBath", bath.name);
-                          setActiveSort(e);
-                        }}
-                        type="checkbox"
-                      />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            "No bed/bath options found"
-          )}
+          {/* Bed/Bath Range Filter */}
+          <h4 className="ltn__widget-title">Bedrooms</h4>
+          <input
+            type="number"
+            min="1"
+            max="30"
+            onChange={(e) => {
+              getSortParams("bedrooms", e.target.value);
+              setActiveSort(e);
+            }}
+            placeholder="Number of Bedrooms (1-30)"
+          />
+          <h4 className="ltn__widget-title">Bathrooms</h4>
+          <input
+            type="number"
+            min="1"
+            max="30"
+            onChange={(e) => {
+              getSortParams("bathrooms", e.target.value);
+              setActiveSort(e);
+            }}
+            placeholder="Number of Bathrooms (1-30)"
+          />
 
           <hr />
           {/* Additional Filters */}

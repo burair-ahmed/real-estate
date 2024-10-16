@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 const categoryEnum = ['Apartment', 'Villa', 'Mansion', 'Chalet', 'Land', 'Townhouse', 'Business Premise', 'Office'];
 const propertytypeEnum = ['Buy', 'Rent', 'Development'];
 
-
 const propertySchema = new mongoose.Schema({
     title: { type: String, required: true },                     // Property Title
     description: { type: String, required: true },               // Property Description
@@ -57,7 +56,8 @@ const propertySchema = new mongoose.Schema({
         beach: { type: Boolean, default: false },
         publicParking: { type: Boolean, default: false },
     },
-} , { timestamps: true });
+    slug: { type: String, unique: true }, // Add the slug field
+}, { timestamps: true });
 
 const Property = mongoose.models.Property || mongoose.model('Property', propertySchema);
 export default Property;

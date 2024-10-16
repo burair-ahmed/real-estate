@@ -8,7 +8,15 @@ import QuickViewModal from "@/components/modals/quickViewModal";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
-const PropertyCard = ({ propertyData, slug, baseUrl, wishlistItem }) => {
+const PropertyCard = ({ propertyData, wishlistItem }) => {
+  // Log propertyData to check the structure and slug
+  console.log('Property Data:', propertyData);
+
+  // Check if slug exists
+  if (!propertyData.slug) {
+    console.error('Slug is undefined for property:', propertyData.title);
+  }
+
   let badgeText = propertyData.propertytype.includes("Rent") ? "For Rent" : "For Sale";
   const dispatch = useDispatch();
   const [modalShow, setModalShow] = useState(false);
@@ -29,7 +37,7 @@ const PropertyCard = ({ propertyData, slug, baseUrl, wishlistItem }) => {
     <>
       <div className="ltn__product-item ltn__product-item-4 ltn__product-item-5">
         <div className="product-img">
-          <Link href={`/${baseUrl}/${slug}`}>
+          <Link href={`/properties/${propertyData.slug}`}>
             <img
               src={propertyData.images[0] || "/img/default-image.jpg"}
               alt={`${propertyData.title}`}
@@ -45,7 +53,7 @@ const PropertyCard = ({ propertyData, slug, baseUrl, wishlistItem }) => {
             </ul>
           </div>
           <h2 className="product-title">
-            <Link href={`/${baseUrl}/${slug}`}>{propertyData.title}</Link>
+            <Link href={`/properties/${propertyData.slug}`}>{propertyData.title}</Link>
           </h2>
           <ul className="ltn__plot-brief">
             <li>
@@ -99,7 +107,7 @@ const PropertyCard = ({ propertyData, slug, baseUrl, wishlistItem }) => {
         productData={propertyData}
         show={modalShow}
         onHide={() => setModalShow(false)}
-        slug={slug}
+        slug={propertyData.slug} // Pass slug to the modal
       />
     </>
   );
