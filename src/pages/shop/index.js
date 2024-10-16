@@ -11,6 +11,9 @@ import ProductList from "@/components/product/list";
 import Search from "@/components/search";
 import CallToAction from "@/components/callToAction";
 import ReactPaginate from "react-paginate";
+import PropertyCard from "@/components/PropertyCard";
+import axios from 'axios';
+
 
 
 function Shop() {
@@ -21,6 +24,9 @@ function Shop() {
   const [filterSortValue, setFilterSortValue] = useState("");
   const [offset, setOffset] = useState(0);
   const [sortedProducts, setSortedProducts] = useState([]);
+  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const { cartItems } = useSelector((state) => state.cart);
   const { wishlistItems } = useSelector((state) => state.wishlist);
@@ -33,6 +39,22 @@ function Shop() {
     setSortType(sortType);
     setSortValue(sortValue);
   };
+
+
+  useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        const response = await axios.get('/api/listings'); // Adjust the endpoint as necessary
+        setProperties(response.data);
+      } catch (err) {
+        setError('Failed to fetch properties');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProperties();
+  }, []);
 
   const getFilterSortParams = (sortType, sortValue) => {
     setFilterSortType(sortType);
@@ -156,15 +178,14 @@ function Shop() {
                           );
                           return (
                             <Col key={key} xs={12} sm={6}>
-                              <RelatedProduct
-                                slug={slug}
-                                baseUrl="shop"
-                                productData={product} discountedPrice={discountedPrice}
-                                productPrice={productPrice}
-                                cartItem={cartItem}
-                                wishlistItem={wishlistItem}
-                                compareItem={compareItem}
-                              />
+                           {properties.map((property) => (
+        <PropertyCard
+          key={property._id} // Use the unique property ID
+          propertyData={property}
+          slug={property.slug} // Ensure this field exists in your data
+          baseUrl="properties" // Adjust according to your routing structure
+        />
+      ))}
                             </Col>
                           );
                         })}
