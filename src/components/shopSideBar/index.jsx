@@ -1,3 +1,4 @@
+// src/components/shopSideBar/index.jsx
 import {
   getIndividualAminities,
   getIndividualAminitiesList,
@@ -8,37 +9,37 @@ import {
 } from "@/lib/product";
 import FilterByPrice from "../FilterByPrice";
 
-const SideBar = ({ products, getSortParams }) => {
-  const aminities = getIndividualAminities(products);
-  const aminitiesList = getIndividualAminitiesList(products);
-  const priceRanges = priceRange(products);
-  const bedBaths = bedBath(products);
-  const categories = getIndividualCategories(products);
+const SideBar = ({ properties, getSortParams }) => {
+  const aminities = getIndividualAminities(properties);
+  const aminitiesList = getIndividualAminitiesList(properties);
+  const priceRanges = priceRange(properties);
+  const bedBaths = bedBath(properties);
+  const categories = getIndividualCategories(properties);
 
   // Calculate the total number of properties
-  const totalProperties = products.length;
+  const totalProperties = properties.length;
 
   return (
     <>
       <aside className="sidebar ltn__shop-sidebar ltn__right-sidebar">
         <h3 className="mb-10">Advance Information</h3>
         <label className="mb-30">
-          {/* Dynamically display the total number of properties */}
           <small>About {totalProperties} results</small>
         </label>
-        {/* <!-- Advance Information widget --> */}
+
+        {/* Property Type Filter */}
         <div className="widget ltn__menu-widget">
           <h4 className="ltn__widget-title">Property Type</h4>
-          {aminities.length > 0 ? (
+          {categories.length > 0 ? (
             <ul>
-              {aminities.map((aminitie, key) => (
+              {categories.map((category, key) => (
                 <li key={key}>
                   <div>
                     <label className="checkbox-item">
-                      {aminitie.name}
+                      {category}
                       <input
                         onClick={(e) => {
-                          getSortParams("propertyTypes", aminitie.name);
+                          getSortParams("categories", category);
                           setActiveSort(e);
                         }}
                         type="checkbox"
@@ -54,6 +55,7 @@ const SideBar = ({ products, getSortParams }) => {
           )}
 
           <hr />
+          {/* Amenities Filter */}
           <h4 className="ltn__widget-title">Amenities</h4>
           {aminitiesList.length > 0 ? (
             <ul>
@@ -76,45 +78,19 @@ const SideBar = ({ products, getSortParams }) => {
               ))}
             </ul>
           ) : (
-            "No categories found"
+            "No amenities found"
           )}
 
           <hr />
+          {/* Price Range Filter */}
           <h4 className="ltn__widget-title">Price Range</h4>
-          {priceRanges.length > 0 ? (
-            <ul>
-              {priceRanges.map((price, key) => (
-                <li key={key}>
-                  <div>
-                    <label className="checkbox-item">
-                      {price.name}
-                      <input
-                        onClick={(e) => {
-                          getSortParams("priceRange", price.name);
-                          setActiveSort(e);
-                        }}
-                        type="checkbox"
-                      />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            "No categories found"
-          )}
-
-          {/* <!-- Price Filter Widget --> */}
-          <div className="ltn__price-filter-widget mt-30">
-            <h4 className="ltn__widget-title">Filter by price</h4>
-            <div className="price_filter">
-              <FilterByPrice />
-            </div>
+          <div className="price_filter">
+            <FilterByPrice />
           </div>
 
           <hr />
-          <h4 className="ltn__widget-title">Bed/bath</h4>
+          {/* Bed/Bath Filter */}
+          <h4 className="ltn__widget-title">Bed/Bath</h4>
           {bedBaths.length > 0 ? (
             <ul>
               {bedBaths.map((bath, key) => (
@@ -136,34 +112,84 @@ const SideBar = ({ products, getSortParams }) => {
               ))}
             </ul>
           ) : (
-            "No categories found"
+            "No bed/bath options found"
           )}
 
           <hr />
-          <h4 className="ltn__widget-title">Category</h4>
-          {categories.length > 0 ? (
-            <ul>
-              {categories.map((categorie, key) => (
-                <li key={key}>
-                  <div>
-                    <label className="checkbox-item">
-                      {categorie.name}
-                      <input
-                        onClick={(e) => {
-                          getSortParams("category", categorie.name);
-                          setActiveSort(e);
-                        }}
-                        type="checkbox"
-                      />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            "No categories found"
-          )}
+          {/* Additional Filters */}
+          <h4 className="ltn__widget-title">Furnishing</h4>
+          <div>
+            <label className="checkbox-item">
+              Furnished
+              <input
+                onClick={(e) => {
+                  getSortParams("furnished", true);
+                  setActiveSort(e);
+                }}
+                type="checkbox"
+              />
+              <span className="checkmark"></span>
+            </label>
+            <label className="checkbox-item">
+              Not Furnished
+              <input
+                onClick={(e) => {
+                  getSortParams("furnished", false);
+                  setActiveSort(e);
+                }}
+                type="checkbox"
+              />
+              <span className="checkmark"></span>
+            </label>
+          </div>
+
+          <hr />
+          {/* Air Conditioning Filter */}
+          <h4 className="ltn__widget-title">Air Conditioning</h4>
+          <div>
+            <label className="checkbox-item">
+              Yes
+              <input
+                onClick={(e) => {
+                  getSortParams("airConditioned", true);
+                  setActiveSort(e);
+                }}
+                type="checkbox"
+              />
+              <span className="checkmark"></span>
+            </label>
+            <label className="checkbox-item">
+              No
+              <input
+                onClick={(e) => {
+                  getSortParams("airConditioned", false);
+                  setActiveSort(e);
+                }}
+                type="checkbox"
+              />
+              <span className="checkmark"></span>
+            </label>
+          </div>
+
+          <hr />
+          {/* Other Features */}
+          <h4 className="ltn__widget-title">Other Features</h4>
+          {Object.keys(properties[0]?.features || {}).map((feature, index) => (
+            <div key={index}>
+              <label className="checkbox-item">
+                {feature}
+                <input
+                  onClick={(e) => {
+                    const isFeatureChecked = e.target.checked;
+                    getSortParams(feature, isFeatureChecked);
+                    setActiveSort(e);
+                  }}
+                  type="checkbox"
+                />
+                <span className="checkmark"></span>
+              </label>
+            </div>
+          ))}
         </div>
       </aside>
     </>

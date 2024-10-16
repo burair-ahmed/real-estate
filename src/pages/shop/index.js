@@ -1,46 +1,32 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import ShopBreadCrumb from "@/components/breadCrumbs/shop";
-import { getSortedProducts, productSlug, getDiscountPrice } from "@/lib/product";
-import { LayoutOne } from "@/layouts";
 import { FaThLarge, FaThList, FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 import { Container, Row, Col, Nav, Tab, Form } from "react-bootstrap";
 import SideBar from "@/components/shopSideBar";
-import RelatedProduct from "@/components/product/related-product";
-import ProductList from "@/components/product/list";
-import Search from "@/components/search";
-import CallToAction from "@/components/callToAction";
 import ReactPaginate from "react-paginate";
 import PropertyCard from "@/components/PropertyCard";
 import axios from 'axios';
-
-
+import { LayoutOne } from "@/layouts";
 
 function Shop() {
-  const { products } = useSelector((state) => state.product);
   const [sortType, setSortType] = useState("");
   const [sortValue, setSortValue] = useState("");
-  const [filterSortType, setFilterSortType] = useState("");
-  const [filterSortValue, setFilterSortValue] = useState("");
   const [offset, setOffset] = useState(0);
-  const [sortedProducts, setSortedProducts] = useState([]);
-  const [properties, setProperties] = useState([]);
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [properties, setProperties] = useState([]);
 
-  const { cartItems } = useSelector((state) => state.cart);
-  const { wishlistItems } = useSelector((state) => state.wishlist);
-  const { compareItems } = useSelector((state) => state.compare);
+  const pageLimit = 6; // Set your desired items per page
 
-  const pageLimit = 6;
-  const [currentItems, setCurrentItems] = useState(products);
-  const [pageCount, setPageCount] = useState(0);
   const getSortParams = (sortType, sortValue) => {
     setSortType(sortType);
     setSortValue(sortValue);
   };
 
-
+  // Fetch properties data
   useEffect(() => {
     const fetchProperties = async () => {
       try {
@@ -56,66 +42,22 @@ function Shop() {
     fetchProperties();
   }, []);
 
-  const getFilterSortParams = (sortType, sortValue) => {
-    setFilterSortType(sortType);
-    setFilterSortValue(sortValue);
-  };
-
-  const [query, setQuery] = useState("");
-  const keys = ["title"];
-  const SearchProduct = (data) => {
-    return data.filter((item) =>
-      keys.some((key) => item[key].toLowerCase().includes(query))
-    );
-  };
-  useEffect(() => {
-    let sortedProducts = getSortedProducts(products, sortType, sortValue);
-
-    const filterSortedProducts = getSortedProducts(
-      sortedProducts,
-      filterSortType,
-      filterSortValue
-    );
-
-    sortedProducts = filterSortedProducts;
-
-    setSortedProducts(sortedProducts);
-
-    setCurrentItems(sortedProducts.slice(offset, offset + pageLimit));
-
-    setCurrentItems(
-      SearchProduct(sortedProducts.slice(offset, offset + pageLimit))
-    );
-  }, [
-    offset,
-    products,
-    sortType,
-    sortValue,
-    filterSortType,
-    filterSortValue,
-    query,
-  ]);
-
+  // Pagination logic for properties
   useEffect(() => {
     const endOffset = offset + pageLimit;
-    setCurrentItems(products.slice(offset, endOffset));
-    setPageCount(Math.ceil(products.length / pageLimit));
-  }, [offset, pageLimit]);
+    setCurrentItems(properties.slice(offset, endOffset));
+    setPageCount(Math.ceil(properties.length / pageLimit));
+  }, [offset, properties]);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * pageLimit) % products.length;
+    const newOffset = (event.selected * pageLimit) % properties.length;
     setOffset(newOffset);
   };
 
-
   return (
     <LayoutOne topbar={true}>
-      {/* <!-- BREADCRUMB AREA START --> */}
-
       <ShopBreadCrumb title="Property" sectionPace="" currentSlug="Property" />
-      {/* <!-- BREADCRUMB AREA END -->
-    
-    <!-- PRODUCT DETAILS AREA START --> */}
+
       <div className="ltn__product-area ltn__product-gutter mb-120">
         <Container>
           <Row>
@@ -141,8 +83,7 @@ function Shop() {
                         <Form.Select
                           className="form-control nice-select"
                           onChange={(e) =>
-
-                            getFilterSortParams("filterSort", e.target.value)
+                            getSortParams("filterSort", e.target.value)
                           }
                         >
                           <option value="default">Default</option>
@@ -154,73 +95,20 @@ function Shop() {
                   </ul>
                 </div>
 
-                <Search spaceBottom="mb-30" setQuery={setQuery} />
-
                 <Tab.Content>
                   <Tab.Pane eventKey="first">
                     <div className="ltn__product-tab-content-inner ltn__product-grid-view">
                       <Row>
-                        {currentItems.map((product, key) => {
-                          const slug = productSlug(product.title);
-                          const discountedPrice = getDiscountPrice(
-                            product.price,
-                            product.discount
-                          ).toFixed(2);
-                          const productPrice = product.price.toFixed(2);
-                          const cartItem = cartItems.find(
-                            (cartItem) => cartItem.id === product.id
-                          );
-                          const wishlistItem = wishlistItems.find(
-                            (wishlistItem) => wishlistItem.id === product.id
-                          );
-                          const compareItem = compareItems.find(
-                            (compareItem) => compareItem.id === product.id
-                          );
-                          return (
-                            <Col key={key} xs={12} sm={6}>
-                           {properties.map((property) => (
-        <PropertyCard
-          key={property._id} // Use the unique property ID
-          propertyData={property}
-          slug={property.slug} // Ensure this field exists in your data
-          baseUrl="properties" // Adjust according to your routing structure
-        />
-      ))}
-                            </Col>
-                          );
-                        })}
-                      </Row>
-                    </div>
-                  </Tab.Pane>
-                  <Tab.Pane eventKey="second">
-                    <div className="ltn__product-tab-content-inner ltn__product-list-view">
-                      <Row>
-                        {currentItems.map((product, key) => {
-                          const slug = productSlug(product.title);
-                          const discountedPrice = getDiscountPrice(
-                            product.price,
-                            product.discount
-                          ).toFixed(2);
-                          const productPrice = product.price.toFixed(2);
-                          const cartItem = cartItems.find(
-                            (cartItem) => cartItem.id === product.id
-                          );
-                          const wishlistItem = wishlistItems.find(
-                            (wishlistItem) => wishlistItem.id === product.id
-                          );
-                          const compareItem = compareItems.find(
-                            (compareItem) => compareItem.id === product.id
-                          );
-                          return (
-                            <Col key={key} xs={12}>
-                              <ProductList slug={slug} baseUrl="shop" productData={product} discountedPrice={discountedPrice}
-                                productPrice={productPrice}
-                                cartItem={cartItem}
-                                wishlistItem={wishlistItem}
-                                compareItem={compareItem} />
-                            </Col>
-                          );
-                        })}
+                        {currentItems.map((property, key) => (
+                          <Col key={key} xs={12} sm={6}>
+                            <PropertyCard
+                              key={property._id}
+                              propertyData={property}
+                              slug={property.slug}
+                              baseUrl="properties"
+                            />
+                          </Col>
+                        ))}
                       </Row>
                     </div>
                   </Tab.Pane>
@@ -250,25 +138,13 @@ function Shop() {
                 />
               </div>
             </Col>
-            <Col xs={12} lg={4}>
-              <SideBar products={products} getSortParams={getSortParams} />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-      {/* <!-- PRODUCT DETAILS AREA END -->
 
-    <!-- CALL TO ACTION START (call-to-action-6) --> */}
-      <div className="ltn__call-to-action-area call-to-action-6 before-bg-bottom">
-        <Container>
-          <Row>
-            <Col xs={12}>
-              <CallToAction />
+            <Col xs={12} lg={4}>
+              <SideBar properties={properties} getSortParams={getSortParams} />
             </Col>
           </Row>
         </Container>
       </div>
-      {/* <!-- CALL TO ACTION END --> */}
     </LayoutOne>
   );
 }
