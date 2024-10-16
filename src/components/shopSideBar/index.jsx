@@ -4,7 +4,6 @@ import {
   getIndividualAminitiesList,
   priceRange,
   bedBath,
-  getIndividualCategories,
   setActiveSort,
 } from "@/lib/product";
 import FilterByPrice from "../FilterByPrice";
@@ -14,7 +13,23 @@ const SideBar = ({ properties, getSortParams }) => {
   const aminitiesList = getIndividualAminitiesList(properties);
   const priceRanges = priceRange(properties);
   const bedBaths = bedBath(properties);
-  const categories = getIndividualCategories(properties);
+
+  // Function to get individual categories from the properties
+  const getIndividualCategoriesList = (properties) => {
+    let categoriesList = [];
+    properties.forEach((property) => {
+      // Check if property.categories is an array
+      if (Array.isArray(property.categories)) {
+        property.categories.forEach((category) => {
+          categoriesList.push(category);
+        });
+      }
+    });
+    // Filter out duplicate categories
+    return [...new Set(categoriesList)];
+  };
+
+  const categoriesList = getIndividualCategoriesList(properties); // Get categories for filtering
 
   // Function to get individual proximities from the properties
   const getIndividualProximitiesList = (properties) => {
@@ -51,9 +66,9 @@ const SideBar = ({ properties, getSortParams }) => {
         {/* Property Type Filter */}
         <div className="widget ltn__menu-widget">
           <h4 className="ltn__widget-title">Property Type</h4>
-          {categories.length > 0 ? (
+          {categoriesList.length > 0 ? (
             <ul>
-              {categories.map((category, key) => (
+              {categoriesList.map((category, key) => (
                 <li key={key}>
                   <div>
                     <label className="checkbox-item">
