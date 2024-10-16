@@ -16,6 +16,27 @@ const SideBar = ({ properties, getSortParams }) => {
   const bedBaths = bedBath(properties);
   const categories = getIndividualCategories(properties);
 
+  // Function to get individual proximities from the properties
+  const getIndividualProximitiesList = (properties) => {
+    let proximitiesList = [];
+    properties.forEach((property) => {
+      // Check if property.proximities is an object
+      if (property.proximities && typeof property.proximities === 'object') {
+        // Extract keys from the object to get proximity names
+        Object.keys(property.proximities).forEach((key) => {
+          // If the proximity value is true, include it in the list
+          if (property.proximities[key]) {
+            proximitiesList.push(key);
+          }
+        });
+      }
+    });
+    // Filter out duplicate proximities
+    return [...new Set(proximitiesList)];
+  };
+
+  const proximitiesList = getIndividualProximitiesList(properties); // Get proximities for filtering
+
   // Calculate the total number of properties
   const totalProperties = properties.length;
 
@@ -52,6 +73,33 @@ const SideBar = ({ properties, getSortParams }) => {
             </ul>
           ) : (
             "No categories found"
+          )}
+
+          <hr />
+          {/* Proximities Filter */}
+          <h4 className="ltn__widget-title">Proximities</h4>
+          {proximitiesList.length > 0 ? (
+            <ul>
+              {proximitiesList.map((proximity, key) => (
+                <li key={key}>
+                  <div>
+                    <label className="checkbox-item">
+                      {proximity}
+                      <input
+                        onClick={(e) => {
+                          getSortParams("proximities", proximity);
+                          setActiveSort(e);
+                        }}
+                        type="checkbox"
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            "No proximities found"
           )}
 
           <hr />
