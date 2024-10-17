@@ -126,12 +126,15 @@ function AddListingPage() {
 
   const handleImageChange = async (event) => {
     const files = Array.from(event.target.files);
-    const uploadedImageUrls = await Promise.all(files.map(file => uploadImage(file)));
+    const uploadedImageUrls = await Promise.all(
+        files.map(file => uploadImage(file, inputValues.propertyTitle)) // Pass property title
+    );
     setFormData((prevData) => ({
-      ...prevData,
-      images: uploadedImageUrls.filter(url => url), // Filter out any null URLs
+        ...prevData,
+        images: uploadedImageUrls.filter(url => url), // Filter out any null URLs
     }));
-  };
+};
+
 
   const handleVideoChange = (event) => {
     const file = event.target.files[0];

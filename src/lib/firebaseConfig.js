@@ -25,11 +25,12 @@ if (typeof window !== 'undefined') {
 const storage = getStorage(app);
 
 
-export const uploadImage = async (file) => {
+export const uploadImage = async (file, propertyTitle) => {
     if (!file) return null;
   
-    const storageRef = ref(storage, `images/${file.name}`); // Customize the path as needed
+    const sanitizedTitle = propertyTitle.toLowerCase().replace(/\s+/g, '-'); // Sanitize the title for folder name
+    const storageRef = ref(storage, `images/${sanitizedTitle}/${file.name}`); // Use the property title as folder name
     await uploadBytes(storageRef, file);
     const downloadURL = await getDownloadURL(storageRef);
     return downloadURL; // Return the image URL
-  };
+};
