@@ -3,21 +3,26 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/slices/cart-slice";
 import { useState } from "react";
-import { addToWishlist, deleteFromWishlist } from "@/store/slices/wishlist-slice";
+import {
+  addToWishlist,
+  deleteFromWishlist,
+} from "@/store/slices/wishlist-slice";
 import QuickViewModal from "@/components/modals/quickViewModal";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 const PropertyCard = ({ propertyData, wishlistItem }) => {
   // Log propertyData to check the structure and slug
-  console.log('Property Data:', propertyData);
+  console.log("Property Data:", propertyData);
 
   // Check if slug exists
   if (!propertyData.slug) {
-    console.error('Slug is undefined for property:', propertyData.title);
+    console.error("Slug is undefined for property:", propertyData.title);
   }
 
-  let badgeText = propertyData.propertytype.includes("Rent") ? "For Rent" : "For Sale";
+  let badgeText = propertyData.propertytype.includes("Rent")
+    ? "For Rent"
+    : "For Sale";
   const dispatch = useDispatch();
   const [modalShow, setModalShow] = useState(false);
 
@@ -47,13 +52,20 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
         <div className="product-info">
           <div className="product-badge">
             <ul>
-              <li className={`${propertyData.propertytype ? "sale-badge" : ""}`}>
+              <li
+                className={`${propertyData.propertytype ? "sale-badge" : ""}`}
+              >
                 {badgeText}
               </li>
             </ul>
           </div>
+          <div className="product-price">
+            <span>${propertyData.price}</span>
+          </div>
           <h2 className="product-title">
-            <Link href={`/properties/${propertyData.slug}`}>{propertyData.title}</Link>
+            <Link href={`/properties/${propertyData.slug}`}>
+              {propertyData.title}
+            </Link>
           </h2>
           <ul className="ltn__plot-brief">
             <li>
