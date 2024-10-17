@@ -34,12 +34,14 @@ export const uploadImage = async (file, propertyTitle) => {
 };
 
 // Upload video to Firebase Storage
+// Upload video to Firebase Storage
 export const uploadVideo = async (file, propertyTitle) => {
-  if (!file) return null;
-
-  const sanitizedTitle = propertyTitle.toLowerCase().replace(/\s+/g, '-'); // Sanitize title for folder name
-  const storageRef = ref(storage, `video/${sanitizedTitle}/${file.name}`); // Use the property title as folder name for videos
-  await uploadBytes(storageRef, file);
-  const downloadURL = await getDownloadURL(storageRef);
-  return downloadURL; // Return the video URL
-};
+    if (!file) return null;
+  
+    const sanitizedTitle = propertyTitle.toLowerCase().replace(/\s+/g, '-'); // Sanitize title for folder name
+    const storageRef = ref(storage, `video/${sanitizedTitle}/${file.name}`); // Use the property title as folder name for videos
+    await uploadBytes(storageRef, file);
+    const downloadURL = await getDownloadURL(storageRef);
+    return downloadURL; // Return the video URL
+  };
+  
