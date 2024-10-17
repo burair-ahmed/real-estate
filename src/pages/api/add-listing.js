@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
             res.status(201).json({ message: 'Property added successfully!', property: newProperty }); // Send success response
         } catch (error) {
-            console.error('Error adding property:', error);
+            console.error('Errors adding property:', error);
             res.status(400).json({ error: 'Error adding property', details: error.message }); // Handle errors
         }
     } else {
