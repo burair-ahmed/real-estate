@@ -5,6 +5,7 @@ import ShopBreadCrumb from "@/components/breadCrumbs/shop";
 import CallToAction from "@/components/callToAction";
 import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
+import { uploadImage } from '@/lib/firebaseConfig';
 
 function AddListingPage() {
   const [formData, setFormData] = useState({
@@ -123,12 +124,12 @@ function AddListingPage() {
     setActiveKey((prev) => prev + 1);
   };
 
-  const handleImageChange = (event) => {
+  const handleImageChange = async (event) => {
     const files = Array.from(event.target.files);
-    const fileURLs = files.map((file) => URL.createObjectURL(file));
+    const uploadedImageUrls = await Promise.all(files.map(file => uploadImage(file)));
     setFormData((prevData) => ({
       ...prevData,
-      images: fileURLs,
+      images: uploadedImageUrls.filter(url => url), // Filter out any null URLs
     }));
   };
 

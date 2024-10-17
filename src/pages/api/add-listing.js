@@ -15,6 +15,7 @@ export default async function handler(req, res) {
             const slugBase = propertyData.title.toLowerCase().replace(/\s+/g, '-'); // Create a base slug
             propertyData.slug = `${slugBase}-${nanoid(6)}`; // Append a unique ID to avoid duplicates
 
+            // Here, we assume propertyData.images already contains Firebase URLs
             const newProperty = new Property(propertyData); // Create a new property instance
             await newProperty.save(); // Save the new property to the database
 
