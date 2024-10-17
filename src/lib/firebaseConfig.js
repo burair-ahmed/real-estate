@@ -1,9 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getStorage } from 'firebase/storage';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { getAnalytics } from 'firebase/analytics'; // Importing analytics
-
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { getAnalytics } from 'firebase/analytics';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAifkVy81UpxoUGEBBglsoDzF6YoMS8Xkw",
@@ -24,13 +22,24 @@ if (typeof window !== 'undefined') {
 
 const storage = getStorage(app);
 
-
+// Upload image to Firebase Storage
 export const uploadImage = async (file, propertyTitle) => {
-    if (!file) return null;
+  if (!file) return null;
   
-    const sanitizedTitle = propertyTitle.toLowerCase().replace(/\s+/g, '-'); // Sanitize the title for folder name
-    const storageRef = ref(storage, `images/${sanitizedTitle}/${file.name}`); // Use the property title as folder name
-    await uploadBytes(storageRef, file);
-    const downloadURL = await getDownloadURL(storageRef);
-    return downloadURL; // Return the image URL
+  const sanitizedTitle = propertyTitle.toLowerCase().replace(/\s+/g, '-'); // Sanitize title for folder name
+  const storageRef = ref(storage, `images/${sanitizedTitle}/${file.name}`); // Use the property title as folder name
+  await uploadBytes(storageRef, file);
+  const downloadURL = await getDownloadURL(storageRef);
+  return downloadURL; // Return the image URL
+};
+
+// Upload video to Firebase Storage
+export const uploadVideo = async (file, propertyTitle) => {
+  if (!file) return null;
+
+  const sanitizedTitle = propertyTitle.toLowerCase().replace(/\s+/g, '-'); // Sanitize title for folder name
+  const storageRef = ref(storage, `video/${sanitizedTitle}/${file.name}`); // Use the property title as folder name for videos
+  await uploadBytes(storageRef, file);
+  const downloadURL = await getDownloadURL(storageRef);
+  return downloadURL; // Return the video URL
 };

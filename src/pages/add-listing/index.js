@@ -6,6 +6,8 @@ import CallToAction from "@/components/callToAction";
 import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 import { uploadImage } from '@/lib/firebaseConfig';
+import { uploadVideo } from "@/lib/firebaseConfig";
+
 
 function AddListingPage() {
   const [formData, setFormData] = useState({
@@ -46,7 +48,7 @@ function AddListingPage() {
       publicParking: false,
     },
     images: [],
-    video: null,
+    video: '',
   });
 
   const [inputValues, setInputValues] = useState({
@@ -136,16 +138,24 @@ function AddListingPage() {
 };
 
 
-  const handleVideoChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const fileURL = URL.createObjectURL(file);
-      setFormData((prevData) => ({
-        ...prevData,
-        video: fileURL,
-      }));
-    }
-  };
+const handleVideoChange = async (event) => {
+  const file = event.target.files[0]; // Get the video file
+  console.log(file); // Check if the file is being selected
+  if (!file) return;
+
+  try {
+    // Upload video to Firebase under the 'video' folder
+    const videoURL = await uploadImage(file, inputValues.propertyTitle, "video");
+    console.log(videoURL); // Check if the video URL is returned correctly
+    setFormData((prevData) => ({
+      ...prevData,
+      video: videoURL, // Store Firebase video URL in formData
+    }));
+  } catch (error) {
+    console.error("Error uploading video:", error);
+  }
+};
+
 
   const handlePrevStep = () => {
     if (activeKey > 0) setActiveKey((prev) => prev - 1);
