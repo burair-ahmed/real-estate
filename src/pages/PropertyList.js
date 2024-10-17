@@ -1,6 +1,6 @@
 // src/pages/PropertyList.js or src/components/PropertyList.js
 import React, { useEffect, useState } from 'react';
-import PropertyCard from '@/components/PropertyCard'; // Adjust the import path as necessary
+import PropertyCard from '@/components/PropertyCard'; 
 import axios from 'axios';
 
 const PropertyList = () => {
@@ -11,7 +11,7 @@ const PropertyList = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get('/api/listings'); // Adjust the endpoint as necessary
+        const response = await axios.get('/api/listings'); 
         setProperties(response.data);
       } catch (err) {
         setError('Failed to fetch properties');
@@ -35,10 +35,10 @@ const PropertyList = () => {
     <div className="property-list">
       {properties.map((property) => (
         <PropertyCard
-          key={property._id} // Use the unique property ID
+          key={property._id} 
           propertyData={property}
-          slug={property.slug} // Ensure this field exists in your data
-          baseUrl="properties" // Adjust according to your routing structure
+          slug={property.slug} 
+          baseUrl="properties" 
         />
       ))}
     </div>

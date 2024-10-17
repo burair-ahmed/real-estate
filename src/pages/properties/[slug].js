@@ -107,6 +107,7 @@ const PropertyDetail = () => {
                 </div>
 
                 {/* Property Details */}
+
                 <h1>{property.title}</h1>
                 <p>{property.description}</p>
                 <p>Price: ${property.price.toLocaleString()}</p>
@@ -114,6 +115,14 @@ const PropertyDetail = () => {
                 <p>Country: {property.country}</p>
                 <p>Address: {property.address}</p>
                 <p>Zip Code: {property.zipCode}</p>
+                <div className="">
+                                <video 
+                                src={property.video}
+                                width={200}
+                                height={400}
+                                controls
+                                />
+                                                            </div>
                 {/* Add other property details here */}
             </Container>
         </LayoutOne>
