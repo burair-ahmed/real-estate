@@ -30,7 +30,8 @@ function Shop() {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get('/api/listings'); // Adjust the endpoint as necessary
+        const response = await axios.get('/api/listings');
+        console.log(response.data); // Check if images are being fetched
         setProperties(response.data);
       } catch (err) {
         setError('Failed to fetch properties');
@@ -38,7 +39,7 @@ function Shop() {
         setLoading(false);
       }
     };
-
+  
     fetchProperties();
   }, []);
 
@@ -53,6 +54,8 @@ function Shop() {
     const newOffset = (event.selected * pageLimit) % properties.length;
     setOffset(newOffset);
   };
+
+  
 
   return (
     <LayoutOne topbar={true}>
