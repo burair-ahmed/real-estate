@@ -46,6 +46,8 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
             <img
               src={propertyData.images[0] || "/img/default-image.jpg"}
               alt={`${propertyData.title}`}
+              width={400}
+              height={300}
             />
           </Link>
         </div>

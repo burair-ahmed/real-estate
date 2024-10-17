@@ -85,7 +85,7 @@ const QuickViewModal = ({
               <div className="col-lg-6 col-12">
                 <div className="modal-product-info">
                   <h3>
-                    <Link onClick={modalClose} href={`/shop/${slug}`}>
+                    <Link onClick={modalClose} href={`/properties/${slug}`}>
                       {productData.title}
                     </Link>
                   </h3>
@@ -241,7 +241,7 @@ const QuickViewModal = ({
                     <Link
                       onClick={modalClose}
                       className="text-decoration"
-                      href={`/shop/${slug}`}
+                      href={`/properties/${slug}`}
                     >
                       <small>View Details</small>
                     </Link>
