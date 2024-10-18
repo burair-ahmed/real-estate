@@ -62,7 +62,7 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
             </ul>
           </div>
           <div className="product-price">
-            <span>${propertyData.price}</span>
+            <span>AED{propertyData.price}</span>
           </div>
           <h2 className="product-title">
             <Link href={`/properties/${propertyData.slug}`}>

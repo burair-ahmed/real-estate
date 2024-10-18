@@ -93,6 +93,18 @@ const PropertyDetail = () => {
                         {...propertyDetailsCarouselSettings}
                         className="ltn__image-slider-5-active slick-arrow-1 slick-arrow-1-inner"
                     >
+                            {property.video && (
+        <div className="ltn__img-slide-item-4">
+            <video
+                src={property.video}
+                controls
+                height={400}
+                width={700}
+                alt="Property video"
+            />
+        </div>
+    )}
+
                         {property.images.map((imageUrl, key) => (
                             <div className="ltn__img-slide-item-4" key={key}>
                                 <img 
