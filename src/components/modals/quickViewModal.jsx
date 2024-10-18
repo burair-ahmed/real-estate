@@ -79,23 +79,20 @@ const QuickViewModal = ({
             <div className="row">
               <div className="col-lg-6 col-12">
                 <div className="modal-product-img">
-                  <img src="/img/product/4.png" alt="#" />
+                  <img src={productData.images[0]} alt="#" />
                 </div>
               </div>
               <div className="col-lg-6 col-12">
                 <div className="modal-product-info">
-                  <h3>
+                  <h3 className="">
                     <Link onClick={modalClose} href={`/properties/${slug}`}>
                       {productData.title}
                     </Link>
                   </h3>
                   <div className="product-price">
                     <div>
-                      <span>${discountedprice}</span>
-                      <del>{productprice}</del>
-                      <span className="on-sale">
-                        {productData.discount} % Off
-                      </span>
+                      <span>${productData.price }</span>
+                   
                     </div>
                     {productData.rating && productData.rating > 0 ? (
                       <div className="product-quickview__rating-wrap">

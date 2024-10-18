@@ -10,6 +10,7 @@ import {
 import QuickViewModal from "@/components/modals/quickViewModal";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { FaMapMarker, FaMapMarkerAlt } from "react-icons/fa";
 
 const PropertyCard = ({ propertyData, wishlistItem }) => {
   // Log propertyData to check the structure and slug
@@ -60,7 +61,7 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
             </ul>
           </div>
           <div className="product-price">
-            <span>AED{propertyData.price}</span>
+            <span>AED {propertyData.price}</span>
           </div>
           <h2 className="product-title">
             <Link href={`/properties/${propertyData.slug}`}>
@@ -69,12 +70,15 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
           </h2>
           <ul className="ltn__plot-brief">
             <li>
-              <span>{propertyData.features.bedrooms}</span>
-              <span className="ms-1">Bedrooms</span>
+            <span className="ms-1"><FaMapMarkerAlt/></span>
+              <span>{propertyData.country}</span>
+             
+
+             
             </li>
             <li>
-              <span>{propertyData.features.bathrooms}</span>
-              <span className="ms-1">Bathrooms</span>
+            <span>{propertyData.categories}</span>
+            <span className="ms-1"></span>
             </li>
             <li>
               <span>{propertyData.features.area}</span>
