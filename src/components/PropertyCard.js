@@ -20,9 +20,7 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
     console.error("Slug is undefined for property:", propertyData.title);
   }
 
-  let badgeText = propertyData.propertytype.includes("Rent")
-    ? "For Rent"
-    : "For Sale";
+  let badgeText = propertyData.propertytype 
   const dispatch = useDispatch();
   const [modalShow, setModalShow] = useState(false);
 
@@ -55,7 +53,7 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
           <div className="product-badge">
             <ul>
               <li
-                className={`${propertyData.propertytype ? "sale-badge" : ""}`}
+                className={`${propertyData.propertytype[0] ? "sale-badge" : ""} ${propertyData.propertytype[1] ? "rent-badge" : ""} ${propertyData.propertytype[2] ? "development-badge" : ""}`}
               >
                 {badgeText}
               </li>

@@ -5,6 +5,8 @@ import Slider from "react-slick";
 import { Container } from "react-bootstrap"; // Ensure you're using Bootstrap for layout
 import BreadCrumb from "@/components/breadCrumbs"; // Import your BreadCrumb component
 import { LayoutOne } from "@/layouts"; // Import your Layout component
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+
 
 const PropertyDetail = () => {
     const router = useRouter();
@@ -35,6 +37,34 @@ const PropertyDetail = () => {
     if (loading) return <p>Loading...</p>;
     if (!property) return <p>No property found!</p>;
 
+    const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
+        <button
+          {...props}
+          className={
+            "slick-prev slick-arrow" + (currentSlide === 0 ? " slick-disabled" : "")
+          }
+          aria-hidden="true"
+          aria-disabled={currentSlide === 0 ? true : false}
+          type="button"
+        >
+          <FaArrowLeft />
+        </button>
+      );
+      const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
+        <button
+          {...props}
+          className={
+            "slick-next slick-arrow" +
+            (currentSlide === slideCount - 1 ? " slick-disabled" : "")
+          }
+          aria-hidden="true"
+          aria-disabled={currentSlide === slideCount - 1 ? true : false}
+          type="button"
+        >
+          <FaArrowRight />
+        </button>
+      );
+
     const propertyDetailsCarouselSettings = {
         centerMode: true,
         infinite: true,
@@ -42,6 +72,8 @@ const PropertyDetail = () => {
         slidesToShow: 1,
         dots: false,
         speed: 500,
+        prevArrow: <SlickArrowLeft />,
+        nextArrow: <SlickArrowRight />,
         responsive: [
             {
                 breakpoint: 1600,
@@ -82,7 +114,7 @@ const PropertyDetail = () => {
     return (
         <LayoutOne>
             <BreadCrumb
-                title="Property Details"
+                title={property.title}
                 sectionPace="mb-0"
                 currentSlug={property.title}
             />
