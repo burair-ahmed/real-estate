@@ -7,7 +7,7 @@ import Slider from "react-slick";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { LayoutOne } from "@/layouts";
 import HeroSectionStyleOne from "@/components/hero/styleOne";
-import CarDealerSearchForm from "@/components/carDealerSearchForm";
+import CarDealerSearchForm from "@/components/SearchForm";
 import AboutUsStyleOne from "@/components/aboutUs/aboutUsStyleOne";
 import AboutUsStyleTwo from "@/components/aboutUs/aboutUsStyleTwo";
 import CounterUp from "@/components/counterUp";
