@@ -10,7 +10,7 @@ import {
 import QuickViewModal from "@/components/modals/quickViewModal";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import { FaMapMarker, FaMapMarkerAlt } from "react-icons/fa";
+import { FaMapMarker, FaMapMarkerAlt, FaCamera, FaFilm } from "react-icons/fa";
 
 const PropertyCard = ({ propertyData, wishlistItem }) => {
   // Log propertyData to check the structure and slug
@@ -39,7 +39,7 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
 
   return (
     <>
-      <div className="ltn__product-item ltn__product-item-4 ltn__product-item-5">
+      <div className="ltn__product-item ltn__product-item-4">
         <div className="product-img">
           <Link href={`/properties/${propertyData.slug}`}>
             <img
@@ -49,40 +49,85 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
               height={300}
             />
           </Link>
-        </div>
-        <div className="product-info">
           <div className="product-badge">
             <ul>
               <li
-                className={`${propertyData.propertytype[0] ? "sale-badge" : ""} ${propertyData.propertytype[1] ? "rent-badge" : ""} ${propertyData.propertytype[2] ? "development-badge" : ""}`}
+                  className={`${propertyData.propertytype[0] ? "sale-badge" : ""} ${propertyData.propertytype[1] ? "rent-badge" : ""} ${propertyData.propertytype[2] ? "development-badge" : ""}`}
               >
                 {badgeText}
               </li>
             </ul>
           </div>
-          <div className="product-price">
-            <span>AED {propertyData.price}</span>
+          <div className="product-img-location-gallery">
+            <div className="product-img-location">
+              <ul>
+                <li>
+                  <Link href="/locations">
+                    <i className="flaticon-pin"></i>
+                    {propertyData.country}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="product-img-gallery">
+              <ul>
+                <li>
+                  <Link
+                    className="d-flex align-items-center justify-content-center"
+                    href={`/properties/${propertyData.slug}`}
+                  >
+                    <FaCamera className="me-2" />
+                    {propertyData.images.length}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="d-flex align-items-center justify-content-center"
+                    href={`/properties/${propertyData.slug}`}
+                  >
+                    <FaFilm className="me-2" />
+                    1
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="product-info">
+        
+        <div className="product-price">
+            <span>
+              {`AED ${propertyData.price}`}
+              <label></label>
+            </span>
           </div>
           <h2 className="product-title">
-            <Link href={`/properties/${propertyData.slug}`}>
-              {propertyData.title}
-            </Link>
+            <Link href={`/properties/${propertyData.slug}`}>{propertyData.title}</Link>
           </h2>
-          <ul className="ltn__plot-brief">
+          <div className="product-description">
+            <p>{propertyData.description}</p>
+          </div>
+          <ul className="ltn__list-item-2 ltn__list-item-2-before">
             <li>
-            <span className="ms-1"><FaMapMarkerAlt/></span>
-              <span>{propertyData.country}</span>
-             
-
-             
+              <span>
+                {propertyData.features.bedrooms}
+                <i className="flaticon-bed"></i>
+              </span>
+              Bedrooms
             </li>
             <li>
-            <span>{propertyData.categories}</span>
-            <span className="ms-1"></span>
+              <span>
+                {propertyData.features.bathrooms}
+                <i className="flaticon-clean"></i>
+              </span>
+              Bathrooms
             </li>
             <li>
-              <span>{propertyData.features.area}</span>
-              <span className="ms-1">sq ft</span>
+              <span>
+                {propertyData.features.area}
+                <i className="flaticon-square-shape-design-interface-tool-symbol"></i>
+              </span>
+              square Ft
             </li>
           </ul>
           <div className="product-hover-action">
