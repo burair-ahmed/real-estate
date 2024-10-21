@@ -10,7 +10,7 @@ const VideoBanner = () => {
         channel="youtube"
         autoplay
         isOpen={isOpen}
-        videoId="X7R-q9rsrtU"
+        videoId="wmUJwQNGK3k"
         onClose={() => setOpen(false)}
       />
       <div
