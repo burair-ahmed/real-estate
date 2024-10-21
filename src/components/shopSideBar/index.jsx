@@ -7,7 +7,7 @@ import {
 } from "@/lib/product";
 import FilterByPrice from "../FilterByPrice";
 
-const SideBar = ({ properties, getSortParams }) => {
+const SideBar = ({ properties = [], getSortParams }) => {
   const aminities = getIndividualAminities(properties);
   const aminitiesList = getIndividualAminitiesList(properties);
   const priceRanges = priceRange(properties);
@@ -15,14 +15,16 @@ const SideBar = ({ properties, getSortParams }) => {
   // Function to get individual categories from the properties
   const getIndividualCategoriesList = (properties) => {
     let categoriesList = [];
-    properties.forEach((property) => {
-      // Check if property.categories is an array
-      if (Array.isArray(property.categories)) {
-        property.categories.forEach((category) => {
-          categoriesList.push(category);
-        });
-      }
-    });
+    if (Array.isArray(properties)) {
+      properties.forEach((property) => {
+        // Check if property.categories is an array
+        if (Array.isArray(property.categories)) {
+          property.categories.forEach((category) => {
+            categoriesList.push(category);
+          });
+        }
+      });
+    }
     // Filter out duplicate categories
     return [...new Set(categoriesList)];
   };
@@ -32,18 +34,20 @@ const SideBar = ({ properties, getSortParams }) => {
   // Function to get individual proximities from the properties
   const getIndividualProximitiesList = (properties) => {
     let proximitiesList = [];
-    properties.forEach((property) => {
-      // Check if property.proximities is an object
-      if (property.proximities && typeof property.proximities === 'object') {
-        // Extract keys from the object to get proximity names
-        Object.keys(property.proximities).forEach((key) => {
-          // If the proximity value is true, include it in the list
-          if (property.proximities[key]) {
-            proximitiesList.push(key);
-          }
-        });
-      }
-    });
+    if (Array.isArray(properties)) {
+      properties.forEach((property) => {
+        // Check if property.proximities is an object
+        if (property.proximities && typeof property.proximities === 'object') {
+          // Extract keys from the object to get proximity names
+          Object.keys(property.proximities).forEach((key) => {
+            // If the proximity value is true, include it in the list
+            if (property.proximities[key]) {
+              proximitiesList.push(key);
+            }
+          });
+        }
+      });
+    }
     // Filter out duplicate proximities
     return [...new Set(proximitiesList)];
   };
