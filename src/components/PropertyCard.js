@@ -10,6 +10,7 @@ import {
 import QuickViewModal from "@/components/modals/quickViewModal";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { FaMapMarker, FaMapMarkerAlt } from "react-icons/fa";
 
 const PropertyCard = ({ propertyData, wishlistItem }) => {
   // Log propertyData to check the structure and slug
@@ -20,9 +21,7 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
     console.error("Slug is undefined for property:", propertyData.title);
   }
 
-  let badgeText = propertyData.propertytype.includes("Rent")
-    ? "For Rent"
-    : "For Sale";
+  let badgeText = propertyData.propertytype 
   const dispatch = useDispatch();
   const [modalShow, setModalShow] = useState(false);
 
@@ -55,14 +54,14 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
           <div className="product-badge">
             <ul>
               <li
-                className={`${propertyData.propertytype ? "sale-badge" : ""}`}
+                className={`${propertyData.propertytype[0] ? "sale-badge" : ""} ${propertyData.propertytype[1] ? "rent-badge" : ""} ${propertyData.propertytype[2] ? "development-badge" : ""}`}
               >
                 {badgeText}
               </li>
             </ul>
           </div>
           <div className="product-price">
-            <span>${propertyData.price}</span>
+            <span>AED {propertyData.price}</span>
           </div>
           <h2 className="product-title">
             <Link href={`/properties/${propertyData.slug}`}>
@@ -71,12 +70,15 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
           </h2>
           <ul className="ltn__plot-brief">
             <li>
-              <span>{propertyData.features.bedrooms}</span>
-              <span className="ms-1">Bedrooms</span>
+            <span className="ms-1"><FaMapMarkerAlt/></span>
+              <span>{propertyData.country}</span>
+             
+
+             
             </li>
             <li>
-              <span>{propertyData.features.bathrooms}</span>
-              <span className="ms-1">Bathrooms</span>
+            <span>{propertyData.categories}</span>
+            <span className="ms-1"></span>
             </li>
             <li>
               <span>{propertyData.features.area}</span>
