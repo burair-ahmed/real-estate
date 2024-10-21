@@ -25,7 +25,6 @@ import testimonialData from "@/data/testimonial";
 import featuresData from "@/data/service";
 import TitleSection2 from "@/components/titleSection/index2";
 
-
 function HomePage(props) {
   const { products } = useSelector((state) => state.product);
   const featuredProducts = getProducts(products, "buying", "featured", 5);
@@ -118,34 +117,6 @@ function HomePage(props) {
       },
     ],
   };
-
-  // const blogSettings = {
-  //   dots: false,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 3,
-  //   slidesToScroll: 1,
-  //   prevArrow: <SlickArrowLeft />,
-  //   nextArrow: <SlickArrowRight />,
-
-  //   responsive: [
-  //     {
-  //       breakpoint: 1199,
-  //       settings: {
-  //         slidesToShow: 2,
-  //         slidesToScroll: 1,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 575,
-  //       settings: {
-  //         slidesToShow: 1,
-  //         slidesToScroll: 1,
-  //       },
-  //     },
-  //   ],
-  // };
-
 
   const { cartItems } = useSelector((state) => state.cart);
   const { wishlistItems } = useSelector((state) => state.wishlist);
@@ -279,7 +250,19 @@ function HomePage(props) {
                             <div className="apartments-plan-info ltn__secondary-bg text-color-white">
                               <h2>The Studio</h2>
                               <p>
-                              Discover modern living at its finest in The Studio, a thoughtfully designed space that offers 2800 sq. ft. of stylish comfort. This chic residence includes a cozy 150 sq. ft. bedroom, a contemporary 45 sq. ft. bathroom, and a spacious 650 sq. ft. lounge, perfect for both work and relaxation. The pet-friendly balcony offers a peaceful outdoor retreat, adding to the charm of this sophisticated studio. Whether you&apos;re looking for a creative haven or a luxurious sanctuary, The Studio provides a perfect balance of functionality and elegance for the modern lifestyle.
+                                Discover modern living at its finest in The
+                                Studio, a thoughtfully designed space that
+                                offers 2800 sq. ft. of stylish comfort. This
+                                chic residence includes a cozy 150 sq. ft.
+                                bedroom, a contemporary 45 sq. ft. bathroom, and
+                                a spacious 650 sq. ft. lounge, perfect for both
+                                work and relaxation. The pet-friendly balcony
+                                offers a peaceful outdoor retreat, adding to the
+                                charm of this sophisticated studio. Whether
+                                you&apos;re looking for a creative haven or a
+                                luxurious sanctuary, The Studio provides a
+                                perfect balance of functionality and elegance
+                                for the modern lifestyle.
                               </p>
                               <div className="apartments-info-list apartments-info-list-color mt-40">
                                 <ul>
@@ -322,7 +305,19 @@ function HomePage(props) {
                             <div className="apartments-plan-info ltn__secondary-bg text-color-white">
                               <h2>Deluxe Portion</h2>
                               <p>
-                              Experience the epitome of luxury living with this stunning deluxe portion, designed to offer comfort and elegance in every corner. Spanning across 2800 sq. ft., this spacious residence boasts a beautifully crafted 150 sq. ft. bedroom, a modern 45 sq. ft. bathroom, and a relaxing lounge perfect for unwinding. With a pet-friendly balcony to enjoy fresh air, this home provides a serene escape while offering all the essentials for a contemporary lifestyle. Discover a harmonious blend of sophistication and convenience, making it an ideal choice for those who seek refined living.
+                                Experience the epitome of luxury living with
+                                this stunning deluxe portion, designed to offer
+                                comfort and elegance in every corner. Spanning
+                                across 2800 sq. ft., this spacious residence
+                                boasts a beautifully crafted 150 sq. ft.
+                                bedroom, a modern 45 sq. ft. bathroom, and a
+                                relaxing lounge perfect for unwinding. With a
+                                pet-friendly balcony to enjoy fresh air, this
+                                home provides a serene escape while offering all
+                                the essentials for a contemporary lifestyle.
+                                Discover a harmonious blend of sophistication
+                                and convenience, making it an ideal choice for
+                                those who seek refined living.
                               </p>
                               <div className="apartments-info-list apartments-info-list-color mt-40">
                                 <ul>
@@ -365,7 +360,18 @@ function HomePage(props) {
                             <div className="apartments-plan-info ltn__secondary-bg text-color-white">
                               <h2>Penthouse</h2>
                               <p>
-                              Indulge in the ultimate luxury with this magnificent penthouse, where modern elegance meets expansive living. Covering a grand total of 2800 sq. ft., this exquisite space features a generously sized 150 sq. ft. bedroom, a sleek 45 sq. ft. bathroom, and a stunning 650 sq. ft. lounge perfect for entertaining or relaxing. The pet-friendly balcony offers breathtaking views, providing the perfect setting for tranquil moments. Designed for those who appreciate the finer things in life, this penthouse delivers a sophisticated and lavish lifestyle.
+                                Indulge in the ultimate luxury with this
+                                magnificent penthouse, where modern elegance
+                                meets expansive living. Covering a grand total
+                                of 2800 sq. ft., this exquisite space features a
+                                generously sized 150 sq. ft. bedroom, a sleek 45
+                                sq. ft. bathroom, and a stunning 650 sq. ft.
+                                lounge perfect for entertaining or relaxing. The
+                                pet-friendly balcony offers breathtaking views,
+                                providing the perfect setting for tranquil
+                                moments. Designed for those who appreciate the
+                                finer things in life, this penthouse delivers a
+                                sophisticated and lavish lifestyle.
                               </p>
                               <div className="apartments-info-list apartments-info-list-color mt-40">
                                 <ul>
@@ -408,7 +414,19 @@ function HomePage(props) {
                             <div className="apartments-plan-info ltn__secondary-bg text-color-white">
                               <h2>Top Garden</h2>
                               <p>
-                              Step into serene luxury with this exquisite Top Garden residence, offering 2800 sq. ft. of refined living space. This elegant home features a spacious 150 sq. ft. bedroom, a modern 45 sq. ft. bathroom, and a grand 650 sq. ft. lounge, perfect for relaxing or hosting guests. The pet-friendly balcony invites you to enjoy peaceful moments surrounded by nature, blending outdoor beauty with indoor comfort. Crafted to meet the highest standards of living, this garden oasis offers a harmonious balance of sophistication and tranquility, ideal for those who seek a peaceful retreat.
+                                Step into serene luxury with this exquisite Top
+                                Garden residence, offering 2800 sq. ft. of
+                                refined living space. This elegant home features
+                                a spacious 150 sq. ft. bedroom, a modern 45 sq.
+                                ft. bathroom, and a grand 650 sq. ft. lounge,
+                                perfect for relaxing or hosting guests. The
+                                pet-friendly balcony invites you to enjoy
+                                peaceful moments surrounded by nature, blending
+                                outdoor beauty with indoor comfort. Crafted to
+                                meet the highest standards of living, this
+                                garden oasis offers a harmonious balance of
+                                sophistication and tranquility, ideal for those
+                                who seek a peaceful retreat.
                               </p>
                               <div className="apartments-info-list apartments-info-list-color mt-40">
                                 <ul>
@@ -451,7 +469,20 @@ function HomePage(props) {
                             <div className="apartments-plan-info ltn__secondary-bg text-color-white">
                               <h2>Double Height</h2>
                               <p>
-                              Immerse yourself in luxury with this stunning Double Height residence, designed to elevate your living experience. Spanning 2800 sq. ft., this remarkable home offers a 150 sq. ft. bedroom, a stylish 45 sq. ft. bathroom, and a spacious 650 sq. ft. lounge, perfect for relaxation or entertaining. The striking double-height ceilings create an airy, open atmosphere, while the pet-friendly balcony provides a peaceful outdoor escape. Blending modern sophistication with architectural elegance, this residence promises an unmatched living experience for those who appreciate space, light, and style.
+                                Immerse yourself in luxury with this stunning
+                                Double Height residence, designed to elevate
+                                your living experience. Spanning 2800 sq. ft.,
+                                this remarkable home offers a 150 sq. ft.
+                                bedroom, a stylish 45 sq. ft. bathroom, and a
+                                spacious 650 sq. ft. lounge, perfect for
+                                relaxation or entertaining. The striking
+                                double-height ceilings create an airy, open
+                                atmosphere, while the pet-friendly balcony
+                                provides a peaceful outdoor escape. Blending
+                                modern sophistication with architectural
+                                elegance, this residence promises an unmatched
+                                living experience for those who appreciate
+                                space, light, and style.
                               </p>
                               <div className="apartments-info-list apartments-info-list-color mt-40">
                                 <ul>
@@ -493,7 +524,6 @@ function HomePage(props) {
             </Row>
           </Container>
         </div>
-
 
         {/* <!-- VIDEO AREA START --> */}
         <div className="ltn__video-popup-area">
@@ -558,37 +588,7 @@ function HomePage(props) {
             </Slider>
           </Container>
         </div>
-        {/* <!-- TESTIMONIAL AREA END --> */}
-
-        {/* <!-- BLOG AREA START (blog-3) -->  */}
-        {/* <div className="ltn__blog-area pb-70">
-          <Container>
-            <Row>
-              <Col lg={12}>
-                <TitleSection
-                  sectionClasses="text-center"
-                  headingClasses="section-subtitle-2"
-                  titleSectionData={{
-                    subTitle: "News & Blogs",
-                    title: "Leatest News Feeds",
-                  }}
-                />
-              </Col>
-            </Row>
-            <Slider
-              {...blogSettings}
-              className="ltn__blog-slider-one-active slick-arrow-1 ltn__blog-item-3-normal"
-            >
-              {blogData.map((data, key) => {
-                const slug = productSlug(data.title);
-                return (
-                  <BlogItem key={key} baseUrl="blog" data={data} slug={slug} />
-                );
-              })}
-            </Slider>
-          </Container>
-        </div> */}
-        {/* <!-- BLOG AREA END --> */}
+        {/* TESTIMONIAL AREA END  */}
 
         <div className="ltn__call-to-action-area call-to-action-6 before-bg-bottom">
           <Container>
