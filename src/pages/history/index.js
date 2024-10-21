@@ -7,8 +7,6 @@ import TitleSection from "@/components/titleSection";
 import Slider from "react-slick";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { productSlug } from "@/lib/product";
-import BlogItem from "@/components/blog";
-import blogData from "@/data/blog";
 import {
     FaTrophy,
     FaAward,
@@ -47,32 +45,6 @@ function HistoryPage() {
         </button>
     );
 
-    const blogSettings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        prevArrow: <SlickArrowLeft />,
-        nextArrow: <SlickArrowRight />,
-
-        responsive: [
-            {
-                breakpoint: 1199,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                },
-            },
-            {
-                breakpoint: 575,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                },
-            },
-        ],
-    };
     return (
         <LayoutOne topbar={true}>
             <ShopBreadCrumb title="Our History" sectionPace="" currentSlug="History" />
@@ -300,39 +272,6 @@ function HistoryPage() {
                     </Row>
                 </Container>
             </div>
-
-
-            {/* <!-- BLOG AREA START (blog-3) -->  */}
-            <div className="ltn__blog-area pt-120 pb-70">
-                <Container>
-                    <Row>
-                        <Col lg={12}>
-                            <TitleSection2
-                                sectionClasses="text-center"
-                                headingClasses="section-subtitle-custom"
-                                titleSectionData2={{
-                                    subTitle2: "News & Blogs",
-                                    title2: "Latest News Feeds",
-                                }}
-                            />
-                        </Col>
-                    </Row>
-                    <Slider
-                        {...blogSettings}
-                        className="ltn__blog-slider-one-active slick-arrow-1 ltn__blog-item-3-normal"
-                    >
-                        {blogData.map((data, key) => {
-                            const slug = productSlug(data.title);
-                            return (
-                                <BlogItem key={key} baseUrl="blog" data={data} slug={slug} />
-                            );
-                        })}
-                    </Slider>
-                </Container>
-            </div>
-            {/* <!-- BLOG AREA END --> */}
-
-
 
             <div className="ltn__call-to-action-area call-to-action-6 before-bg-bottom">
                 <Container>

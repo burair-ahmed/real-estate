@@ -20,8 +20,8 @@ import aminitiesData from "@/data/aminities/index.json";
 import AminitiesItem from "@/components/aminities/item";
 import TestimonialCarouselItem from "@/components/testimonialCarousel";
 import testimonialData from "@/data/testimonial";
-import BlogItem from "@/components/blog";
-import blogData from "@/data/blog";
+// import BlogItem from "@/components/blog";
+// import blogData from "@/data/blog";
 import featuresData from "@/data/service";
 import TitleSection2 from "@/components/titleSection/index2";
 
@@ -118,32 +118,32 @@ function HomePage(props) {
         ],
     };
 
-    const blogSettings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        prevArrow: <SlickArrowLeft />,
-        nextArrow: <SlickArrowRight />,
+    // const blogSettings = {
+    //     dots: false,
+    //     infinite: true,
+    //     speed: 500,
+    //     slidesToShow: 3,
+    //     slidesToScroll: 1,
+    //     prevArrow: <SlickArrowLeft />,
+    //     nextArrow: <SlickArrowRight />,
 
-        responsive: [
-            {
-                breakpoint: 1199,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                },
-            },
-            {
-                breakpoint: 575,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                },
-            },
-        ],
-    };
+    //     responsive: [
+    //         {
+    //             breakpoint: 1199,
+    //             settings: {
+    //                 slidesToShow: 2,
+    //                 slidesToScroll: 1,
+    //             },
+    //         },
+    //         {
+    //             breakpoint: 575,
+    //             settings: {
+    //                 slidesToShow: 1,
+    //                 slidesToScroll: 1,
+    //             },
+    //         },
+    //     ],
+    // };
 
 
     const { cartItems } = useSelector((state) => state.cart);
