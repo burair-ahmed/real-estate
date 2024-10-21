@@ -49,7 +49,7 @@ function AboutUsStyleTwo({ sectionSpace }) {
               <div className="about-us-info-wrap">
                 <div className="section-title-area ltn__section-title-2--- mb-30">
                   <h6 className="section-subtitle2 section-subtitle-custom ltn__secondary-color">
-                    About Us
+                    Featured Property
                   </h6>
                   <h1 className="section-title2">Properties Sold Today</h1>
                   <p>
