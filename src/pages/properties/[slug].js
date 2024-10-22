@@ -81,6 +81,7 @@ const PropertyDetail = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           centerPadding: "250px",
+   
         },
       },
       {
@@ -89,6 +90,7 @@ const PropertyDetail = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           centerPadding: "250px",
+      
         },
       },
       {
@@ -105,7 +107,7 @@ const PropertyDetail = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           centerPadding: "0px",
-          dots: true,
+       
         },
       },
     ],
@@ -135,7 +137,7 @@ const PropertyDetail = () => {
       />
       <Container fluid className="px-0">
         {/* Property Image Slider Area */}
-        <div className="ltn__img-slider-area mb-90">
+        <div className="ltn__img-slider-area mb-100">
           <Slider
             {...propertyDetailsCarouselSettings}
             className="row ltn__image-slider-5-active slick-arrow-1 slick-arrow-1-inner ltn__no-gutter-all g-0"
@@ -145,7 +147,7 @@ const PropertyDetail = () => {
                 <video
                   src={property.video}
                   controls
-                  height={400}
+                  height={450}
                   width={700}
                   alt="Property video"
                 />
@@ -157,7 +159,7 @@ const PropertyDetail = () => {
                 <img
                   src={imageUrl}
                   alt={`Property image ${key + 1}`}
-                  height={400}
+                  height={450}
                   width={700}
                 />
               </div>

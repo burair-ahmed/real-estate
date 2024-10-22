@@ -56,7 +56,8 @@ export default async function handler(req, res) {
       username,
       email,
       password: hashedPassword,
-      profilePicture, // Save Base64 encoded image
+      profilePicture, 
+      role: 'User', // Explicitly set the role
     });
 
     try {

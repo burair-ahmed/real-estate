@@ -20,7 +20,11 @@ export default async function handler(req, res) {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     // Fetch the user from the database using the ID from the decoded token
+<<<<<<< HEAD
     const user = await User.findById(decoded.id).select('firstname lastname email profilePicture username');
+=======
+    const user = await User.findById(decoded.id).select('firstname lastname email profilePicture role');
+>>>>>>> 4fb718d596d3c304a05bb66f76bfbe2cf154553a
 
     // Check if the user was found
     if (!user) {
