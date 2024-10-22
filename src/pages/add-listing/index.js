@@ -7,6 +7,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 import { uploadImage } from '@/lib/firebaseConfig';
 import { uploadVideo } from "@/lib/firebaseConfig";
+import { useEffect } from "react";
 
 
 function AddListingPage() {
@@ -50,6 +51,9 @@ function AddListingPage() {
     images: [],
     video: '',
   });
+
+
+
 
   const [inputValues, setInputValues] = useState({
     propertyTitle: "",
@@ -226,6 +230,38 @@ const handleVideoChange = async (event) => {
       console.error("Error while submitting the form:", error);
     }
   };
+
+
+
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await fetch("/api/getUser", {
+        method: "GET",
+        credentials: "include", // Important to send cookies
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        console.log("Fetched user data:", data); // Log user data
+        setUser(data);
+      } else {
+        console.error("Failed to fetch user data", await res.text());
+      }
+
+      setLoading(false);
+    };
+
+    fetchUser();
+  }, []);
+
+  if (!user) {
+    return <div>Please log in.</div>; // If no user data, prompt to log in
+  }
+
+
 
   return (
     <>

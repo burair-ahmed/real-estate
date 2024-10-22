@@ -11,6 +11,10 @@ import Col from "react-bootstrap/Col";
 import clsx from "clsx";
 import { FaCartArrowDown, FaRegUser, FaSearch, FaTimes } from "react-icons/fa";
 import MenuList from "@/components/header/elements/menuList";
+import { useRouter } from "next/router";
+
+
+
 const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
   const [searchFormOpener, searchFormOpenerSet] = useState(false);
 
@@ -53,12 +57,17 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
   const [headerHeight, setHeaderHeight] = useState(0);
   useEffect(() => {
     const header = document.querySelector(".ltn__header-sticky");
-    setHeaderHeight(header.offsetHeight);
+    if (header) {
+      setHeaderHeight(header.offsetHeight);
+    } else {
+      console.warn("Header element not found");
+    }
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  
 
   const handleScroll = () => {
     setScroll(window.scrollY);
@@ -80,6 +89,62 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
   useEffect(() => {
     setCurrentItems(updatedProducts);
   }, [products, query]);
+
+
+
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true; // Track if the component is mounted
+  
+    const fetchUser = async () => {
+      const res = await fetch('/api/getUser', {
+        method: 'GET',
+        credentials: 'include',
+      });
+  
+      if (res.ok) {
+        const data = await res.json();
+        console.log('Fetched user data:', data);
+        if (isMounted) {
+          setUser(data);
+        }
+      } else {
+        console.error('Failed to fetch user data', await res.text());
+      }
+  
+      if (isMounted) {
+        setLoading(false);
+      }
+    };
+  
+    fetchUser();
+  
+    return () => {
+      isMounted = false; // Cleanup on unmount
+    };
+  }, []);
+  
+  // Show loading state while fetching user data
+  if (loading) {
+    return <div>Loading...</div>; // Optional: Show loading indicator
+  }
+
+  const router = useRouter();
+  const handleLogout = async () => {
+    const res = await fetch("/api/logout", {
+      method: "POST", // Use POST for logout
+    });
+
+    if (res.ok) {
+      // Redirect to login page after successful logout
+      router.push("/login");
+    } else {
+      console.error("Failed to log out");
+    }
+  };
+
 
   return (
     <>
@@ -173,28 +238,46 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
                 </div>
                 {/* <!-- user-menu --> */}
                 <div className="ltn__drop-menu user-menu">
-                  <ul>
-                    <li>
-                      <Link href="#">
-                        <FaRegUser />
-                      </Link>
-                      <ul>
-                        <li>
-                          <Link href="/login">Sign in</Link>
-                        </li>
-                        <li>
-                          <Link href="/register">Register</Link>
-                        </li>
-                        <li>
-                          <Link href="/my-account">My Account</Link>
-                        </li>
-                        {/* <li>
-                          <Link href="/wishlist">Wishlist</Link>
-                        </li> */}
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
+      <ul>
+        <li>
+          {user ? (
+            <>
+              {/* Render profile picture if user is logged in */}
+              <Link href="/my-account">
+                <img
+                  src={user.profilePicture || '/default-profile.png'} // Fallback to default image if none
+                  alt="Profile"
+                  className="user-profile-pic"
+                />
+              </Link>
+              <ul>
+                <li>
+                  <Link href="/my-account">My Account</Link>
+                </li>
+                <li>
+                  <Link href="#" onClick={handleLogout}>Logout</Link> {/* Implement logout functionality */}
+                </li>
+              </ul>
+            </>
+          ) : (
+            <>
+              {/* Render icon if user is not logged in */}
+              <Link href="/login">
+                <FaRegUser />
+              </Link>
+              <ul>
+                <li>
+                  <Link href="/login">Sign in</Link>
+                </li>
+                <li>
+                  <Link href="/register">Register</Link>
+                </li>
+              </ul>
+            </>
+          )}
+        </li>
+      </ul>
+    </div>
                 {/* <!-- mini-cart --> */}
                 {/* <div className="mini-cart-icon">
                   <button

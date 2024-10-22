@@ -24,7 +24,6 @@ import {
   FaGlobe,
 } from "react-icons/fa";
 import Link from "next/link";
-import jwt_decode from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -33,13 +32,19 @@ function MyAccount() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
+  // Password change states
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState("");
+
   useEffect(() => {
     const fetchUser = async () => {
       const res = await fetch("/api/getUser", {
         method: "GET",
         credentials: "include", // Important to send cookies
       });
-    
+
       if (res.ok) {
         const data = await res.json();
         console.log("Fetched user data:", data); // Log user data
@@ -47,10 +52,9 @@ function MyAccount() {
       } else {
         console.error("Failed to fetch user data", await res.text());
       }
-    
+
       setLoading(false);
     };
-    
 
     fetchUser();
   }, []);
@@ -65,6 +69,38 @@ function MyAccount() {
       router.push("/login");
     } else {
       console.error("Failed to log out");
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Check if new password and confirm password match
+    if (newPassword !== confirmPassword) {
+      setMessage("New passwords do not match.");
+      return;
+    }
+
+    // Call the API to change the password
+    const response = await fetch("/api/changepassword/changePassword", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`, // Replace with your JWT storage method
+      },
+      body: JSON.stringify({ oldPassword: currentPassword, newPassword }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      setMessage(data.message);
+      // Reset the form fields
+      setCurrentPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
+    } else {
+      setMessage(data.message);
     }
   };
 
@@ -159,7 +195,12 @@ function MyAccount() {
                             <div className="ltn__myaccount-tab-content-inner">
                               <p>
                                 <div>
-                                  Hello <strong>{user.firstname}</strong>! (Not <strong>{user.firstname}</strong>? <a href="" onClick={handleLogout}>Logout</a>)
+                                  Hello <strong>{user.firstname}</strong>! (Not{" "}
+                                  <strong>{user.firstname}</strong>?{" "}
+                                  <a href="" onClick={handleLogout}>
+                                    Logout
+                                  </a>
+                                  )
                                 </div>
                               </p>
                               <p>
@@ -186,7 +227,9 @@ function MyAccount() {
                                   </div>
                                   <div className="author-info">
                                     <h6>Agent of Property</h6>
-                                    <h2>{user.firstname} {user.lastname}</h2>
+                                    <h2>
+                                      {user.firstname} {user.lastname}
+                                    </h2>
                                     <div className="footer-address">
                                       <ul>
                                         <li>
@@ -216,7 +259,7 @@ function MyAccount() {
                                           <div className="footer-address-info">
                                             <p>
                                               <Link href="mailto:info@prairieshills.com">
-                                                info@prairieshills.com
+                                                {user.email}
                                               </Link>
                                             </p>
                                           </div>
@@ -225,7 +268,58 @@ function MyAccount() {
                                     </div>
                                   </div>
                                 </div>
-                                <div className="ltn__form-box contact-form-box box-shadow white-bg">
+                                <div className="ltn__form-box">
+                                <form action="#">
+                                  <div className="row mb-50">
+                                    <Col xs={12} md={6}>
+                                      <label>First name:</label>
+                                      <input
+                                        type="text"
+                                        name="ltn__name"
+                                        defaultValue={user.firstname}
+                                        disabled
+                                      />
+                                    </Col>
+                                    <Col xs={12} md={6}>
+                                      <label>Last name:</label>
+                                      <input
+                                        type="text"
+                                        name="ltn__lastname"
+                                        defaultValue={user.lastname}
+                                        disabled
+                                      />
+                                    </Col>
+                                    <Col xs={12} md={6}>
+                                      <label>Display Name:</label>
+                                      <input
+                                        type="text"
+                                        name="ltn__lastname"
+                                        defaultValue={user.username}
+                                        disabled
+                                      />
+                                    </Col>
+                                    <Col xs={12} md={6}>
+                                      <label>Display Email:</label>
+                                      <input
+                                        type="email"
+                                        name="ltn__lastname"
+                                        // placeholder="info@prairieshills.com"
+                                        defaultValue={user.email}
+                                        disabled
+                                      />
+                                    </Col>
+                                  </div>
+                                  <div className="btn-wrapper">
+                                    <button
+                                      type="submit"
+                                      className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                                    >
+                                      Save Changes
+                                    </button>
+                                  </div>
+                                </form>
+                              </div>
+                                {/* <div className="ltn__form-box contact-form-box box-shadow white-bg">
                                   <h4 className="title-2">Get A Quote</h4>
                                   <form
                                     id="contact-form"
@@ -312,7 +406,7 @@ function MyAccount() {
                                     </div>
                                     <p className="form-messege mb-0 mt-20"></p>
                                   </form>
-                                </div>
+                                </div> */}
                               </div>
                             </div>
                           </Tab.Pane>
@@ -368,74 +462,7 @@ function MyAccount() {
                                 The following addresses will be used on the
                                 checkout page by default.
                               </p>
-                              <div className="ltn__form-box">
-                                <form action="#">
-                                  <div className="row mb-50">
-                                    <Col xs={12} md={6}>
-                                      <label>First name:</label>
-                                      <input type="text" name="ltn__name" defaultValue={user.firstname} disabled />
-                                    </Col>
-                                    <Col xs={12} md={6}>
-                                      <label>Last name:</label>
-                                      <input type="text" name="ltn__lastname" defaultValue={user.lastname} disabled />
-                                    </Col>
-                                    <Col xs={12} md={6}>
-                                      <label>Display Name:</label>
-                                      <input
-                                        type="text"
-                                        name="ltn__lastname"
-                                        placeholder="Ethan"
-                                      />
-                                    </Col>
-                                    <Col xs={12} md={6}>
-                                      <label>Display Email:</label>
-                                      <input
-                                        type="email"
-                                        name="ltn__lastname"
-                                        // placeholder="info@prairieshills.com"
-                                        defaultValue={user.email}
-                                        disabled
-                                      />
-                                    </Col>
-                                  </div>
-                                  <fieldset>
-                                    <legend>Password change</legend>
-                                    <Row>
-                                      <div className="col-md-12">
-                                        <label>
-                                          Current password (leave blank to leave
-                                          unchanged):
-                                        </label>
-                                        <input
-                                          type="password"
-                                          name="ltn__name"
-                                        />
-                                        <label>
-                                          New password (leave blank to leave
-                                          unchanged):
-                                        </label>
-                                        <input
-                                          type="password"
-                                          name="ltn__lastname"
-                                        />
-                                        <label>Confirm new password:</label>
-                                        <input
-                                          type="password"
-                                          name="ltn__lastname"
-                                        />
-                                      </div>
-                                    </Row>
-                                  </fieldset>
-                                  <div className="btn-wrapper">
-                                    <button
-                                      type="submit"
-                                      className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                                    >
-                                      Save Changes
-                                    </button>
-                                  </div>
-                                </form>
-                              </div>
+                             
                             </div>
                           </Tab.Pane>
                           <Tab.Pane eventKey="ltn_tab_1_5">
@@ -2153,24 +2180,39 @@ function MyAccount() {
                             <div className="ltn__myaccount-tab-content-inner">
                               <div className="account-login-inner">
                                 <form
-                                  action="#"
+                                  onSubmit={handleSubmit} // Use the handleSubmit function
                                   className="ltn__form-box contact-form-box"
                                 >
                                   <h5 className="mb-30">Change Password</h5>
                                   <input
                                     type="password"
-                                    name="password"
+                                    name="currentPassword" // Changed name for clarity
+                                    value={currentPassword}
+                                    onChange={(e) =>
+                                      setCurrentPassword(e.target.value)
+                                    }
                                     placeholder="Current Password*"
+                                    required
                                   />
                                   <input
                                     type="password"
-                                    name="password"
+                                    name="newPassword"
+                                    value={newPassword}
+                                    onChange={(e) =>
+                                      setNewPassword(e.target.value)
+                                    }
                                     placeholder="New Password*"
+                                    required
                                   />
                                   <input
                                     type="password"
-                                    name="password"
+                                    name="confirmPassword"
+                                    value={confirmPassword}
+                                    onChange={(e) =>
+                                      setConfirmPassword(e.target.value)
+                                    }
                                     placeholder="Confirm New Password*"
+                                    required
                                   />
                                   <div className="btn-wrapper mt-0">
                                     <button
@@ -2180,6 +2222,8 @@ function MyAccount() {
                                       Save Changes
                                     </button>
                                   </div>
+                                  {message && <p className="mt-2">{message}</p>}{" "}
+                                  {/* Display feedback message */}
                                 </form>
                               </div>
                             </div>
