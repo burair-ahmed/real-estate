@@ -393,40 +393,12 @@ function MyAccount() {
                                       <input
                                         type="email"
                                         name="ltn__lastname"
-                                        // placeholder="info@prairieshills.com"
+
                                         defaultValue={user.email}
                                         disabled
                                       />
                                     </Col>
                                   </div>
-                                  <fieldset>
-                                    <legend>Password change</legend>
-                                    <Row>
-                                      <div className="col-md-12">
-                                        <label>
-                                          Current password (leave blank to leave
-                                          unchanged):
-                                        </label>
-                                        <input
-                                          type="password"
-                                          name="ltn__name"
-                                        />
-                                        <label>
-                                          New password (leave blank to leave
-                                          unchanged):
-                                        </label>
-                                        <input
-                                          type="password"
-                                          name="ltn__lastname"
-                                        />
-                                        <label>Confirm new password:</label>
-                                        <input
-                                          type="password"
-                                          name="ltn__lastname"
-                                        />
-                                      </div>
-                                    </Row>
-                                  </fieldset>
                                   <div className="btn-wrapper">
                                     <button
                                       type="submit"
