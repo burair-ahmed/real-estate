@@ -384,7 +384,8 @@ function MyAccount() {
                                       <input
                                         type="text"
                                         name="ltn__lastname"
-                                        placeholder="Ethan"
+                                        defaultValue={user.username}
+                                        disabled
                                       />
                                     </Col>
                                     <Col xs={12} md={6}>
