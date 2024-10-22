@@ -28,7 +28,7 @@ export default async function handler(req, res) {
           firstname: user.firstname, 
           lastname: user.lastname, 
           email: user.email, 
-          username: user.username
+          username: user.username,
         }, 
         process.env.JWT_SECRET,
         { expiresIn: '1h' }
