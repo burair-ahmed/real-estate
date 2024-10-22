@@ -10,9 +10,13 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   profilePicture: { type: String }, // Store Base64 encoded image
+  role: { 
+    type: String, 
+    enum: ['SuperAdmin', 'Admin', 'Agent', 'User'], 
+    default: 'User' 
+  }, // New role field
 });
 
-// Ensure that the userId is set when a new user is created
 userSchema.pre('save', function(next) {
   if (!this.userId) {
     this.userId = uuidv4();
