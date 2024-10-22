@@ -1,5 +1,5 @@
 // src/pages/api/properties/search.js
-import dbConnect from "@/lib/dbConnect";
+import dbConnect from "@/lib/db";
 import Property from "@/models/Property";
 
 export default async function handler(req, res) {
