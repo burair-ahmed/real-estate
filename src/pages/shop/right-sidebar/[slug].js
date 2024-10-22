@@ -184,7 +184,7 @@ function ProductDetails({ product }) {
         {/* <!-- BREADCRUMB AREA START --> */}
 
         <BreadCrumb
-          title="Product Details"
+          title="Product ABC"
           sectionPace="mb-0"
           currentSlug={product.title}
         />
