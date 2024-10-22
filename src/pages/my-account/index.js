@@ -24,7 +24,6 @@ import {
   FaGlobe,
 } from "react-icons/fa";
 import Link from "next/link";
-import jwt_decode from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -33,13 +32,19 @@ function MyAccount() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
+  // Password change states
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState("");
+
   useEffect(() => {
     const fetchUser = async () => {
       const res = await fetch("/api/getUser", {
         method: "GET",
         credentials: "include", // Important to send cookies
       });
-    
+
       if (res.ok) {
         const data = await res.json();
         console.log("Fetched user data:", data); // Log user data
@@ -47,10 +52,9 @@ function MyAccount() {
       } else {
         console.error("Failed to fetch user data", await res.text());
       }
-    
+
       setLoading(false);
     };
-    
 
     fetchUser();
   }, []);
@@ -65,6 +69,38 @@ function MyAccount() {
       router.push("/login");
     } else {
       console.error("Failed to log out");
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Check if new password and confirm password match
+    if (newPassword !== confirmPassword) {
+      setMessage("New passwords do not match.");
+      return;
+    }
+
+    // Call the API to change the password
+    const response = await fetch("/api/changepassword/changePassword", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`, // Replace with your JWT storage method
+      },
+      body: JSON.stringify({ oldPassword: currentPassword, newPassword }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      setMessage(data.message);
+      // Reset the form fields
+      setCurrentPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
+    } else {
+      setMessage(data.message);
     }
   };
 
@@ -2123,40 +2159,47 @@ function MyAccount() {
                             </div>
                           </Tab.Pane>
                           <Tab.Pane eventKey="ltn_tab_1_9">
-                            <div className="ltn__myaccount-tab-content-inner">
-                              <div className="account-login-inner">
-                                <form
-                                  action="#"
-                                  className="ltn__form-box contact-form-box"
-                                >
-                                  <h5 className="mb-30">Change Password</h5>
-                                  <input
-                                    type="password"
-                                    name="password"
-                                    placeholder="Current Password*"
-                                  />
-                                  <input
-                                    type="password"
-                                    name="password"
-                                    placeholder="New Password*"
-                                  />
-                                  <input
-                                    type="password"
-                                    name="password"
-                                    placeholder="Confirm New Password*"
-                                  />
-                                  <div className="btn-wrapper mt-0">
-                                    <button
-                                      className="theme-btn-1 btn btn-block"
-                                      type="submit"
-                                    >
-                                      Save Changes
-                                    </button>
-                                  </div>
-                                </form>
-                              </div>
-                            </div>
-                          </Tab.Pane>
+      <div className="ltn__myaccount-tab-content-inner">
+        <div className="account-login-inner">
+          <form
+            onSubmit={handleSubmit} // Use the handleSubmit function
+            className="ltn__form-box contact-form-box"
+          >
+            <h5 className="mb-30">Change Password</h5>
+            <input
+              type="password"
+              name="currentPassword" // Changed name for clarity
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
+              placeholder="Current Password*"
+              required
+            />
+            <input
+              type="password"
+              name="newPassword"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              placeholder="New Password*"
+              required
+            />
+            <input
+              type="password"
+              name="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm New Password*"
+              required
+            />
+            <div className="btn-wrapper mt-0">
+              <button className="theme-btn-1 btn btn-block" type="submit">
+                Save Changes
+              </button>
+            </div>
+            {message && <p className="mt-2">{message}</p>} {/* Display feedback message */}
+          </form>
+        </div>
+      </div>
+    </Tab.Pane>
                         </Tab.Content>
                       </Col>
                     </Row>
