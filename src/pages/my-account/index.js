@@ -404,7 +404,7 @@ function MyAccount() {
                                       type="submit"
                                       className="btn theme-btn-1 btn-effect-1 text-uppercase"
                                     >
-                                      Save Changes
+                                      Update Profle
                                     </button>
                                   </div>
                                 </form>
@@ -438,7 +438,7 @@ function MyAccount() {
                                         <div className="ltn__my-properties-info">
                                           <h6 className="mb-10">
                                             <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
-                                              sdfasdfdsfsdafs
+                                              fsfdsfafdsf
                                             </Link>
                                           </h6>
                                           <small>
