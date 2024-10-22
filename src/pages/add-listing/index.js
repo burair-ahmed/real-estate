@@ -243,7 +243,7 @@ const handleVideoChange = async (event) => {
                   <Tab.Container activeKey={activeKey}>
                     <div className="ltn__tab-menu ltn__tab-menu-3 text-center">
                       <Nav className="nav justify-content-center">
-                        <Nav.Link eventKey={0}>1. Property Details</Nav.Link>
+                        <Nav.Link eventKey={0}>1. Details</Nav.Link>
                         <Nav.Link eventKey={1}>2. Images</Nav.Link>
                         <Nav.Link eventKey={2}>3. Features</Nav.Link>
                         <Nav.Link eventKey={3}>4. Proximities</Nav.Link>
