@@ -33,7 +33,8 @@ export default async function handler(req, res) {
       lastname: user.lastname,
       email: user.email,
       profilePicture: user.profilePicture, // This is fetched separately
-      username: user.username,
+      username:  user.username,
+
     });
   } catch (error) {
     console.error(error); // Log the error for debugging

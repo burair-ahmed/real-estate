@@ -462,7 +462,75 @@ function MyAccount() {
                                 The following addresses will be used on the
                                 checkout page by default.
                               </p>
-                             
+                              <div className="ltn__form-box">
+                                <form action="#">
+                                  <div className="row mb-50">
+                                    <Col xs={12} md={6}>
+                                      <label>First name:</label>
+                                      <input type="text" name="ltn__name" defaultValue={user.firstname} disabled />
+                                    </Col>
+                                    <Col xs={12} md={6}>
+                                      <label>Last name:</label>
+                                      <input type="text" name="ltn__lastname" defaultValue={user.lastname} disabled />
+                                    </Col>
+                                    <Col xs={12} md={6}>
+                                      <label>Display Name:</label>
+                                      <input
+                                        type="text"
+                                        name="ltn__lastname"
+                                        defaultValue={user.username}
+                                        disabled
+                                      />
+                                    </Col>
+                                    <Col xs={12} md={6}>
+                                      <label>Display Email:</label>
+                                      <input
+                                        type="email"
+                                        name="ltn__lastname"
+                                        // placeholder="info@prairieshills.com"
+                                        defaultValue={user.email}
+                                        disabled
+                                      />
+                                    </Col>
+                                  </div>
+                                  <fieldset>
+                                    <legend>Password change</legend>
+                                    <Row>
+                                      <div className="col-md-12">
+                                        <label>
+                                          Current password (leave blank to leave
+                                          unchanged):
+                                        </label>
+                                        <input
+                                          type="password"
+                                          name="ltn__name"
+                                        />
+                                        <label>
+                                          New password (leave blank to leave
+                                          unchanged):
+                                        </label>
+                                        <input
+                                          type="password"
+                                          name="ltn__lastname"
+                                        />
+                                        <label>Confirm new password:</label>
+                                        <input
+                                          type="password"
+                                          name="ltn__lastname"
+                                        />
+                                      </div>
+                                    </Row>
+                                  </fieldset>
+                                  <div className="btn-wrapper">
+                                    <button
+                                      type="submit"
+                                      className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                                    >
+                                      Save Changes
+                                    </button>
+                                  </div>
+                                </form>
+                              </div>
                             </div>
                           </Tab.Pane>
                           <Tab.Pane eventKey="ltn_tab_1_5">
