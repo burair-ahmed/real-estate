@@ -1,69 +1,103 @@
-// src/pages/api/properties/search.js
-import dbConnect from "@/lib/db";
-import Property from "@/models/Property";
+import dbConnect from '../../../lib/db';
+import Property from '../../../models/Property';
 
+// This will handle the GET request for searching properties
 export default async function handler(req, res) {
-  await dbConnect();
+    const { method, query } = req;
 
-  const { query } = req;
-  const {
-    priceSort,
-    category,
-    propertytype,
-    priceMin,
-    priceMax,
-    proximities,
-    state,
-    country,
-  } = query;
+    // Connect to the database
+    await dbConnect();
 
-  let filter = {};
+    if (method === 'GET') {
+        try {
+            const {
+                title,
+                priceMin,
+                priceMax,
+                categories,
+                propertytype,
+                country,
+                state,
+                bedrooms,
+                bathrooms,
+                proximities,
+                sortBy
+            } = query;
 
-  // Filter by Category
-  if (category) {
-    filter.categories = category;
-  }
+            // Initialize the query object
+            let searchQuery = {};
 
-  // Filter by Property Type
-  if (propertytype) {
-    filter.propertytype = propertytype;
-  }
+            // 1. Title (case-insensitive partial match)
+            if (title) {
+                searchQuery.title = { $regex: title, $options: 'i' };
+            }
 
-  // Filter by Price Range
-  if (priceMin || priceMax) {
-    filter.price = {};
-    if (priceMin) filter.price.$gte = priceMin;
-    if (priceMax) filter.price.$lte = priceMax;
-  }
+            // 2. Price Range
+            if (priceMin || priceMax) {
+                searchQuery.price = {};
+                if (priceMin) searchQuery.price.$gte = priceMin;
+                if (priceMax) searchQuery.price.$lte = priceMax;
+            }
 
-  // Filter by State and Country
-  if (state) {
-    filter.state = state;
-  }
-  if (country) {
-    filter.country = country;
-  }
+            // 3. Categories
+            if (categories) {
+                searchQuery.categories = { $in: categories.split(',') };
+            }
 
-  // Filter by Proximities
-  if (proximities) {
-    const proximitiesList = proximities.split(",");
-    proximitiesList.forEach((proximity) => {
-      filter[`proximities.${proximity}`] = true;
-    });
-  }
+            // 4. Property Type
+            if (propertytype) {
+                searchQuery.propertytype = { $in: propertytype.split(',') };
+            }
 
-  try {
-    let properties = await Property.find(filter);
+            // 5. Country and State
+            if (country) {
+                searchQuery.country = country;
+            }
+            if (state) {
+                searchQuery.state = state;
+            }
 
-    // Sort by Price
-    if (priceSort === "lowToHigh") {
-      properties = properties.sort((a, b) => a.price - b.price);
-    } else if (priceSort === "highToLow") {
-      properties = properties.sort((a, b) => b.price - a.price);
+            // 6. Features (bedrooms, bathrooms)
+            if (bedrooms) {
+                searchQuery['features.bedrooms'] = bedrooms;
+            }
+            if (bathrooms) {
+                searchQuery['features.bathrooms'] = bathrooms;
+            }
+
+            // 7. Proximities (if any of the proximities are true)
+            if (proximities) {
+                let proximityQuery = {};
+                proximities.split(',').forEach((proximity) => {
+                    proximityQuery[`proximities.${proximity}`] = true;
+                });
+                searchQuery = { ...searchQuery, ...proximityQuery };
+            }
+
+            // Sorting (default by created date, descending)
+            let sortOption = { createdAt: -1 };
+            if (sortBy === 'priceAsc') {
+                sortOption = { price: 1 };
+            } else if (sortBy === 'priceDesc') {
+                sortOption = { price: -1 };
+            }
+
+            // Fetch properties based on query and sorting
+            const properties = await Property.find(searchQuery).sort(sortOption);
+
+            res.status(200).json({
+                success: true,
+                count: properties.length,
+                properties,
+            });
+        } catch (error) {
+            res.status(500).json({
+                success: false,
+                message: 'Server Error',
+                error: error.message,
+            });
+        }
+    } else {
+        res.status(405).json({ message: 'Method Not Allowed' });
     }
-
-    res.status(200).json({ success: true, properties });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
 }
