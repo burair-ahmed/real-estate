@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     // Fetch the user from the database using the ID from the decoded token
-    const user = await User.findById(decoded.id).select('firstname lastname email profilePicture role username');
+    const user = await User.findById(decoded.id).select('firstname lastname email profilePicture role username userId');
 
     // Check if the user was found
     if (!user) {
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
       email: user.email,
       profilePicture: user.profilePicture, // This is fetched separately
       username:  user.username,
-
+      userId: user.userId,
     });
   } catch (error) {
     console.error(error); // Log the error for debugging

@@ -28,9 +28,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Preloader from "@/components/preloader";
 
-
 function MyAccount() {
   const [user, setUser] = useState(null);
+  const [properties, setProperties] = useState([]); // State to hold properties
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
@@ -51,6 +51,7 @@ function MyAccount() {
         const data = await res.json();
         console.log("Fetched user data:", data); // Log user data
         setUser(data);
+        fetchProperties(data.username); // Fetch properties using username
       } else {
         console.error("Failed to fetch user data", await res.text());
       }
@@ -63,7 +64,24 @@ function MyAccount() {
   
     fetchUser();
   }, []);
-  
+
+  // Fetch properties created by the user using username
+  const fetchProperties = async (username) => {
+    const res = await fetch(`/api/get-properties-by-user`, {
+      method: "GET",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("token")}`, // Ensure you're passing token if required
+      },
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      console.log("Fetched properties:", data); // Log properties data
+      setProperties(data.properties); // Adjust based on the API response structure
+    } else {
+      console.error("Failed to fetch properties", await res.text());
+    }
+  };
 
   const handleLogout = async () => {
     const res = await fetch("/api/logout", {
@@ -111,7 +129,7 @@ function MyAccount() {
   };
 
   if (loading) {
-    return <div><Preloader/></div>; // Show loading state if user isn't loaded
+    return <div><Preloader /></div>; // Show loading state if user isn't loaded
   }
 
   if (!user) {
@@ -267,94 +285,6 @@ function MyAccount() {
                                     </div>
                                   </div>
                                 </div>
-                                {/* <div className="ltn__form-box contact-form-box box-shadow white-bg">
-                                  <h4 className="title-2">Get A Quote</h4>
-                                  <form
-                                    id="contact-form"
-                                    action="#"
-                                    method="post"
-                                  >
-                                    <Row>
-                                      <Col xs={12} md={6}>
-                                        <div className="input-item input-item-name ltn__custom-icon">
-                                          <input
-                                            type="text"
-                                            name="name"
-                                            placeholder="Enter your name"
-                                          />
-                                          <span className="inline-icon">
-                                            <FaUserAlt />
-                                          </span>
-                                        </div>
-                                      </Col>
-                                      <Col xs={12} md={6}>
-                                        <div className="input-item input-item-email ltn__custom-icon">
-                                          <input
-                                            type="email"
-                                            name="email"
-                                            placeholder="Enter email address"
-                                          />
-                                          <span className="inline-icon">
-                                            <FaEnvelope />
-                                          </span>
-                                        </div>
-                                      </Col>
-                                      <Col xs={12} md={6}>
-                                        <div className="input-item ltn__custom-icon">
-                                          <select className="nice-select">
-                                            <option>Select Service Type</option>
-                                            <option>Property Management</option>
-                                            <option>Mortgage Service </option>
-                                            <option>Consulting Service</option>
-                                            <option>Home Buying</option>
-                                            <option>Home selling</option>
-                                            <option>Escrow Services</option>
-                                          </select>
-                                          <span className="inline-icon">
-                                            <FaArrowDown />
-                                          </span>
-                                        </div>
-                                      </Col>
-                                      <Col xs={12} md={6}>
-                                        <div className="input-item input-item-phone ltn__custom-icon">
-                                          <input
-                                            type="text"
-                                            name="phone"
-                                            placeholder="Enter phone number"
-                                          />
-                                          <span className="inline-icon">
-                                            <FaPhoneAlt />
-                                          </span>
-                                        </div>
-                                      </Col>
-                                    </Row>
-                                    <div className="input-item input-item-textarea ltn__custom-icon">
-                                      <textarea
-                                        name="message"
-                                        placeholder="Enter message"
-                                      ></textarea>
-                                      <span className="inline-icon">
-                                        <FaPencilAlt />
-                                      </span>
-                                    </div>
-                                    <p>
-                                      <label className="input-info-save mb-0">
-                                        <input type="checkbox" name="agree" />
-                                        Save my name, email, and website in this
-                                        browser for the next time I comment.
-                                      </label>
-                                    </p>
-                                    <div className="btn-wrapper mt-0">
-                                      <button
-                                        className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                                        type="submit"
-                                      >
-                                        get a free service
-                                      </button>
-                                    </div>
-                                    <p className="form-messege mb-0 mt-20"></p>
-                                  </form>
-                                </div> */}
                                   <div className="ltn__form-box">
                                 <form action="#">
                                   <div className="row mb-50">
@@ -468,244 +398,64 @@ function MyAccount() {
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <tr>
-                                      <td className="ltn__my-properties-img">
-                                        <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
-                                          <img
-                                            src="/img/product-3/2.jpg"
-                                            alt="#"
-                                          />
-                                        </Link>
-                                      </td>
-                                      <td>
-                                        <div className="ltn__my-properties-info">
-                                          <h6 className="mb-10">
-                                            <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
-                                              fsfdsfafdsf
-                                            </Link>
-                                          </h6>
-                                          <small>
-                                            <i className="icon-placeholder"></i>
-                                            Office 720 DIC, Dubai
-                                          </small>
-                                          <div className="product-ratting">
-                                            <ul>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaStar />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaStar />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaStar />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaRegStarHalf />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaRegStar />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li className="review-total">
-                                                <Link href="#">
-                                                  {" "}
-                                                  ( 95 Reviews )
-                                                </Link>
-                                              </li>
-                                            </ul>
-                                          </div>
-                                        </div>
-                                      </td>
-                                      <td>Feb 22, 2022</td>
-                                      <td>
-                                        <Link href="#">Edit</Link>
-                                      </td>
-                                      <td>
-                                        <Link href="#">
-                                          <span>
-                                            <FaTrashAlt />
-                                          </span>
-                                        </Link>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td className="ltn__my-properties-img">
-                                        <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
-                                          <img
-                                            src="/img/product-3/3.jpg"
-                                            alt="#"
-                                          />
-                                        </Link>
-                                      </td>
-                                      <td>
-                                        <div className="ltn__my-properties-info">
-                                          <h6 className="mb-10">
-                                            <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
-                                              sdfasdfdsfsdafs
-                                            </Link>
-                                          </h6>
-                                          <small>
-                                            <i className="icon-placeholder"></i>
-                                            Office 720 DIC, Dubai
-                                          </small>
-                                          <div className="product-ratting">
-                                            <ul>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaStar />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaStar />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaStar />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaRegStarHalf />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaRegStar />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li className="review-total">
-                                                <Link href="#">
-                                                  {" "}
-                                                  ( 95 Reviews )
-                                                </Link>
-                                              </li>
-                                            </ul>
-                                          </div>
-                                        </div>
-                                      </td>
-                                      <td>Feb 22, 2022</td>
-                                      <td>
-                                        <Link href="#">Edit</Link>
-                                      </td>
-                                      <td>
-                                        <Link href="#">
-                                          <span>
-                                            <FaTrashAlt />
-                                          </span>
-                                        </Link>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td className="ltn__my-properties-img">
-                                        <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
-                                          <img
-                                            src="/img/product-3/7.jpg"
-                                            alt="#"
-                                          />
-                                        </Link>
-                                      </td>
-                                      <td>
-                                        <div className="ltn__my-properties-info">
-                                          <h6 className="mb-10">
-                                            <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
-                                              sdfasdfdsfsdafs
-                                            </Link>
-                                          </h6>
-                                          <small>
-                                            <i className="icon-placeholder"></i>
-                                            Office 720 DIC, Dubai
-                                          </small>
-                                          <div className="product-ratting">
-                                            <ul>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaStar />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaStar />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaStar />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaRegStarHalf />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li>
-                                                <Link href="#">
-                                                  <span>
-                                                    <FaRegStar />
-                                                  </span>
-                                                </Link>
-                                              </li>
-                                              <li className="review-total">
-                                                <Link href="#">
-                                                  {" "}
-                                                  ( 95 Reviews )
-                                                </Link>
-                                              </li>
-                                            </ul>
-                                          </div>
-                                        </div>
-                                      </td>
-                                      <td>Feb 22, 2022</td>
-                                      <td>
-                                        <Link href="#">Edit</Link>
-                                      </td>
-                                      <td>
-                                        <Link href="#">
-                                          <span>
-                                            <FaTrashAlt />
-                                          </span>
-                                        </Link>
-                                      </td>
-                                    </tr>
-                                  </tbody>
+  {properties.length > 0 ? (
+    properties.map((property) => (
+      <tr key={property._id}>
+        <td className="ltn__my-properties-img">
+          <Link href={`/shop/${property._id}`}>
+            <img src={property.images[0]} alt={property.title} />
+          </Link>
+        </td>
+        <td>
+          <div className="ltn__my-properties-info">
+            <h6 className="mb-10">
+              <Link href={`/shop/${property._id}`}>
+                {property.title}
+              </Link>
+            </h6>
+            <small>
+              <i className="icon-placeholder"></i>
+              {property.country}
+            </small>
+            <div className="product-ratting">
+              <ul>
+                {/* Implement your star rating logic */}
+                {Array.from({ length: 5 }, (_, index) => (
+                  <li key={index}>
+                    <Link href="#">
+                      <span>
+                        {index < property.rating ? <FaStar /> : <FaRegStar />}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+                <li className="review-total">
+                  {/* <Link href="#">{` (${property.reviews.length} Reviews)`}</Link> */}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </td>
+        <td>{new Date(property.createdAt).toLocaleDateString()}</td>
+        <td>
+          <Link href={`/edit-property/${property._id}`}>Edit</Link>
+        </td>
+        <td>
+          <Link href="#">
+            <span>
+              <FaTrashAlt />
+            </span>
+          </Link>
+        </td>
+      </tr>
+    ))
+  ) : (
+    <tr>
+      <td colSpan="5">No properties found.</td>
+    </tr>
+  )}
+</tbody>
+
                                 </table>
                               </div>
                               <div className="ltn__pagination-area text-center">

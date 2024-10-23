@@ -5,30 +5,30 @@ const categoryEnum = ['Apartment', 'Villa', 'Mansion', 'Chalet', 'Land', 'Townho
 const propertytypeEnum = ['Buy', 'Rent', 'Development'];
 
 const propertySchema = new mongoose.Schema({
-    title: { type: String, required: true },                     // Property Title
-    description: { type: String, required: true },               // Property Description
-    price: { type: Number, required: true },                     // Property Price
-    priceAfterLabel: { type: String },                           // After Price Label (optional)
-    priceBeforeLabel: { type: String },                          // Before Price Label (optional)
-    categories: { type: [String], enum: categoryEnum, required: true }, // Ensure categories are from the predefined set
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    price: { type: Number, required: true },
+    priceAfterLabel: { type: String },
+    priceBeforeLabel: { type: String },
+    categories: { type: [String], enum: categoryEnum, required: true },
     propertytype: { type: [String], enum: propertytypeEnum, required: true },
-    state: { type: String, required: true },       // New field
-    country: { type: String, required: true },     // New field
-    address: { type: String, required: true },     // New field
-    zipCode: { type: String, required: true },     // New field
-    images: { type: [String], required: true },                  // Array of Image URLs
-    video: { type: String },                                      // Video URL (optional)
+    state: { type: String, required: true },
+    country: { type: String, required: true },
+    address: { type: String, required: true },
+    zipCode: { type: String, required: true },
+    images: { type: [String], required: true },
+    video: { type: String },
     features: {
-        area: { type: Number },                                   // Area (if applicable)
-        bedrooms: { type: Number },                               // Number of Bedrooms
-        rooms: { type: Number },                                  // Number of Rooms
-        bathrooms: { type: Number },                              // Number of Bathrooms
-        furnished: { type: Boolean },                             // Is Furnished
-        airConditioned: { type: Boolean },                       // Is Air-conditioned
-        view: { type: String },                                   // Description of the View
-        floor: { type: String },                                  // Floor information
-        direction: { type: String },                              // Direction information
-        fireplace: { type: Boolean },                             // Has Fireplace
+        area: { type: Number },
+        bedrooms: { type: Number },
+        rooms: { type: Number },
+        bathrooms: { type: Number },
+        furnished: { type: Boolean },
+        airConditioned: { type: Boolean },
+        view: { type: String },
+        floor: { type: String },
+        direction: { type: String },
+        fireplace: { type: Boolean },
     },
     proximities: {
         bus: { type: Boolean, default: false },
@@ -56,7 +56,8 @@ const propertySchema = new mongoose.Schema({
         beach: { type: Boolean, default: false },
         publicParking: { type: Boolean, default: false },
     },
-    slug: { type: String, unique: true }, // Add the slug field
+    slug: { type: String, unique: true },
+    createdBy: { type: String, required: true }, // Add this field to track the user who created the property
 }, { timestamps: true });
 
 const Property = mongoose.models.Property || mongoose.model('Property', propertySchema);
