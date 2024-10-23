@@ -237,7 +237,7 @@ const handleVideoChange = async (event) => {
         method: "GET",
         credentials: "include", // Important to send cookies
       });
-
+  
       if (res.ok) {
         const data = await res.json();
         console.log("Fetched user data:", data); // Log user data
@@ -245,10 +245,13 @@ const handleVideoChange = async (event) => {
       } else {
         console.error("Failed to fetch user data", await res.text());
       }
-
-      setLoading(false);
+  
+      // Add a delay before setting loading to false
+      setTimeout(() => {
+        setLoading(false);
+      }, 750); 
     };
-
+  
     fetchUser();
   }, []);
 

@@ -149,7 +149,7 @@ function MyAccount() {
                             </Nav.Item>
                             <Nav.Item>
                               <Nav.Link eventKey="ltn_tab_1_2">
-                                Profiles <FaUserAlt />
+                                Account Details <FaUserAlt />
                               </Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
@@ -157,11 +157,11 @@ function MyAccount() {
                                 address <FaMapMarkerAlt />
                               </Nav.Link>
                             </Nav.Item>
-                            <Nav.Item>
+                            {/* <Nav.Item>
                               <Nav.Link eventKey="ltn_tab_1_4">
                                 Account Details <FaUserAlt />
                               </Nav.Link>
-                            </Nav.Item>
+                            </Nav.Item> */}
                             <Nav.Item>
                               <Nav.Link eventKey="ltn_tab_1_5">
                                 My Properties <FaList />
@@ -267,7 +267,7 @@ function MyAccount() {
                                     </div>
                                   </div>
                                 </div>
-                                <div className="ltn__form-box contact-form-box box-shadow white-bg">
+                                {/* <div className="ltn__form-box contact-form-box box-shadow white-bg">
                                   <h4 className="title-2">Get A Quote</h4>
                                   <form
                                     id="contact-form"
@@ -354,7 +354,48 @@ function MyAccount() {
                                     </div>
                                     <p className="form-messege mb-0 mt-20"></p>
                                   </form>
-                                </div>
+                                </div> */}
+                                  <div className="ltn__form-box">
+                                <form action="#">
+                                  <div className="row mb-50">
+                                    <Col xs={12} md={6}>
+                                      <label>First name:</label>
+                                      <input type="text" name="ltn__name" defaultValue={user.firstname} disabled />
+                                    </Col>
+                                    <Col xs={12} md={6}>
+                                      <label>Last name:</label>
+                                      <input type="text" name="ltn__lastname" defaultValue={user.lastname} disabled />
+                                    </Col>
+                                    <Col xs={12} md={6}>
+                                      <label>Username:</label>
+                                      <input
+                                        type="text"
+                                        name="ltn__lastname"
+                                        defaultValue={user.username}
+                                        disabled
+                                      />
+                                    </Col>
+                                    <Col xs={12} md={6}>
+                                      <label>Email:</label>
+                                      <input
+                                        type="email"
+                                        name="ltn__lastname"
+
+                                        defaultValue={user.email}
+                                        disabled
+                                      />
+                                    </Col>
+                                  </div>
+                                  <div className="btn-wrapper">
+                                    <button
+                                      type="submit"
+                                      className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                                    >
+                                      Update Profle
+                                    </button>
+                                  </div>
+                                </form>
+                              </div>
                               </div>
                             </div>
                           </Tab.Pane>
@@ -404,55 +445,15 @@ function MyAccount() {
                               </Row>
                             </div>
                           </Tab.Pane>
-                          <Tab.Pane eventKey="ltn_tab_1_4">
+                          {/* <Tab.Pane eventKey="ltn_tab_1_4">
                             <div className="ltn__myaccount-tab-content-inner">
                               <p>
                                 The following addresses will be used on the
                                 checkout page by default.
                               </p>
-                              <div className="ltn__form-box">
-                                <form action="#">
-                                  <div className="row mb-50">
-                                    <Col xs={12} md={6}>
-                                      <label>First name:</label>
-                                      <input type="text" name="ltn__name" defaultValue={user.firstname} disabled />
-                                    </Col>
-                                    <Col xs={12} md={6}>
-                                      <label>Last name:</label>
-                                      <input type="text" name="ltn__lastname" defaultValue={user.lastname} disabled />
-                                    </Col>
-                                    <Col xs={12} md={6}>
-                                      <label>Display Name:</label>
-                                      <input
-                                        type="text"
-                                        name="ltn__lastname"
-                                        defaultValue={user.username}
-                                        disabled
-                                      />
-                                    </Col>
-                                    <Col xs={12} md={6}>
-                                      <label>Display Email:</label>
-                                      <input
-                                        type="email"
-                                        name="ltn__lastname"
-
-                                        defaultValue={user.email}
-                                        disabled
-                                      />
-                                    </Col>
-                                  </div>
-                                  <div className="btn-wrapper">
-                                    <button
-                                      type="submit"
-                                      className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                                    >
-                                      Update Profle
-                                    </button>
-                                  </div>
-                                </form>
-                              </div>
+                            
                             </div>
-                          </Tab.Pane>
+                          </Tab.Pane> */}
                           <Tab.Pane eventKey="ltn_tab_1_5">
                             <div className="ltn__myaccount-tab-content-inner">
                               <div className="ltn__my-properties-table table-responsive">
