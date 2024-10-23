@@ -7,7 +7,8 @@ import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 import { uploadImage } from '@/lib/firebaseConfig';
 import { uploadVideo } from "@/lib/firebaseConfig";
-
+import { useEffect } from "react";
+import Preloader from "@/components/preloader";
 
 function AddListingPage() {
   const [formData, setFormData] = useState({
@@ -226,6 +227,41 @@ const handleVideoChange = async (event) => {
       console.error("Error while submitting the form:", error);
     }
   };
+
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await fetch("/api/getUser", {
+        method: "GET",
+        credentials: "include", // Important to send cookies
+      });
+  
+      if (res.ok) {
+        const data = await res.json();
+        console.log("Fetched user data:", data); // Log user data
+        setUser(data);
+      } else {
+        console.error("Failed to fetch user data", await res.text());
+      }
+  
+      // Add a delay before setting loading to false
+      setTimeout(() => {
+        setLoading(false);
+      }, 750); 
+    };
+  
+    fetchUser();
+  }, []);
+
+  if (loading) {
+    return <div><Preloader /></div>; // Show loading state if user isn't loaded
+  }
+
+  if (!user) {
+    return <div>Please log in.</div>; // If no user data, prompt to log in
+  }
 
   return (
     <>
