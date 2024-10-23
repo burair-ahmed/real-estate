@@ -8,7 +8,7 @@ import { useState } from "react";
 import { uploadImage } from '@/lib/firebaseConfig';
 import { uploadVideo } from "@/lib/firebaseConfig";
 import { useEffect } from "react";
-
+import Preloader from "@/components/preloader";
 
 function AddListingPage() {
   const [formData, setFormData] = useState({
@@ -253,7 +253,7 @@ const handleVideoChange = async (event) => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // Show loading state if user isn't loaded
+    return <div><Preloader /></div>; // Show loading state if user isn't loaded
   }
 
   if (!user) {

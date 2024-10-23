@@ -26,6 +26,8 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Preloader from "@/components/preloader";
+
 
 function MyAccount() {
   const [user, setUser] = useState(null);
@@ -105,7 +107,7 @@ function MyAccount() {
   };
 
   if (loading) {
-    return <div>Loading...</div>; // Show loading state if user isn't loaded
+    return <div><Preloader/></div>; // Show loading state if user isn't loaded
   }
 
   if (!user) {
