@@ -46,7 +46,7 @@ function MyAccount() {
         method: "GET",
         credentials: "include", // Important to send cookies
       });
-
+  
       if (res.ok) {
         const data = await res.json();
         console.log("Fetched user data:", data); // Log user data
@@ -54,12 +54,16 @@ function MyAccount() {
       } else {
         console.error("Failed to fetch user data", await res.text());
       }
-
-      setLoading(false);
+  
+      // Add a delay before setting loading to false
+      setTimeout(() => {
+        setLoading(false);
+      }, 750); 
     };
-
+  
     fetchUser();
   }, []);
+  
 
   const handleLogout = async () => {
     const res = await fetch("/api/logout", {

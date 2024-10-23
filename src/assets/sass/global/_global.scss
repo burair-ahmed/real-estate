@@ -429,6 +429,7 @@ color: #6d5c6a !important;
 }
 
 
+// Styling For Preloader
 .preloader {
   position: fixed;
   top: 0;
@@ -443,12 +444,12 @@ color: #6d5c6a !important;
 }
 
 .spinner {
-  border: 8px solid #6d5c6a; /* Light grey */
-  border-top: 8px solid #121a2f; /* Blue */
+  border: 8px solid #33334d; /* Light grey */
+  border-top: 8px solid #6d5c6a; /* Blue */
   border-radius: 50%;
   width: 50px; /* Size of the spinner */
   height: 50px; /* Size of the spinner */
-  animation: spin 0.2s linear infinite; /* Spin animation */
+  animation: spin 1s linear infinite; /* Spin animation */
 }
 
 @keyframes spin {
@@ -456,8 +457,7 @@ color: #6d5c6a !important;
   100% { transform: rotate(360deg); }
 }
 
-
-
+// Styling end
 
 :root {
   --ltn__primary-color: #171b2a;
