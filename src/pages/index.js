@@ -1,5 +1,6 @@
 import path from "path";
 import fs from "fs/promises";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getProducts, productSlug, getDiscountPrice } from "@/lib/product";
 import { Container, Row, Col, Nav, Tab } from "react-bootstrap";
@@ -13,19 +14,48 @@ import AboutUsStyleTwo from "@/components/aboutUs/aboutUsStyleTwo";
 import CounterUp from "@/components/counterUp";
 import Feature from "@/components/features";
 import TitleSection from "@/components/titleSection";
-import ProductItem from "@/components/product";
+import PropertyCard from "@/components/PropertyCard"; // Adjust the import as needed
 import CallToAction from "@/components/callToAction";
 import VideoBanner from "@/components/banner/videoBanner";
 import aminitiesData from "@/data/aminities/index.json";
 import AminitiesItem from "@/components/aminities/item";
 import TestimonialCarouselItem from "@/components/testimonialCarousel";
 import testimonialData from "@/data/testimonial";
-// import BlogItem from "@/components/blog";
-// import blogData from "@/data/blog";
 import featuresData from "@/data/service";
 import TitleSection2 from "@/components/titleSection/index2";
 
 function HomePage(props) {
+  const [properties, setProperties] = useState([]);
+
+  const fetchProperties = async () => {
+    try {
+      const response = await fetch("/api/listings");
+      const data = await response.json();
+      console.log("Fetched Properties:", data);
+      console.log("Number of properties:", data.length);
+
+      // Check for duplicates
+      const duplicates = data.filter((property, index, self) =>
+        index !== self.findIndex((p) => p.slug === property.slug)
+      );
+      console.log("Duplicate Properties:", duplicates);
+
+      // Remove duplicates
+      const uniqueProperties = Array.from(
+        new Map(data.map(property => [property.slug, property])).values()
+      );
+
+      setProperties(uniqueProperties);
+      console.log("Unique Properties Set:", uniqueProperties);
+    } catch (error) {
+      console.error("Error fetching properties:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProperties();
+  }, []);
+
   const { products } = useSelector((state) => state.product);
   const featuredProducts = getProducts(products, "buying", "featured", 5);
   const featureData = getProducts(featuresData, "buying", "featured", 3);
@@ -58,11 +88,11 @@ function HomePage(props) {
       <FaArrowRight />
     </button>
   );
-  const productCarouselsettings = {
+  const propertyCarouselSettings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: Math.min(properties.length, 3), // Adjust to available properties
     slidesToScroll: 1,
     prevArrow: <SlickArrowLeft />,
     nextArrow: <SlickArrowRight />,
@@ -90,7 +120,6 @@ function HomePage(props) {
       },
     ],
   };
-
   const testiMonialsettings = {
     dots: false,
     infinite: true,
@@ -117,7 +146,6 @@ function HomePage(props) {
       },
     ],
   };
-
   const { cartItems } = useSelector((state) => state.cart);
   const { wishlistItems } = useSelector((state) => state.wishlist);
   const { compareItems } = useSelector((state) => state.compare);
@@ -126,23 +154,10 @@ function HomePage(props) {
     <>
       <LayoutOne topbar={true}>
         <HeroSectionStyleOne data={Herodata} />
-
         <CarDealerSearchForm navMenuClass="d-none" customClasses="" />
-        {/* <!-- CAR DEALER FORM AREA END -->
-
-      <!-- ABOUT US AREA START --> */}
         <AboutUsStyleOne sectionSpace="pt-120 pb-90" />
-        {/* <!-- ABOUT US AREA END -->
-
-      <!-- COUNTER UP AREA START --> */}
         <CounterUp />
-        {/* <!-- COUNTER UP AREA END -->
-
-      <!-- ABOUT US AREA START --> */}
         <AboutUsStyleTwo sectionSpace="pt-120 pb-90" />
-        {/* <!-- ABOUT US AREA END -->
-
-      <!-- FEATURE AREA START ( Feature - 6) --> */}
         <Feature
           classes="section-bg-1"
           servicebtn={true}
@@ -155,7 +170,7 @@ function HomePage(props) {
             title: "Our Main Focus",
           }}
         />
-        {/* PRODUCT SLIDER AREA START */}
+        {/* PROPERTY SLIDER AREA START */}
         <div className="ltn__product-slider-area ltn__product-gutter pt-115 pb-90 plr--7">
           <Container fluid>
             <Row>
@@ -170,54 +185,29 @@ function HomePage(props) {
                 />
               </Col>
             </Row>
-
             <Row>
               <Col lg={12}>
-                {!!featuredProducts?.length ? (
+                {!!properties.length ? (
                   <Slider
-                    {...productCarouselsettings}
+                    {...propertyCarouselSettings}
                     className="ltn__product-slider-item-four-active-full-width slick-arrow-1"
                   >
-                    {featuredProducts.map((product, key) => {
-                      const slug = productSlug(product.title);
-
-                      const discountedPrice = getDiscountPrice(
-                        product.price,
-                        product.discount
-                      ).toFixed(2);
-                      const productPrice = product.price.toFixed(2);
-                      const cartItem = cartItems.find(
-                        (cartItem) => cartItem.id === product.id
-                      );
-                      const wishlistItem = wishlistItems.find(
-                        (wishlistItem) => wishlistItem.id === product.id
-                      );
-                      const compareItem = compareItems.find(
-                        (compareItem) => compareItem.id === product.id
-                      );
-
-                      return (
-                        <ProductItem
-                          key={product.id}
-                          productData={product}
-                          slug={slug}
-                          baseUrl="shop"
-                          discountedPrice={discountedPrice}
-                          productPrice={productPrice}
-                          cartItem={cartItem}
-                          wishlistItem={wishlistItem}
-                          compareItem={compareItem}
-                        />
-                      );
-                    })}
+                    {properties.map((property) => (
+                      <PropertyCard
+                        key={property.slug} // Ensure this is unique
+                        propertyData={property}
+                        wishlistItem={null} // Pass your wishlist item logic here
+                      />
+                    ))}
                   </Slider>
-                ) : null}
+                ) : (
+                  <p>No properties available</p>
+                )}
               </Col>
             </Row>
           </Container>
         </div>
-        {/* PRODUCT SLIDER AREA END */}
-
+        {/* PROPERTY SLIDER AREA END */}
         <div className="ltn__apartments-plan-area pb-70">
           <Container>
             <Row>
@@ -231,7 +221,6 @@ function HomePage(props) {
                     additionalClassName: "",
                   }}
                 />
-
                 <Tab.Container defaultActiveKey="first">
                   <div className="ltn__tab-menu ltn__tab-menu-3 text-center">
                     <Nav className="nav justify-content-center">
@@ -524,12 +513,10 @@ function HomePage(props) {
             </Row>
           </Container>
         </div>
-
         {/* <!-- VIDEO AREA START --> */}
         <div className="ltn__video-popup-area">
           <VideoBanner />
         </div>
-        {/* <!-- VIDEO AREA END --> */}
         {/* <!-- CATEGORY AREA START -->  */}
         <div className="ltn__category-area ltn__product-gutter pt-115 pb-90">
           <Container>
@@ -557,8 +544,6 @@ function HomePage(props) {
             </Row>
           </Container>
         </div>
-        {/* <!-- CATEGORY AREA END --> */}
-
         {/* <!-- TESTIMONIAL AREA START (testimonial-7) -->  */}
         <div
           className="ltn__testimonial-area bg-image-top pt-115 pb-70"
@@ -577,7 +562,6 @@ function HomePage(props) {
                 />
               </Col>
             </Row>
-
             <Slider
               {...testiMonialsettings}
               className="ltn__testimonial-slider-5-active slick-arrow-1"
@@ -588,8 +572,6 @@ function HomePage(props) {
             </Slider>
           </Container>
         </div>
-        {/* TESTIMONIAL AREA END  */}
-
         <div className="ltn__call-to-action-area call-to-action-6 before-bg-bottom">
           <Container>
             <Row>
@@ -603,7 +585,6 @@ function HomePage(props) {
     </>
   );
 }
-
 export async function getStaticProps() {
   const filePath = path.join(process.cwd(), "src/data/hero/", "index.json");
   const Herodata = JSON.parse(await fs.readFile(filePath));
