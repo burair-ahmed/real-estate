@@ -7,6 +7,8 @@ import { LayoutOne } from "@/layouts"; // Import your Layout component
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { Container, Row, Col, Nav, Tab } from "react-bootstrap";
 import { getDisplayName } from "next/dist/shared/lib/utils";
+import Preloader from "@/components/preloader";
+
 
 const PropertyDetail = () => {
   const router = useRouter();
@@ -26,15 +28,21 @@ const PropertyDetail = () => {
         } catch (error) {
           console.error("Error fetching property:", error);
         } finally {
-          setLoading(false);
+          // Add a delay before setting loading to false
+          setTimeout(() => {
+            setLoading(false);
+          }, 750); // Delay of 750 milliseconds
         }
       };
-
+  
       fetchProperty();
     }
   }, [slug]);
+  
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return <div><Preloader /></div>;
+  }
   if (!property) return <p>No property found!</p>;
 
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
