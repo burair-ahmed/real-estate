@@ -4857,6 +4857,11 @@ input.cart-plus-minus-box {
     margin: 0;
   }
 }
+@media (max-width: 640px) {
+  .about-us-img-wrap-img {
+    height: 420px; /* Adjust height to 420px on mobile screens */
+  }
+}
 
 .about-us-img-info {
   width: 310px;

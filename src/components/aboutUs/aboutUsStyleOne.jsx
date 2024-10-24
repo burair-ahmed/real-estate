@@ -23,7 +23,13 @@ function AboutUsStyleOne({ sectionSpace }) {
           <Row>
             <Col xs={12} lg={6} className="align-self-center">
               <div className="about-us-img-wrap about-img-left">
-                <Image src="/img/others/Untitled-4.jpg" alt="About Us Image" width={570} height={720} />
+              <Image
+    src="/img/others/Untitled-4.jpg"
+    alt="About Us Image"
+    width={570}
+    height={720} // Default height
+    className="h-[720px] sm:h-[420px] about-us-img-wrap-img" // Set default height, change to 420px on small screens
+  />
                 <div className="about-us-img-info about-us-img-info-2 about-us-img-info-3">
                   <div className="ltn__video-img ltn__animation-pulse1">
                     <Image src="/img/others/Untitled-1.jpg" alt="video popup bg image" width={300} height={225} />
