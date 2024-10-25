@@ -78,9 +78,9 @@ const QuickViewModal = ({
           <div className="modal-product-item">
             <div className="row">
               <div className="col-lg-6 col-12">
-                {/* <div className="modal-product-img">
+                <div className="modal-product-img">
                   <img src={productData.images[0]} alt="#" />
-                </div> */}
+                </div>
               </div>
               <div className="col-lg-6 col-12">
                 <div className="modal-product-info">
@@ -108,78 +108,19 @@ const QuickViewModal = ({
                   <hr />
                 
                   <div className="modal-product-brief">
-                    <p>{productData.description.shortDescription}</p>
+                    <p>{productData.description}</p>
                   </div>
 
                   <div className="ltn__product-details-menu-3">
                     <ul>
                       <li>
                         <div className="product-quickview__quantity">
-                          <div className="cart-plus-minus">
-                            <button
-                              onClick={() =>
-                                setQuantityCount(
-                                  quantityCount > 1 ? quantityCount - 1 : 1
-                                )
-                              }
-                              className="qtybutton"
-                            >
-                              -
-                            </button>
-                            <input
-                              className="cart-plus-minus-box"
-                              type="text"
-                              value={quantityCount}
-                              readOnly
-                            />
+                         
+                            
                           
-                            <button
-                              onClick={() =>
-                                setQuantityCount(
-                                  quantityCount < productStock - productCartQty
-                                    ? quantityCount + 1
-                                    : quantityCount
-                                )
-                              }
-                              className="qtybutton"
-                            >
-                              +
-                            </button>
-                          </div>
                         </div>
                       </li>
-                      <li>
-                        {productStock && productStock > 0 ? (
-                          <button
-                            onClick={() =>
-                              dispatch(
-                                addToCart({
-                                  ...productData,
-                                  quantity: quantityCount,
-                                  selectedProductColor: selectedProductColor
-                                    ? selectedProductColor
-                                    : product.selectedProductColor
-                                    ? product.selectedProductColor
-                                    : null,
-                                  selectedProductSize: selectedProductSize
-                                    ? selectedProductSize
-                                    : product.selectedProductSize
-                                    ? product.selectedProductSize
-                                    : null,
-                                })
-                              )
-                            }
-                            disabled={productCartQty >= productStock}
-                            className="btn-addtocart"
-                          >
-                            <FaShoppingBag className="me-2" /> Add To Cart
-                          </button>
-                        ) : (
-                          <button className="btn-addtocart" disabled>
-                            Out of Stock
-                          </button>
-                        )}
-                      </li>
+                  
                       <li>
                         <button
                           className="btn-addtocart"
@@ -223,11 +164,6 @@ const QuickViewModal = ({
                         </Link>
                       </li>
                       <li>
-                        <Link href="#" title="Linkedin">
-                          <FaDribbble />
-                        </Link>
-                      </li>
-                      <li>
                         <Link href="#" title="Instagram">
                           <FaInstagram />
                         </Link>
@@ -240,7 +176,7 @@ const QuickViewModal = ({
                       className="text-decoration"
                       href={`/properties/${slug}`}
                     >
-                      <small>View Details</small>
+                      <small className="text-[#6d5c6a]">View More Details</small>
                     </Link>
                   </label>
                 </div>

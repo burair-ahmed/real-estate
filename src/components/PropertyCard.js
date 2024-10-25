@@ -13,15 +13,14 @@ import Tooltip from "react-bootstrap/Tooltip";
 import { FaMapMarker, FaMapMarkerAlt, FaCamera, FaFilm } from "react-icons/fa";
 
 const PropertyCard = ({ propertyData, wishlistItem }) => {
-  // Log propertyData to check the structure and slug
-  console.log("Property Data:", propertyData);
+  
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('en-AE', {
+      style: 'currency',
+      currency: 'AED',
+    }).format(price);
+  };
 
-  // Check if slug exists
-  if (!propertyData.slug) {
-    console.error("Slug is undefined for property:", propertyData.title);
-  }
-
-  let badgeText = propertyData.propertytype 
   const dispatch = useDispatch();
   const [modalShow, setModalShow] = useState(false);
 
@@ -51,10 +50,8 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
           </Link>
           <div className="product-badge">
             <ul>
-              <li
-                  className={`${propertyData.propertytype[0] ? "sale-badge" : ""} ${propertyData.propertytype[1] ? "rent-badge" : ""} ${propertyData.propertytype[2] ? "development-badge" : ""}`}
-              >
-                {badgeText}
+              <li className={`${propertyData.propertytype ? "badge" : ""}`}>
+                {propertyData.propertytype}
               </li>
             </ul>
           </div>
@@ -72,19 +69,13 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
             <div className="product-img-gallery">
               <ul>
                 <li>
-                  <Link
-                    className="d-flex align-items-center justify-content-center"
-                    href={`/properties/${propertyData.slug}`}
-                  >
+                  <Link href={`/properties/${propertyData.slug}`}>
                     <FaCamera className="me-2" />
                     {propertyData.images.length}
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className="d-flex align-items-center justify-content-center"
-                    href={`/properties/${propertyData.slug}`}
-                  >
+                  <Link href={`/properties/${propertyData.slug}`}>
                     <FaFilm className="me-2" />
                     1
                   </Link>
@@ -94,10 +85,9 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
           </div>
         </div>
         <div className="product-info">
-        
-        <div className="product-price">
+          <div className="product-price">
             <span>
-              {`AED ${propertyData.price}`}
+              {formatPrice(propertyData.price)}
               <label></label>
             </span>
           </div>
@@ -168,7 +158,7 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
         productData={propertyData}
         show={modalShow}
         onHide={() => setModalShow(false)}
-        slug={propertyData.slug} // Pass slug to the modal
+        slug={propertyData.slug}
       />
     </>
   );
