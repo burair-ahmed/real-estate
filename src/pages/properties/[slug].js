@@ -142,23 +142,54 @@ const PropertyDetail = () => {
     fireplace: { icon: <FaFireAlt /> },
   };
   
+  // const renderFeatureIcons = (features) => {
+  //   return Object.keys(features).map((key, index) => {
+  //     const value = features[key];
+  //     if (value) {
+  //       const feature = featureIcons[key];
+  //       return (
+  //         <li key={key} className={styles.featureItem}>
+  //           <div className={styles.icon}>{feature.icon}</div>
+  //           <div className={styles.value}><span>{value === true ? 'Yes' : value}</span></div>
+  //         </li>
+  //       );
+  //     }
+  //     return null;
+  //   });
+  // };
   const renderFeatureIcons = (features) => {
-    return Object.keys(features).map((key) => {
+    const featureKeys = Object.keys(features);
+    const last = featureKeys.length - 1; // Get the index of the last element
+  
+    return featureKeys.map((key, index) => {
       const value = features[key];
-      if (value) { 
+      if (value) {
         const feature = featureIcons[key];
+  
+        let sideClass = "";
+        if (index === 0) {
+          sideClass = 'first-item'; // First element: from the left
+        } else if (index === last) {
+          sideClass = 'last-item'; // Last element: from the right
+        } else if (index % 2 === 0) {
+          sideClass = 'top-item'; // Even-indexed items (center): from the top
+        } else {
+          sideClass = 'bottom-item'; // Odd-indexed items (center): from the bottom
+        }
+  
         return (
-          <li key={key} className={styles.featureItem}>
-          
-          <div className={styles.icon}>{feature.icon}</div>
-            <div className={styles.value}><span>{value === true ? 'Yes' : value}</span></div> {/* Show 'Yes' if the value is true */}
-            
+          <li key={key} className={`${styles.featureItem} ${styles[sideClass]}`}>
+            <div className={styles.icon}>{feature.icon}</div>
+            <div className={styles.value}>
+              <span>{value === true ? 'Yes' : value}</span>
+            </div>
           </li>
         );
       }
       return null;
     });
   };
+  
   
   const bathrooms = property.features.bathrooms
   const bedrooms = property.features.bedrooms
@@ -251,7 +282,7 @@ const PropertyDetail = () => {
                       </li>
                     </ul>
                   </div>
-                  <h1> {property.title}</h1>
+                  {/* <h2> {property.title}</h2> */}
                   <label>
                     <span className="ltn__secondary-color">
                       <i className="flaticon-pin"></i>
