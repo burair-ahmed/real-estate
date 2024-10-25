@@ -1,25 +1,30 @@
 .features-list {
-  list-style: none;
+  list-style:decimal-leading-zero;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap; /* Allows icons to wrap */
+  /* display: flex; */
+   /* Allows icons to wrap */
 }
 
 .featureItem { /* Change class name to use CSS Modules */
   width: 80px; /* Set a fixed width for each feature icon */
   text-align: center;
   margin-bottom: 20px; /* Add some space between icons */
+  background-color: #fff;
+  border-radius: 5px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px !important;
 }
 
 .icon {
   font-size: 30px; /* Set icon size */
-  color: white; /* White color for the icon */
+  color: #6d5c6a; /* White color for the icon */
   margin-bottom: 10px; /* Space between the icon and value */
 }
 
 .value {
   font-size: 14px; /* Font size for the value */
-  color: white; /* White color for the value */
+  color: #121a2f; /* White color for the value */
 }
 
 @media (max-width: 768px) {
