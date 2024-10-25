@@ -177,107 +177,142 @@ function Shop() {
             </Col>
 
             <Col xs={12} lg={4}>
-              <SideBar properties={properties} />
+              {/* <SideBar properties={properties} /> */}
+              <div className="filter-section ltn__contact-message-area">
+  <div className="container">
+    <div className="row">
+      <div className="col-lg-12">
+        <div className="ltn__form-box contact-form-box box-shadow widget ltn__menu-widget">
+          <form id="filter-form">
+            <div className="input-item ltn__custom-icon">
+              <Form.Label>Title</Form.Label>
+              <Form.Control
+                type="text"
+                name="title"
+                placeholder="Search by title"
+                onChange={handleFilterChange}
+                className="input-item-name"
+              />
+              <hr/>
+            </div>
 
-              <div className="filter-section">
-                <Form.Group>
-                  <Form.Label>Title</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="title"
-                    placeholder="Search by title"
-                    onChange={handleFilterChange}
-                  />
-                </Form.Group>
+            <div className="input-item ltn__custom-icon">
+              <Form.Label>Category</Form.Label>
+              <Form.Control
+                as="select"
+                name="category"
+                onChange={handleFilterChange}
+                className="input-item"
+              >
+                <option value="">All</option>
+                <option value="apartment">Apartment</option>
+                <option value="villa">Villa</option>
+                <option value="mansion">Mansion</option>
+                <option value="chalet">Chalet</option>
+                <option value="land">Land</option>
+                <option value="townhouse">Townhouse</option>
+                <option value="business">Business Premise</option>
+                <option value="office">Office</option>
+              </Form.Control>
+            <hr/>
+            </div>
 
-                <Form.Group>
-                  <Form.Label>Category</Form.Label>
-                  <Form.Control
-                    as="select"
-                    name="category"
-                    onChange={handleFilterChange}
-                  >
-                    <option value="">All</option>
-                    <option value="apartment">Apartment</option>
-                    <option value="villa">Villa</option>
-                    <option value="mansion">Mansion</option>
-                    <option value="chalet">Chalet</option>
-                    <option value="land">Land</option>
-                    <option value="townhouse">Townhouse</option>
-                    <option value="business">Business Premise</option>
-                    <option value="office">Office</option>
-                  </Form.Control>
-                </Form.Group>
+            <div className="input-item ltn__custom-icon">
+              <Form.Label>Price Range</Form.Label>
+              <Form.Control
+                type="number"
+                name="priceMin"
+                placeholder="Min"
+                onChange={handleFilterChange}
+                className="input-item"
+              />
+              <Form.Control
+                type="number"
+                name="priceMax"
+                placeholder="Max"
+                onChange={handleFilterChange}
+                className="input-item"
+              />
+              <hr/>
+            </div>
 
-                <Form.Group>
-                  <Form.Label>Price Range</Form.Label>
-                  <Form.Control
-                    type="number"
-                    name="priceMin"
-                    placeholder="Min"
-                    onChange={handleFilterChange}
-                  />
-                  <Form.Control
-                    type="number"
-                    name="priceMax"
-                    placeholder="Max"
-                    onChange={handleFilterChange}
-                  />
-                </Form.Group>
+            <div className="input-item ltn__custom-icon">
+              <Form.Label className="mt-0">Property Type</Form.Label>
+              <Form.Control
+                as="select"
+                name="propertytype"
+                onChange={handleFilterChange}
+                className="input-item "
+              >
+                <option value="">All</option>
+                <option value="apartment">Apartment</option>
+                <option value="house">House</option>
+              </Form.Control>
+              <hr/>
+            </div>
 
-                <Form.Group>
-                  <Form.Label>Property Type</Form.Label>
-                  <Form.Control
-                    as="select"
-                    name="propertytype"
-                    onChange={handleFilterChange}
-                  >
-                    <option value="">All</option>
-                    <option value="apartment">Apartment</option>
-                    <option value="house">House</option>
-                  </Form.Control>
-                </Form.Group>
+            <div className="input-item ltn__custom-icon">
+              <Form.Label>Bedrooms</Form.Label>
+              <Form.Control
+                type="number"
+                name="bedrooms"
+                placeholder="Number of bedrooms"
+                onChange={handleFilterChange}
+                className="input-item"
+              />
+                 <hr/>
+            </div>
 
-                <Form.Group>
-                  <Form.Label>Bedrooms</Form.Label>
-                  <Form.Control
-                    type="number"
-                    name="bedrooms"
-                    placeholder="Number of bedrooms"
-                    onChange={handleFilterChange}
-                  />
-                </Form.Group>
+            <div className="input-item ltn__custom-icon">
+              <Form.Label>Bathrooms</Form.Label>
+              <Form.Control
+                type="number"
+                name="bathrooms"
+                placeholder="Number of bathrooms"
+                onChange={handleFilterChange}
+                className="input-item"
+              />
+                 <hr/>
+            </div>
 
-                <Form.Group>
-                  <Form.Label>Bathrooms</Form.Label>
-                  <Form.Control
-                    type="number"
-                    name="bathrooms"
-                    placeholder="Number of bathrooms"
-                    onChange={handleFilterChange}
-                  />
-                </Form.Group>
+            <div className="input-item ltn__custom-icon">
+              <Form.Label>State</Form.Label>
+              <Form.Control
+                type="text"
+                name="state"
+                placeholder="State"
+                onChange={handleFilterChange}
+                className="input-item"
+              />
+                 <hr/>
+            </div>
 
-                <Form.Group>
-                  <Form.Label>State</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="state"
-                    placeholder="State"
-                    onChange={handleFilterChange}
-                  />
-                </Form.Group>
+            <div className="input-item ltn__custom-icon">
+              <Form.Label>Country</Form.Label>
+              <Form.Control
+                type="text"
+                name="country"
+                placeholder="Country"
+                onChange={handleFilterChange}
+                className="input-item"
+              />
+            </div>
 
-                <Form.Group>
-                  <Form.Label>Country</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="country"
-                    placeholder="Country"
-                    onChange={handleFilterChange}
-                  />
-                </Form.Group>
-              </div>
+            <div className="btn-wrapper mt-20">
+              <button
+                type="submit"
+                className="btn theme-btn-1 btn-effect-1 text-uppercase"
+              >
+                Apply Filters
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
             </Col>
           </Row>
         </Container>
