@@ -49,14 +49,14 @@ function Feature({
                     </div>
                     <div className="ltn__feature-info">
                       <h3>
-                        <Link href={`/service/${slug}`}>{item.title}</Link>
+                        <Link href={`/shop`}>{item.title}</Link>
                       </h3>
                       <p>{item.shortDescription}</p>
 
                       {servicebtn ? (
                         <Link
                           className="ltn__service-btn"
-                          href={`/service/${slug}`}
+                          href={`/shop`}
                         >
                           {item.buttonText}
 
