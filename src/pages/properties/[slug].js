@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import BreadCrumb from "@/components/breadCrumbs"; // Import your BreadCrumb component
 import { LayoutOne } from "@/layouts"; // Import your Layout component
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft, FaBuilding, FaBinoculars } from "react-icons/fa";
 import { Container, Row, Col, Nav, Tab } from "react-bootstrap";
 import { getDisplayName } from "next/dist/shared/lib/utils";
 import Preloader from "@/components/preloader";
-
+import { FaBed, FaBath, FaRulerCombined, FaCouch, FaSnowflake, FaFireAlt, FaEye, FaCompass } from "react-icons/fa";
+import styles from './FeatureIcons.module.css'; 
 
 const PropertyDetail = () => {
   const router = useRouter();
@@ -121,7 +122,35 @@ const PropertyDetail = () => {
     ],
   };
 
-
+  const featureIcons = {
+    area: { icon: <FaRulerCombined /> },
+    bedrooms: { icon: <FaBed /> },
+    rooms: { icon: <FaBed /> },
+    bathrooms: { icon: <FaBath /> },
+    furnished: { icon: <FaCouch/> },
+    airConditioned: { icon: <FaSnowflake /> },
+    view: { icon: <FaBinoculars/> },
+    floor: { icon: <FaBuilding/> },
+    direction: { icon: <FaCompass/> },
+    fireplace: { icon: <FaFireAlt /> },
+  };
+  
+  const renderFeatureIcons = (features) => {
+    return Object.keys(features).map((key) => {
+      const value = features[key];
+      if (value) { // Only render if value is truthy
+        const feature = featureIcons[key];
+        return (
+          <li key={key} className={styles.featureItem}>
+           <div className={styles.icon}>{feature.icon}{" "}</div>
+            <div className={styles.value}><span>{value === true ? 'Yes' : value}</span></div> {/* Show 'Yes' if the value is true */}
+          </li>
+        );
+      }
+      return null;
+    });
+  };
+  
   const bathrooms = property.features.bathrooms
   const bedrooms = property.features.bedrooms
 
@@ -174,6 +203,22 @@ const PropertyDetail = () => {
             ))}
           </Slider>
         </div>
+        <div className="ltn__shop-details-area pb-10">
+          <Container>
+            <Row>
+              <Col lg={8} md={12}>
+                <div className="ltn__shop-details-inner ltn__page-details-inner mb-60">
+                  <h4 className="title-2">Property Features</h4>
+                  <div className="property-features-list">
+                    <ul>
+                    {renderFeatureIcons(property.features)}
+                    </ul>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </div>
 
         {/* Property Details */}
 
@@ -186,12 +231,12 @@ const PropertyDetail = () => {
                     <ul>
                       <li className="ltn__blog-date">
                         <i className="far fa-calendar-alt"></i>
-                        {property.createdAt}
+                        {new Date(property.createdAt).toLocaleDateString()}
                       </li>
                       <li>
                
                           <i className="far fa-comments"></i>
-                          {property.updatedAt}
+                          {/* {new Date(property.updatedAt).toLocaleDateString()} */}
                           
    
                       </li>
@@ -278,12 +323,13 @@ const PropertyDetail = () => {
         <p>Address: {property.address}</p>
         <p>Zip Code: {property.zipCode}</p>
         <div className="">
-          <video src={property.video} width={200} height={400} controls />
+          {/* <video src={property.video} width={200} height={400} controls /> */}
         </div>
         {/* Add other property details here */}
       </Container>
     </LayoutOne>
   );
 };
+
 
 export default PropertyDetail;

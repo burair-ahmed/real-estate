@@ -51,7 +51,7 @@ function AboutUsStyleTwo({ sectionSpace }) {
                   <h6 className="section-subtitle2 section-subtitle-custom ltn__secondary-color">
                     Featured Property
                   </h6>
-                  <h1 className="section-title2">Properties Sold Today</h1>
+                  <h1 className="section-title2">Hot Property</h1>
                   <p>
                     Praieries Hills allows you to design unlimited panels and real estate
                     custom forms to capture leads and keep record of all

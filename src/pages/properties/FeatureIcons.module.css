@@ -1,0 +1,37 @@
+.features-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; /* Allows icons to wrap */
+}
+
+.featureItem { /* Change class name to use CSS Modules */
+  width: 80px; /* Set a fixed width for each feature icon */
+  text-align: center;
+  margin-bottom: 20px; /* Add some space between icons */
+}
+
+.icon {
+  font-size: 30px; /* Set icon size */
+  color: white; /* White color for the icon */
+  margin-bottom: 10px; /* Space between the icon and value */
+}
+
+.value {
+  font-size: 14px; /* Font size for the value */
+  color: white; /* White color for the value */
+}
+
+@media (max-width: 768px) {
+  .featureItem {
+    width: 50px; /* Reduce width for smaller screens */
+  }
+
+  .icon {
+    font-size: 24px; /* Reduce icon size for smaller screens */
+  }
+
+  .value {
+    font-size: 12px; /* Reduce text size for smaller screens */
+  }
+}
