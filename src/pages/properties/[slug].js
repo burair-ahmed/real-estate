@@ -141,10 +141,12 @@ const PropertyDetail = () => {
       if (value) { // Only render if value is truthy
         const feature = featureIcons[key];
         return (
-          <li key={key} className={styles.featureItem}>
-           <div className={styles.icon}>{feature.icon}{" "}</div>
+          // <li key={key} className={styles.featureItem}>
+          <div className="">
+          <div className={styles.icon}>{feature.icon}</div>
             <div className={styles.value}><span>{value === true ? 'Yes' : value}</span></div> {/* Show 'Yes' if the value is true */}
-          </li>
+            </div>
+          // </li>
         );
       }
       return null;
@@ -206,9 +208,9 @@ const PropertyDetail = () => {
         <div className="ltn__shop-details-area pb-10">
           <Container>
             <Row>
-              <Col lg={8} md={12}>
+              <Col lg={10} md={12}>
                 <div className="ltn__shop-details-inner ltn__page-details-inner mb-60">
-                  <h4 className="title-2">Property Features</h4>
+                  {/* <h4 className="title-2">Property Features</h4> */}
                   <div className="property-features-list">
                     <ul>
                     {renderFeatureIcons(property.features)}
@@ -276,9 +278,9 @@ const PropertyDetail = () => {
                           
                           </li>
                           <li>
-                            <label>Year built:</label>{" "}
+                            <label>Property Category</label>{" "}
                  
-                            <span className="slug-property-items-style">{bathrooms} </span>    
+                            <span className="slug-property-items-style">{property.categories} </span>    
                           
                           </li>
                         </ul>

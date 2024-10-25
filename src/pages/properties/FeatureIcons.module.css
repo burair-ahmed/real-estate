@@ -1,42 +1,56 @@
 .features-list {
-  list-style:decimal-leading-zero;
+  list-style: none;
   padding: 0;
-  /* display: flex; */
-   /* Allows icons to wrap */
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  gap: 10px; /* Space between each feature item */
+  justify-content: center; /* Center align the features */
+  align-items: center;
 }
 
-.featureItem { /* Change class name to use CSS Modules */
-  width: 80px; /* Set a fixed width for each feature icon */
+.featureItem {
+  flex: 1 1 80px; /* Each item has a minimum width but can grow */
+  max-width: 100px; /* Max width for each item */
   text-align: center;
-  margin-bottom: 20px; /* Add some space between icons */
   background-color: #fff;
   border-radius: 5px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px !important;
+  padding: 10px; /* Consistent padding */
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+.features-list li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px; /* Set a fixed width */
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
 }
 
 .icon {
-  font-size: 30px; /* Set icon size */
-  color: #6d5c6a; /* White color for the icon */
-  margin-bottom: 10px; /* Space between the icon and value */
+  font-size: 24px;
+  color: #6d5c6a;
+  margin-bottom: 5px;
 }
 
 .value {
-  font-size: 14px; /* Font size for the value */
-  color: #121a2f; /* White color for the value */
+  font-size: 14px;
+  color: #121a2f;
 }
 
 @media (max-width: 768px) {
   .featureItem {
-    width: 50px; /* Reduce width for smaller screens */
+    flex: 1 1 50px; /* Smaller flex basis on smaller screens */
+    max-width: 80px; /* Max width for each item on smaller screens */
   }
-
   .icon {
-    font-size: 24px; /* Reduce icon size for smaller screens */
+    font-size: 20px;
   }
-
   .value {
-    font-size: 12px; /* Reduce text size for smaller screens */
+    font-size: 12px;
   }
 }
