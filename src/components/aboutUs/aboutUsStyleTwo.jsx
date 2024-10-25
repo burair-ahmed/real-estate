@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect  } from "react";
+import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -13,24 +14,31 @@ import Image from 'next/image';
 
 function AboutUsStyleTwo({ sectionSpace }) {
   const [index, setIndex] = useState(-1);
+  const [slides, setSlides] = useState([]);
 
-  const slides = [
-    {
-      src: "/img/img-slide/Untitled-3.jpg",
-      width: 800,
-      height: 570,
-    },
-    {
-      src: "/img/img-slide/Untitled-3.jpg",
-      width: 800,
-      height: 570,
-    },
-    {
-      src: "/img/img-slide/Untitled-3.jpg",
-      width: 800,
-      height: 570,
-    },
-  ];
+  useEffect(() => {
+    // Fetch the latest listings from the backend API
+    const fetchListings = async () => {
+      try {
+        const response = await axios.get('/api/listings');
+        const listings = response.data;
+
+        // Map listings to the required format for PhotoAlbum
+        const formattedSlides = listings.map((listing) => ({
+          src: listing.images[0], // assuming you want the first image for each listing
+          width: 800, // Adjust as needed
+          height: 570, // Adjust as needed
+        }));
+
+        setSlides(formattedSlides);
+      } catch (error) {
+        console.error("Error fetching listings:", error);
+      }
+    };
+
+    fetchListings();
+  }, []);
+
 
   return (
     <>
@@ -104,7 +112,7 @@ function AboutUsStyleTwo({ sectionSpace }) {
             </Col>
             <Col xs={12} lg={6} className="align-self-center">
               <div className="about-us-img-wrap about-img-right">
-                <Image src="/img/others/Untitled-3.jpg" alt="About Us Image" width={510} height={570} className="mt-14" />
+                <Image src="/img/img-slide/39.webp" alt="About Us Image" width={510} height={570} className="mt-14" />
               </div>
             </Col>
           </Row>
