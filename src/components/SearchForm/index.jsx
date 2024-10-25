@@ -60,10 +60,9 @@ function CarDealerSearchForm({ navMenuClass, customClasses }) {
                             >
                               <Form.Select className="nice-select">
                                 <option>Property Status</option>
-                                <option value="1">Open house</option>
+                                <option value="1">Buy</option>
                                 <option value="2">Rent</option>
-                                <option value="3">Sale</option>
-                                <option value="4">Sold</option>
+                                <option value="3">Development</option>
                               </Form.Select>
                             </Col>
                             <Col
@@ -75,9 +74,13 @@ function CarDealerSearchForm({ navMenuClass, customClasses }) {
                               <Form.Select className="nice-select">
                                 <option>Property Type</option>
                                 <option value="1">Apartment</option>
-                                <option value="2">Co-op</option>
-                                <option value="3">Condo</option>
-                                <option value="4">Single Family Home</option>
+                                <option value="2">Villa</option>
+                                <option value="3">Mansion</option>
+                                <option value="4">Chalet</option>
+                                <option value="5">Land</option>
+                                <option value="6">Townhouse</option>
+                                <option value="7">Business Premise</option>
+                                <option value="8">Office</option>
                               </Form.Select>
                             </Col>
                             <Col
@@ -88,7 +91,7 @@ function CarDealerSearchForm({ navMenuClass, customClasses }) {
                             >
                               <div className="btn-wrapper text-center mt-0">
                                 <Link
-                                  href="/shop/right-sidebar"
+                                  href="/shop"
                                   className="btn theme-btn-1 btn-effect-1 text-uppercase"
                                 >
                                   Search
@@ -102,7 +105,7 @@ function CarDealerSearchForm({ navMenuClass, customClasses }) {
                     <Tab.Pane eventKey="second">
                       <div className="car-dealer-form-inner">
                         <form
-                          action="/shop/right-sidebar"
+                          action="/shop"
                           className="ltn__car-dealer-form-box"
                         >
                           <Row>
@@ -129,10 +132,9 @@ function CarDealerSearchForm({ navMenuClass, customClasses }) {
                             >
                               <Form.Select className="nice-select">
                                 <option>Property Status</option>
-                                <option value="1">Open house</option>
+                                <option value="1">Buy</option>
                                 <option value="2">Rent</option>
-                                <option value="3">Sale</option>
-                                <option value="4">Sold</option>
+                                <option value="3">Development</option>
                               </Form.Select>
                             </div>
                             <div
@@ -144,9 +146,13 @@ function CarDealerSearchForm({ navMenuClass, customClasses }) {
                               <Form.Select className="nice-select">
                                 <option>Property Type</option>
                                 <option value="1">Apartment</option>
-                                <option value="2">Co-op</option>
-                                <option value="3">Condo</option>
-                                <option value="4">Single Family Home</option>
+                                <option value="2">Villa</option>
+                                <option value="3">Mansion</option>
+                                <option value="4">Chalet</option>
+                                <option value="5">Land</option>
+                                <option value="6">Townhouse</option>
+                                <option value="7">Business Premise</option>
+                                <option value="8">Office</option>
                               </Form.Select>
                             </div>
                             <div
@@ -157,7 +163,7 @@ function CarDealerSearchForm({ navMenuClass, customClasses }) {
                             >
                               <div className="btn-wrapper text-center mt-0">
                                 <Link
-                                  href="/shop/right-sidebar"
+                                  href="/shop"
                                   className="btn theme-btn-1 btn-effect-1 text-uppercase"
                                 >
                                   Search
