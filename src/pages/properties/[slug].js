@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import BreadCrumb from "@/components/breadCrumbs"; // Import your BreadCrumb component
 import { LayoutOne } from "@/layouts"; // Import your Layout component
-import { FaArrowRight, FaArrowLeft, FaBuilding, FaBinoculars } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft, FaBuilding, FaBinoculars, FaCalendar } from "react-icons/fa";
 import { Container, Row, Col, Nav, Tab } from "react-bootstrap";
 import { getDisplayName } from "next/dist/shared/lib/utils";
 import Preloader from "@/components/preloader";
@@ -138,15 +138,15 @@ const PropertyDetail = () => {
   const renderFeatureIcons = (features) => {
     return Object.keys(features).map((key) => {
       const value = features[key];
-      if (value) { // Only render if value is truthy
+      if (value) { 
         const feature = featureIcons[key];
         return (
-          // <li key={key} className={styles.featureItem}>
-          <div className="">
+          <li key={key} className={styles.featureItem}>
+          
           <div className={styles.icon}>{feature.icon}</div>
             <div className={styles.value}><span>{value === true ? 'Yes' : value}</span></div> {/* Show 'Yes' if the value is true */}
-            </div>
-          // </li>
+            
+          </li>
         );
       }
       return null;
@@ -232,12 +232,12 @@ const PropertyDetail = () => {
                   <div className="ltn__blog-meta">
                     <ul>
                       <li className="ltn__blog-date">
-                        <i className="far fa-calendar-alt"></i>
+                       <FaCalendar/>
                         {new Date(property.createdAt).toLocaleDateString()}
                       </li>
                       <li>
                
-                          <i className="far fa-comments"></i>
+                          {/* <i className="far fa-comments"></i> */}
                           {/* {new Date(property.updatedAt).toLocaleDateString()} */}
                           
    
@@ -261,7 +261,7 @@ const PropertyDetail = () => {
                         <ul>
                           <li>
                             <label>Property ID:</label>{" "}
-                            {/* <span className="slug-property-items-style">{property._id}</span> */}
+                            <span className="slug-property-items-style">{property.propertyid}</span>
                           </li>
                           <li>
                             <label>Home Area: </label>{" "}
@@ -272,7 +272,7 @@ const PropertyDetail = () => {
                             <span className="slug-property-items-style">{property.features.rooms}</span>
                           </li>
                           <li>
-                            <label>Bedroom</label>{" "}
+                            <label>Bedroom:</label>{" "}
                             <span className="slug-property-items-style">{bedrooms}
                             </span>
                           

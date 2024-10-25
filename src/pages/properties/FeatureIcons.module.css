@@ -3,19 +3,24 @@
   padding: 0;
   display: flex;
   flex-wrap: wrap; /* Allows items to wrap on smaller screens */
-  gap: 10px; /* Space between each feature item */
-  justify-content: center; /* Center align the features */
-  align-items: center;
+  gap: 15px; /* Increased gap for more spacious layout */
+  justify-content: center; /* Center-align the features */
+  align-items: flex-start; /* Aligns icons and text vertically */
 }
 
 .featureItem {
   flex: 1 1 80px; /* Each item has a minimum width but can grow */
   max-width: 100px; /* Max width for each item */
   text-align: center;
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 10px; /* Consistent padding */
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 12px; /* Consistent padding */
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1); /* Slightly larger shadow */
+  transition: transform 0.2s ease; /* Adds subtle hover effect */
+}
+
+.featureItem:hover {
+  transform: scale(1.05); /* Scales up slightly on hover */
 }
 
 .features-list li {
@@ -23,29 +28,43 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80px; /* Set a fixed width */
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 10px;
+  width: 80px; /* Fixed width for items */
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 12px;
   text-align: center;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
 }
 
 .icon {
-  font-size: 24px;
+  font-size: 26px;
   color: #6d5c6a;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 .value {
-  font-size: 14px;
+  font-size: 15px;
   color: #121a2f;
 }
 
+
 @media (max-width: 768px) {
   .featureItem {
-    flex: 1 1 50px; /* Smaller flex basis on smaller screens */
-    max-width: 80px; /* Max width for each item on smaller screens */
+    flex: 1 1 60px; /* Smaller basis on smaller screens */
+    max-width: 70px; /* Max width on smaller screens */
+  }
+  .icon {
+    font-size: 22px;
+  }
+  .value {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .featureItem {
+    flex: 1 1 50px; /* Even smaller basis on very small screens */
+    max-width: 60px;
   }
   .icon {
     font-size: 20px;

@@ -5,6 +5,7 @@ const categoryEnum = ['Apartment', 'Villa', 'Mansion', 'Chalet', 'Land', 'Townho
 const propertytypeEnum = ['Buy', 'Rent', 'Development'];
 
 const propertySchema = new mongoose.Schema({
+    propertyid: { type: String, required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, required: true },

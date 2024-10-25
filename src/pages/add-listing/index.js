@@ -66,10 +66,10 @@ function AddListingPage() {
     propertyID: "",
     categories: [],
     propertytype: [],
-    state: "", // New input field
-    country: "", // New input field
-    address: "", // New input field
-    zipCode: "", // New input field
+    state: "",
+    country: "",
+    address: "",
+    zipCode: "",
   });
 
   // Active tab state
@@ -165,6 +165,7 @@ const handleVideoChange = async (event) => {
   // Handle form submission
   const handleCreateProperty = async () => {
     const completeFormData = {
+      propertyid: inputValues.propertyID,
       title: inputValues.propertyTitle,
       description: inputValues.description,
       price: parseFloat(inputValues.priceValue), // Ensure price is a number
