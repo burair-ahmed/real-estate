@@ -208,11 +208,11 @@ const PropertyDetail = () => {
         <div className="ltn__shop-details-area pb-10">
           <Container>
             <Row>
-              <Col lg={10} md={12}>
-                <div className="ltn__shop-details-inner ltn__page-details-inner mb-60">
-                  {/* <h4 className="title-2">Property Features</h4> */}
+              <Col lg={12} md={12}>
+                <div className="ltn__shop-details-inner ltn__page-details-inner mb-20">
+                  <h4 className="title-2">Property Features</h4>
                   <div className="property-features-list">
-                    <ul>
+                    <ul className={styles["features-list"]}>
                     {renderFeatureIcons(property.features)}
                     </ul>
                   </div>
