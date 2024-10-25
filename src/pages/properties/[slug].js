@@ -122,6 +122,13 @@ const PropertyDetail = () => {
     ],
   };
 
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('en-AE', {
+      style: 'currency',
+      currency: 'AED',
+    }).format(price);
+  };
+
   const featureIcons = {
     area: { icon: <FaRulerCombined /> },
     bedrooms: { icon: <FaBed /> },
@@ -227,7 +234,7 @@ const PropertyDetail = () => {
         <div className="ltn__shop-details-area pb-10">
           <Container>
             <Row>
-              <Col lg={8} md={12}>
+              <Col lg={10} md={12}>
                 <div className="ltn__shop-details-inner ltn__page-details-inner mb-60">
                   <div className="ltn__blog-meta">
                     <ul>
@@ -264,7 +271,7 @@ const PropertyDetail = () => {
                             <span className="slug-property-items-style">{property.propertyid}</span>
                           </li>
                           <li>
-                            <label>Home Area: </label>{" "}
+                            <label>Area: </label>{" "}
                             <span className="slug-property-items-style">{property.features.area} sqft</span>
                           </li>
                           <li>
@@ -278,7 +285,7 @@ const PropertyDetail = () => {
                           
                           </li>
                           <li>
-                            <label>Property Category</label>{" "}
+                            <label>Property Category:</label>{" "}
                  
                             <span className="slug-property-items-style">{property.categories} </span>    
                           
@@ -288,6 +295,13 @@ const PropertyDetail = () => {
                       <Col lg={6} md={6}>
                         {" "}
                         <ul>
+                          <li>
+                            <label>Price:</label> <span className="slug-property-items-style"> {formatPrice(property.price)}</span>
+                          </li>
+                          <li>
+                            <label>Property Status:</label>{" "}
+                            <span className="slug-property-items-style">{type}</span>
+                          </li>
                           <li>
                             <label>Lot Area:</label>{" "}
                             {/* <span>{property.propertyDetails.propertyId}</span> */}
@@ -300,13 +314,6 @@ const PropertyDetail = () => {
                             <label>Beds:</label>{" "}
                             {/* <span>{property.propertyDetails.bedrooms}</span> */}
                           </li>
-                          <li>
-                            <label>Price:</label> <span className="slug-property-items-style">{property.price}</span>
-                          </li>
-                          <li>
-                            <label>Property Status:</label>{" "}
-                            <span className="slug-property-items-style">{type}</span>
-                          </li>
                         </ul>
                       </Col>
                     </Row>
@@ -317,17 +324,7 @@ const PropertyDetail = () => {
           </Container>
         </div>
 
-        <h1>{property.title}</h1>
-        <p>{property.description}</p>
-        <p>Price: ${property.price.toLocaleString()}</p>
-        <p>State: {property.state}</p>
-        <p>Country: {property.country}</p>
-        <p>Address: {property.address}</p>
-        <p>Zip Code: {property.zipCode}</p>
-        <div className="">
-          {/* <video src={property.video} width={200} height={400} controls /> */}
-        </div>
-        {/* Add other property details here */}
+     
       </Container>
     </LayoutOne>
   );
