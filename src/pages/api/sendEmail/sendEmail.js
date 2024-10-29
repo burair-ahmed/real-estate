@@ -4,11 +4,11 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { name, email, phone, service, message } = req.body;
 
-    // Configure the email transporter
+
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
-      secure: process.env.SMTP_PORT == 465, // true for SSL, false for TLS
+      secure: process.env.SMTP_PORT == 465, 
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
@@ -18,8 +18,8 @@ export default async function handler(req, res) {
     try {
       // Send email
       await transporter.sendMail({
-        from: `"${name}" <${process.env.SMTP_USER}>`, // Use the SMTP user as the sender address
-        to: "burair@viralmarketingsolution.com", // recipient's email
+        from: `"${name}" <${process.env.SMTP_USER}>`, 
+        to: "burair@viralmarketingsolution.com", 
         subject: `New Contact Request: ${service}`,
         html: `
           <h3>New Contact Request</h3>
