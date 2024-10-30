@@ -67,6 +67,14 @@ font-family: 'Poppins', sans-serif;
   padding-right: 15px;
   padding-left: 15px;
 }
+@media (max-width: 576px) {
+  .container {
+    padding-left: 15px !important; 
+    padding-right: 15px !important;
+    overflow-x: hidden;
+  }
+}
+
 .row {
   margin-left: -15px;
   margin-right: -15px;
@@ -234,6 +242,8 @@ font-family: 'Poppins', sans-serif;
 ---------------------------------------------------- */
 body{
   background-color: #121a2f;
+  overflow-x: hidden;
+
 }
 
 .slide-title, .count-text, .section-title,.ltn__feature-info > h3, .category-title {
