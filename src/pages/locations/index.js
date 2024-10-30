@@ -63,7 +63,7 @@ function Locations() {
               </Col>
               <Col xs={12}>
                 <div className="ltn__state-location">
-                  <h2 className="ltn__state-location-title">Alabama</h2>
+                  <h2 className="ltn__state-location-title">New York</h2>
                 </div>
               </Col>
               <Col xs={12} lg={4}>
@@ -291,7 +291,7 @@ function Locations() {
 
               <Col xs={12}>
                 <div className="ltn__state-location">
-                  <h2 className="ltn__state-location-title">Boston</h2>
+                  <h2 className="ltn__state-location-title">New York</h2>
                 </div>
               </Col>
               <Col xs={12} lg={4}>
