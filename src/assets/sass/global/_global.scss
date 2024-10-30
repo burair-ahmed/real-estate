@@ -463,6 +463,23 @@ color: #6d5c6a !important;
 
 // Styling slug Icons
 
+
+
+
+.progress-bar {
+  background-color: #6d5c6a !important;
+  
+}
+.progress{
+  width: 50% !important;
+}
+@media screen  and (max-width: 768px) {
+  .progress{
+    width: 100% !important;
+  } 
+}
+
+
 :root {
   --ltn__primary-color: #171b2a;
   --ltn__primary-color-2: #5cdef1; /* Darken */

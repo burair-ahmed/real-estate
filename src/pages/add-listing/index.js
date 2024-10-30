@@ -4,13 +4,13 @@ import { LayoutOne } from "@/layouts";
 import ShopBreadCrumb from "@/components/breadCrumbs/shop";
 import CallToAction from "@/components/callToAction";
 import { FaPencilAlt } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { uploadImage } from '@/lib/firebaseConfig';
-import { uploadVideo } from "@/lib/firebaseConfig";
-import { useEffect } from "react";
 import Preloader from "@/components/preloader";
 
 function AddListingPage() {
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploadComplete, setUploadComplete] = useState(false);
   const [formData, setFormData] = useState({
     area: false,
     bedrooms: false,
@@ -74,6 +74,8 @@ function AddListingPage() {
 
   // Active tab state
   const [activeKey, setActiveKey] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
 
   // Handle checkbox changes
   const handleCheckboxChange = (e) => {
@@ -109,16 +111,14 @@ function AddListingPage() {
   const handleNextStep = () => {
     // Step-specific validation
     if (activeKey === 0) {
-      // Validate Step 1: Property Title, Description, and Price
       const { propertyTitle, description, priceValue } = inputValues;
       if (!propertyTitle || !description || !priceValue) {
         alert("Please fill in all required fields in Step 1.");
         return;
       }
     } else if (activeKey === 1) {
-      // Validate Step 2: Images and Video
       if (!formData.images.length && !formData.video) {
-        alert("Please upload at least one image Or one video in Step 2.");
+        alert("Please upload at least one image or one video in Step 2.");
         return;
       }
     }
@@ -129,46 +129,55 @@ function AddListingPage() {
 
   const handleImageChange = async (event) => {
     const files = Array.from(event.target.files);
+    setUploadComplete(false);
+    setUploadProgress(0); // Reset upload progress before starting new uploads
+
     const uploadedImageUrls = await Promise.all(
-        files.map(file => uploadImage(file, inputValues.propertyTitle)) // Pass property title
+      files.map(file => 
+        uploadImage(file, inputValues.propertyTitle, (progress) => {
+          setUploadProgress(progress);
+          if (progress === 100) {
+            setUploadComplete(true);
+          }
+        })
+      )
     );
     setFormData((prevData) => ({
-        ...prevData,
-        images: uploadedImageUrls.filter(url => url), // Filter out any null URLs
-    }));
-};
-
-
-const handleVideoChange = async (event) => {
-  const file = event.target.files[0]; // Get the video file
-  console.log(file); // Check if the file is being selected
-  if (!file) return;
-
-  try {
-    // Upload video to Firebase under the 'video' folder
-    const videoURL = await uploadImage(file, inputValues.propertyTitle, "video");
-    console.log(videoURL); // Check if the video URL is returned correctly
-    setFormData((prevData) => ({
       ...prevData,
-      video: videoURL, // Store Firebase video URL in formData
+      images: uploadedImageUrls.filter(url => url), // Filter out any null URLs
     }));
-  } catch (error) {
-    console.error("Error uploading video:", error);
-  }
-};
+  };
 
+  const handleVideoChange = async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    try {
+      const videoURL = await uploadImage(file, inputValues.propertyTitle, (progress) => {
+        setUploadProgress(progress);
+        if (progress === 100) {
+          setUploadComplete(true);
+        }
+      });
+      setFormData((prevData) => ({
+        ...prevData,
+        video: videoURL,
+      }));
+    } catch (error) {
+      console.error("Error uploading video:", error);
+    }
+  };
 
   const handlePrevStep = () => {
     if (activeKey > 0) setActiveKey((prev) => prev - 1);
   };
 
-  // Handle form submission
   const handleCreateProperty = async () => {
     const completeFormData = {
       propertyid: inputValues.propertyID,
       title: inputValues.propertyTitle,
       description: inputValues.description,
-      price: parseFloat(inputValues.priceValue), // Ensure price is a number
+      price: parseFloat(inputValues.priceValue),
       categories: inputValues.categories,
       propertytype: inputValues.propertytype,
       state: inputValues.state,
@@ -178,14 +187,10 @@ const handleVideoChange = async (event) => {
       images: formData.images,
       video: formData.video,
       features: {
-        area: formData.area ? parseFloat(inputValues.areaValue) : undefined, // Ensure area is a number
-        bedrooms: formData.bedrooms
-          ? parseInt(inputValues.bedroomsValue)
-          : undefined, // Convert to number
-        rooms: formData.rooms ? parseInt(inputValues.roomsValue) : undefined, // Convert to number
-        bathrooms: formData.bathrooms
-          ? parseInt(inputValues.bathroomsValue)
-          : undefined, // Convert to number
+        area: formData.area ? parseFloat(inputValues.areaValue) : undefined,
+        bedrooms: formData.bedrooms ? parseInt(inputValues.bedroomsValue) : undefined,
+        rooms: formData.rooms ? parseInt(inputValues.roomsValue) : undefined,
+        bathrooms: formData.bathrooms ? parseInt(inputValues.bathroomsValue) : undefined,
         furnished: formData.furnished,
         airConditioned: formData.airconditioned,
         view: formData.view ? inputValues.viewValue : undefined,
@@ -204,7 +209,7 @@ const handleVideoChange = async (event) => {
       !completeFormData.images.length
     ) {
       console.error("Please fill in all required fields");
-      return; // Prevent submission if required fields are missing
+      return; 
     }
 
     try {
@@ -229,9 +234,6 @@ const handleVideoChange = async (event) => {
     }
   };
 
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(null);
-
   useEffect(() => {
     const fetchUser = async () => {
       const res = await fetch("/api/getUser", {
@@ -241,7 +243,7 @@ const handleVideoChange = async (event) => {
   
       if (res.ok) {
         const data = await res.json();
-        console.log("Fetched user data:", data); // Log user data
+        console.log("Fetched user data:", data);
         setUser(data);
       } else {
         console.error("Failed to fetch user data", await res.text());
@@ -257,12 +259,13 @@ const handleVideoChange = async (event) => {
   }, []);
 
   if (loading) {
-    return <div><Preloader /></div>; // Show loading state if user isn't loaded
+    return <div><Preloader /></div>;
   }
 
   if (!user) {
-    return <div>Please log in.</div>; // If no user data, prompt to log in
+    return <div>Please log in.</div>; 
   }
+
 
   return (
     <>
@@ -278,14 +281,16 @@ const handleVideoChange = async (event) => {
               <Col xs={12}>
                 <form action="#">
                   <Tab.Container activeKey={activeKey}>
-                    <div className="ltn__tab-menu ltn__tab-menu-3 text-center">
-                      <Nav className="nav justify-content-center">
-                        <Nav.Link eventKey={0}>1. Details</Nav.Link>
-                        <Nav.Link eventKey={1}>2. Images</Nav.Link>
-                        <Nav.Link eventKey={2}>3. Features</Nav.Link>
-                        <Nav.Link eventKey={3}>4. Proximities</Nav.Link>
-                      </Nav>
-                    </div>
+                  <div className="ltn__tab-menu ltn__tab-menu-3 text-center flex items-center justify-center">
+  <Nav className="grid grid-cols-2 gap-4 md:grid-cols-4 text-center">
+    <Nav.Link eventKey={0}>1. Details</Nav.Link>
+    <Nav.Link eventKey={1}>2. Images</Nav.Link>
+    <Nav.Link eventKey={2}>3. Features</Nav.Link>
+    <Nav.Link eventKey={3}>4. Proximities</Nav.Link>
+  </Nav>
+</div>
+
+
                     <Tab.Content>
                       <Tab.Pane eventKey={0}>
                         <div className="ltn__apartments-tab-content-inner">
@@ -500,6 +505,21 @@ const handleVideoChange = async (event) => {
                                   accept="image/*"
                                   onChange={handleImageChange}
                                 />
+                                    {uploadProgress > 0 && (
+      <div className="progress mt-3">
+        <div
+          className="progress-bar"
+          role="progressbar"
+          style={{ width: `${uploadProgress}%` }}
+          aria-valuenow={uploadProgress}
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          {uploadComplete ? 'Done' : `${Math.round(uploadProgress)}%`}
+        </div>
+      </div>
+    )}
+
                               </Form.Group>
                             </Col>
                             <Col xs={12}>

@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { getAnalytics } from 'firebase/analytics';
 
 const firebaseConfig = {
@@ -23,25 +23,41 @@ if (typeof window !== 'undefined') {
 const storage = getStorage(app);
 
 // Upload image to Firebase Storage
-export const uploadImage = async (file, propertyTitle) => {
-  if (!file) return null;
-  
-  const sanitizedTitle = propertyTitle.toLowerCase().replace(/\s+/g, '-'); // Sanitize title for folder name
-  const storageRef = ref(storage, `images/${sanitizedTitle}/${file.name}`); // Use the property title as folder name
-  await uploadBytes(storageRef, file);
-  const downloadURL = await getDownloadURL(storageRef);
-  return downloadURL; // Return the image URL
+export const uploadImage = (file, propertyTitle, onUploadProgress = () => {}) => {
+  return new Promise((resolve, reject) => {
+    if (!file) return resolve(null);
+
+    const sanitizedTitle = propertyTitle.toLowerCase().replace(/\s+/g, '-'); // Sanitize title for folder name
+    const storageRef = ref(storage, `images/${sanitizedTitle}/${file.name}`); // Use the property title as folder name
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        // Calculate progress percentage
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        onUploadProgress(progress); // Call the progress callback
+      },
+      (error) => {
+        console.error("Error uploading image:", error);
+        reject(error);
+      },
+      async () => {
+        // Handle successful uploads
+        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+        resolve(downloadURL); // Return the image URL
+      }
+    );
+  });
 };
 
 // Upload video to Firebase Storage
-// Upload video to Firebase Storage
 export const uploadVideo = async (file, propertyTitle) => {
-    if (!file) return null;
-  
-    const sanitizedTitle = propertyTitle.toLowerCase().replace(/\s+/g, '-'); // Sanitize title for folder name
-    const storageRef = ref(storage, `video/${sanitizedTitle}/${file.name}`); // Use the property title as folder name for videos
-    await uploadBytes(storageRef, file);
-    const downloadURL = await getDownloadURL(storageRef);
-    return downloadURL; // Return the video URL
-  };
-  
+  if (!file) return null;
+
+  const sanitizedTitle = propertyTitle.toLowerCase().replace(/\s+/g, '-'); // Sanitize title for folder name
+  const storageRef = ref(storage, `video/${sanitizedTitle}/${file.name}`); // Use the property title as folder name for videos
+  await uploadBytes(storageRef, file);
+  const downloadURL = await getDownloadURL(storageRef);
+  return downloadURL; // Return the video URL
+};

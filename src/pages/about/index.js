@@ -57,7 +57,31 @@ function AboutUs() {
     slidesToScroll: 1,
     prevArrow: <SlickArrowLeft />,
     nextArrow: <SlickArrowRight />,
+    responsive: [
+      {
+        breakpoint: 1024, // screens below 1024px
+        settings: {
+          slidesToShow: 2, // show 2 slides
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768, // screens below 768px
+        settings: {
+          slidesToShow: 1, // show 1 slide
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480, // screens below 480px
+        settings: {
+          slidesToShow: 1, // show 1 slide
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
+  
 
   // const blogSettings = {
   //   dots: false,
