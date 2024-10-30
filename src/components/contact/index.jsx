@@ -70,7 +70,12 @@ const Contact = () => {
             <div className="col-lg-4">
               <div className="ltn__contact-address-item ltn__contact-address-item-3 box-shadow">
                 <div className="ltn__contact-address-icon">
-                  <Image src="/img/icons/10.png" alt="Icon Image" width={80} height={78} />
+                  <Image
+                    src="/img/icons/10.png"
+                    alt="Icon Image"
+                    width={80}
+                    height={78}
+                  />
                 </div>
                 <h3>Email Address</h3>
                 <p>info@prairieshills.com</p>
@@ -79,7 +84,12 @@ const Contact = () => {
             <div className="col-lg-4">
               <div className="ltn__contact-address-item ltn__contact-address-item-3 box-shadow">
                 <div className="ltn__contact-address-icon">
-                  <Image src="/img/icons/11.png" alt="Icon Image" width={80} height={77} />
+                  <Image
+                    src="/img/icons/11.png"
+                    alt="Icon Image"
+                    width={80}
+                    height={77}
+                  />
                 </div>
                 <h3>Phone Number</h3>
                 <p>055-3575797</p>
@@ -88,7 +98,12 @@ const Contact = () => {
             <div className="col-lg-4">
               <div className="ltn__contact-address-item ltn__contact-address-item-3 box-shadow">
                 <div className="ltn__contact-address-icon">
-                  <Image src="/img/icons/12.png" alt="Icon Image" width={80} height={77} />
+                  <Image
+                    src="/img/icons/12.png"
+                    alt="Icon Image"
+                    width={80}
+                    height={77}
+                  />
                 </div>
                 <h3>Office Address</h3>
                 <p>Office 720 DIC, Dubai</p>
@@ -195,7 +210,8 @@ const Contact = () => {
                         checked={formData.agree}
                         onChange={handleChange}
                       />{" "}
-                      Save my name, email, and website in this browser for the next time I comment.
+                      Save my name, email, and website in this browser for the
+                      next time I comment.
                     </label>
                   </p>
                   <div className="btn-wrapper mt-0">
@@ -217,8 +233,14 @@ const Contact = () => {
 
       {/* GOOGLE MAP AREA START */}
       <div className="google-map mb-120">
-        <iframe
+        {/* <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3605.633025116105!2d55.25147241506698!3d25.092840143948647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f68b49313e81b%3A0x9793f3d7fcb227ee!2sOffice%20720%20DIC%2C%20Dubai!5e0!3m2!1sen!2sbd!4v1694445357713!5m2!1sen!2sbd"
+          width="100%"
+          height="100%"
+          loading="lazy"
+        ></iframe> */}
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40951.60261264831!2d55.015146556090365!3d24.875988945644295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f095bd08f0b9f%3A0xec9384382773f5b8!2sDubai%20DIC%20Building!5e0!3m2!1sen!2s!4v1730282920406!5m2!1sen!2s"
           width="100%"
           height="100%"
           loading="lazy"
@@ -231,7 +253,6 @@ const Contact = () => {
   allowfullscreen=""
   loading="lazy"
 ></iframe> */}
-
       </div>
       {/* GOOGLE MAP AREA END */}
     </>
