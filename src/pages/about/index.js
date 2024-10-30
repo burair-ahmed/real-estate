@@ -119,7 +119,7 @@ function AboutUs() {
 
 
 
-        <div className="ltn__team-area pt-115 pb-90">
+        {/* <div className="ltn__team-area pt-115 pb-90">
           <Container>
             <Row>
               <Col lg={12}>
@@ -134,7 +134,7 @@ function AboutUs() {
               </Col>
             </Row>
 
-            {/* <Row>
+            <Row>
               {agents.map((data, key) => {
                 const slug = productSlug(data.name);
                 return (
@@ -143,17 +143,17 @@ function AboutUs() {
                   </Col>
                 );
               })}
-            </Row> */}
+            </Row>
 
 
           </Container>
-        </div>
+        </div> */}
 
 
 
         {/* <!-- TESTIMONIAL AREA START (testimonial-7) -->  */}
         <div
-          className="ltn__testimonial-area bg-image-top pt-115 pb-70"
+          className="ltn__testimonial-area bg-image-top pt-40 pb-70"
           style={{ backgroundImage: `url("../img/bg/20.jpg")` }}
         >
           <Container>
