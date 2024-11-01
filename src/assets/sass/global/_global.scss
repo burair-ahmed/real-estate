@@ -490,6 +490,29 @@ color: #6d5c6a !important;
 }
 
 
+
+
+/* Global scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #6d5c6a;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #33334d;
+  border-radius: 10px;
+  border: 2px solid #6d5c6a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+
 :root {
   --ltn__primary-color: #171b2a;
   --ltn__primary-color-2: #5cdef1; /* Darken */

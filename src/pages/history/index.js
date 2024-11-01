@@ -203,62 +203,66 @@ function HistoryPage() {
             </div>
 
             <div className="ltn__feature-area section-bg-2 pt-115 pb-90">
-                <Container>
-                    <Row>
-                        <Col xs={12}>
-                             <TitleSection2
-                                sectionClasses="text-center"
-                                headingClasses="section-subtitle-custom"
-                                titleSectionData2={{
-                                    subTitle2: "Features",
-                                    title2: "Why Choose Us",
-                                }}
-                            />
-                        </Col>
-                    </Row>
-                    <Row className="justify-content-center">
-                        <Col xs={12} sm={6} xl={4}>
-                            <div className="ltn__feature-item ltn__feature-item-7 ltn__feature-item-7-color-white">
-                                <div className="ltn__feature-icon-title">
-                                    <div className="ltn__feature-icon">
-                                        <span><i className="flaticon-house-4"></i></span>
-                                    </div>
-                                    <h3 className="animated fadeIn"><Link href="https://quarter-nextjs.netlify.app/service/buy-a-home">The Perfect Residency</Link></h3>
-                                </div>
-                                <div className="ltn__feature-info">
-                                    <p>Lorem ipsum dolor sit ame it, consectetur adipisicing elit, sed do eiusmod te mp or incididunt ut labore.</p>
-                                </div>
-                            </div>
-                        </Col>
-                        <Col xs={12} sm={6} xl={4}>
-                            <div className="ltn__feature-item ltn__feature-item-7 ltn__feature-item-7-color-white">
-                                <div className="ltn__feature-icon-title">
-                                    <div className="ltn__feature-icon">
-                                        <span><i className="icon-mechanic"></i></span>
-                                    </div>
-                                    <h3 className="animated fadeIn"><Link href="https://quarter-nextjs.netlify.app/service/buy-a-home">Global Architect Experts</Link></h3>
-                                </div>
-                                <div className="ltn__feature-info">
-                                    <p>Lorem ipsum dolor sit ame it, consectetur adipisicing elit, sed do eiusmod te mp or incididunt ut labore.</p>
-                                </div>
-                            </div>
-                        </Col>
-                        <Col xs={12} sm={6} xl={4}>
-                            <div className="ltn__feature-item ltn__feature-item-7 ltn__feature-item-7-color-white">
-                                <div className="ltn__feature-icon-title">
-                                    <div className="ltn__feature-icon">
-                                        <span><i className="icon-repair-1"></i></span>
-                                    </div>
-                                    <h3 className="animated fadeIn"><Link href="https://quarter-nextjs.netlify.app/service/buy-a-home">Built-in Storage Cupboards</Link></h3>
-                                </div>
-                                <div className="ltn__feature-info">
-                                    <p>Lorem ipsum dolor sit ame it, consectetur adipisicing elit, sed do eiusmod te mp or incididunt ut labore.</p>
-                                </div>
-                            </div>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
+    <Container>
+        <Row>
+            <Col xs={12}>
+                <TitleSection2
+                    sectionClasses="text-center"
+                    headingClasses="section-subtitle-custom"
+                    titleSectionData2={{
+                        subTitle2: "Our Advantages",
+                        title2: "Why Choose Our Real Estate Services",
+                    }}
+                />
+            </Col>
+        </Row>
+        <Row className="justify-content-center">
+            {/* Feature 1 */}
+            <Col xs={12} sm={6} xl={4}>
+                <div className="ltn__feature-item ltn__feature-item-7 ltn__feature-item-7-color-white">
+                    <div className="ltn__feature-icon-title">
+                        <div className="ltn__feature-icon">
+                            <span><i className="flaticon-house-4"></i></span>
+                        </div>
+                        <h3 className="animated fadeIn"><Link href="/service/premium-properties">Premium Property Selection</Link></h3>
+                    </div>
+                    <div className="ltn__feature-info">
+                        <p>Discover a curated selection of luxurious homes, apartments, and villas tailored to meet your high standards and unique lifestyle.</p>
+                    </div>
+                </div>
+            </Col>
+            {/* Feature 2 */}
+            <Col xs={12} sm={6} xl={4}>
+                <div className="ltn__feature-item ltn__feature-item-7 ltn__feature-item-7-color-white">
+                    <div className="ltn__feature-icon-title">
+                        <div className="ltn__feature-icon">
+                            <span><i className="icon-mechanic"></i></span>
+                        </div>
+                        <h3 className="animated fadeIn"><Link href="/service/global-architects">Expert Architectural Insights</Link></h3>
+                    </div>
+                    <div className="ltn__feature-info">
+                        <p>Work with top architects and designers who ensure each property is crafted with exceptional design and functionality.</p>
+                    </div>
+                </div>
+            </Col>
+            {/* Feature 3 */}
+            <Col xs={12} sm={6} xl={4}>
+                <div className="ltn__feature-item ltn__feature-item-7 ltn__feature-item-7-color-white">
+                    <div className="ltn__feature-icon-title">
+                        <div className="ltn__feature-icon">
+                            <span><i className="icon-repair-1"></i></span>
+                        </div>
+                        <h3 className="animated fadeIn"><Link href="/service/unique-amenities">Tailored Living Spaces</Link></h3>
+                    </div>
+                    <div className="ltn__feature-info">
+                        <p>Enjoy exclusive amenities like built-in storage, custom closets, and optimized space solutions that make every home functional and stylish.</p>
+                    </div>
+                </div>
+            </Col>
+        </Row>
+    </Container>
+</div>
+
 
 
             <div className="call-to-action-area call-to-action-5 bg-image bg-overlay-theme-90 pt-40 pb-25" style={{ backgroundImage: `url("../img/bg/13.jpg")` }}>
