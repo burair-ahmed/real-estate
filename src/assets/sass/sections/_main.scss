@@ -4859,7 +4859,8 @@ input.cart-plus-minus-box {
 }
 @media (max-width: 640px) {
   .about-us-img-wrap-img {
-    height: 420px; /* Adjust height to 420px on mobile screens */
+    height: 600px; /* Adjust height to 420px on mobile screens */
+  overflow-y: hidden Im !important;
   }
 }
 

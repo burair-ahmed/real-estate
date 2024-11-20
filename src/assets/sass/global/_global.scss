@@ -513,6 +513,13 @@ color: #6d5c6a !important;
 }
 
 
+@media (max-width: 640px) {
+  .about-us-img-wrap-img {
+    height: 600px; /* Adjust height to 420px on mobile screens */
+  overflow-y: hidden Im !important;
+  }
+}
+
 :root {
   --ltn__primary-color: #171b2a;
   --ltn__primary-color-2: #5cdef1; /* Darken */

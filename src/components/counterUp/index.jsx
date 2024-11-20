@@ -49,7 +49,7 @@ function CounterUp() {
   };
 
   return (
-    <div className="ltn__counterup-area section-bg-1 pt-120 pb-70">
+    <div className="ltn__counterup-area section-bg-1 pt-70 pb-70">
       <Container>
         <Slider {...sliderSettings}>
           <Col className="align-self-center">
