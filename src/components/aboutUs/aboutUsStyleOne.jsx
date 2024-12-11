@@ -53,7 +53,7 @@ function AboutUsStyleOne({ sectionSpace }) {
                     The Leading Real Estate Rental Marketplace<span>.</span>
                   </h1>
                   <p>
-                  Welcome to Prairise Hills Real Estate – Your Gateway to Dubai's Finest Properties
+                  Welcome to Prairise Hills Real Estate &#8211; Your Gateway to Dubai's Finest Properties
 At Prairise Hills Real Estate, We specialize in turning your dreams of owning or investing in property into a reality. With an expert team that understands the dynamic real estate market, We offer personalized services to meet your unique needs, whether you&apos;re buying, selling, renting, or investing.
                   </p>
                 </div>
