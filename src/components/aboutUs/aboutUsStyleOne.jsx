@@ -53,7 +53,8 @@ function AboutUsStyleOne({ sectionSpace }) {
                     The Leading Real Estate Rental Marketplace<span>.</span>
                   </h1>
                   <p>
-                  Welcome to Prairies Hills, Dubai&apos;s leading luxury real estate management company. We specialize in high-end property sales and rentals, offering tailored services to meet the needs of our elite clientele. Our expert team ensures seamless transactions and exceptional investment opportunities. Discover your dream home or next investment with us today!
+                  Welcome to Prairise Hills Real Estate – Your Gateway to Dubai's Finest Properties
+At Prairise Hills Real Estate, We specialize in turning your dreams of owning or investing in property into a reality. With an expert team that understands the dynamic real estate market, We offer personalized services to meet your unique needs, whether you&apos;re buying, selling, renting, or investing.
                   </p>
                 </div>
                 <ul className="ltn__list-item-half clearfix">

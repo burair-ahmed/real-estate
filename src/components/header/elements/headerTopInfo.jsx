@@ -12,12 +12,12 @@ const HeaderTopInfo = function () {
               <i></i> info@prairieshills.com
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/locations">
               <FaMapMarkerAlt />
               Office 720 DIC, Dubai
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
 

@@ -23,6 +23,9 @@ import TestimonialCarouselItem from "@/components/testimonialCarousel";
 import testimonialData from "@/data/testimonial";
 import featuresData from "@/data/service";
 import TitleSection2 from "@/components/titleSection/index2";
+import MyHero from "@/components/hero/myhero";
+import Head from 'next/head';
+
 
 function HomePage(props) {
   const [properties, setProperties] = useState([]);
@@ -152,7 +155,16 @@ function HomePage(props) {
 
   return (
     <>
+     <Head>
+        <title>Prairies Hills - Luxury Real Estate</title>
+        <meta property="og:title" content="Prairies Hills - Luxury Real Estate" />
+        <meta property="og:description" content="Prairies Hills: Your partner for effortless luxury real estate in Dubai" />
+        <meta property="og:image" content="/favicon.ico" />
+        <meta property="og:url" content="https://prairies-hills.vercel.app" />
+        <meta property="og:type" content="website" />
+      </Head>
       <LayoutOne topbar={true}>
+        <MyHero/>
         <HeroSectionStyleOne data={Herodata} />
         <CarDealerSearchForm navMenuClass="d-none" customClasses="" />
         <AboutUsStyleOne sectionSpace="pt-120 pb-90" />
@@ -514,11 +526,11 @@ function HomePage(props) {
           </Container>
         </div>
         {/* <!-- VIDEO AREA START --> */}
-        <div className="ltn__video-popup-area">
+        {/* <div className="ltn__video-popup-area">
           <VideoBanner />
-        </div>
+        </div> */}
         {/* <!-- CATEGORY AREA START -->  */}
-        <div className="ltn__category-area ltn__product-gutter pt-115 pb-90">
+        {/* <div className="ltn__category-area ltn__product-gutter pt-115 pb-90">
           <Container>
             <Row>
               <Col xs={12}>
@@ -543,7 +555,7 @@ function HomePage(props) {
               })}
             </Row>
           </Container>
-        </div>
+        </div> */}
         {/* <!-- TESTIMONIAL AREA START (testimonial-7) -->  */}
         <div
           className="ltn__testimonial-area bg-image-top pt-115 pb-70"
