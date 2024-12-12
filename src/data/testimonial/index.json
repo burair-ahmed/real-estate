@@ -2,29 +2,29 @@
   {
     "id": "1",
     "name": "Jacob William",
-    "type": "selling Agents",
+    "type": "Luxury Buyer",
     "img": "1.jpg",
-    "description": " Precious ipsum dolor sit amet consectetur adipisicing elit, sed dos mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad min veniam, quis nostrud Precious ips um dolor sit amet, consecte"
+    "description": "Prairie Hills provided an exceptional experience in helping us find our dream home in Dubai. Their attention to detail and luxury property expertise are unmatched. Highly recommended!"
   },
   {
     "id": "2",
     "name": "Kelian Anderson",
-    "type": "selling Agents",
+    "type": "Investor",
     "img": "2.jpg",
-    "description": " Precious ipsum dolor sit amet consectetur adipisicing elit, sed dos mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad min veniam, quis nostrud Precious ips um dolor sit amet, consecte"
+    "description": "I was impressed by the professionalism and insight of Prairie Hills. Their portfolio of high-end properties is incredible, and the service is top-notch. A five-star experience all the way!"
   },
   {
     "id": "3",
     "name": "Adam Joseph",
-    "type": "selling Agents",
+    "type": "Luxury Buyer",
     "img": "3.jpg",
-    "description": " Precious ipsum dolor sit amet consectetur adipisicing elit, sed dos mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad min veniam, quis nostrud Precious ips um dolor sit amet, consecte"
+    "description": "Prairie Hills made the property buying process seamless and enjoyable. They understood our needs perfectly and went above and beyond to find us the ideal luxury property in Dubai."
   },
   {
     "id": "4",
     "name": "James Carter",
-    "type": "Jacob Williamselling Agents",
+    "type": "Relocation Client",
     "img": "4.jpg",
-    "description": " Precious ipsum dolor sit amet consectetur adipisicing elit, sed dos mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad min veniam, quis nostrud Precious ips um dolor sit amet, consecte"
+    "description": "Moving to Dubai was overwhelming, but Prairie Hills made it stress-free. Their team’s expertise in luxury real estate and understanding of the local market are truly outstanding."
   }
 ]
