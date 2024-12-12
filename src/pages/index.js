@@ -160,7 +160,7 @@ function HomePage(props) {
         <meta property="og:title" content="Prairies Hills - Luxury Real Estate" />
         <meta property="og:description" content="Prairies Hills: Your partner for effortless luxury real estate in Dubai" />
         <meta property="og:image" content="/favicon.ico" />
-        <meta property="og:url" content="https://prairies-hills.vercel.app" />
+        <meta property="og:url" content="https://prairies-hills.vercel.app/" />
         <meta property="og:type" content="website" />
       </Head>
       <LayoutOne topbar={true}>
@@ -529,33 +529,7 @@ function HomePage(props) {
         {/* <div className="ltn__video-popup-area">
           <VideoBanner />
         </div> */}
-        {/* <!-- CATEGORY AREA START -->  */}
-        {/* <div className="ltn__category-area ltn__product-gutter pt-115 pb-90">
-          <Container>
-            <Row>
-              <Col xs={12}>
-                <TitleSection2
-                  sectionClasses="text-center"
-                  headingClasses="section-subtitle-custom"
-                  titleSectionData2={{
-                    subTitle2: "Our Aminities",
-                    title2: "Building Aminities",
-                    additionalClassName: "",
-                  }}
-                />
-              </Col>
-            </Row>
-            <Row className="slick-arrow-1 justify-content-center">
-              {aminitiesData.map((data, key) => {
-                return (
-                  <Col key={key} xs={12} sm={6} md={4} lg={3}>
-                    <AminitiesItem data={data} />
-                  </Col>
-                );
-              })}
-            </Row>
-          </Container>
-        </div> */}
+
         {/* <!-- TESTIMONIAL AREA START (testimonial-7) -->  */}
         <div
           className="ltn__testimonial-area bg-image-top pt-115 pb-70"
