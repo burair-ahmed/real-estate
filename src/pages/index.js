@@ -26,6 +26,7 @@ import TitleSection2 from "@/components/titleSection/index2";
 import MyHero from "@/components/hero/myhero";
 import Head from 'next/head';
 import RecentSoldProperties from "@/components/recent-purchase";
+import RecentRentedProperties from "@/components/RecentRentedProperties";
 
 
 function HomePage(props) {
@@ -524,6 +525,9 @@ function HomePage(props) {
         </div>
         <div className="ltn__testimonial-area pt-115 pb-70">
   <RecentSoldProperties properties={properties} />
+</div>
+        <div className="ltn__testimonial-area pt-115 pb-70">
+<RecentRentedProperties/>
 </div>
         {/* <!-- TESTIMONIAL AREA START (testimonial-7) -->  */}
         <div
