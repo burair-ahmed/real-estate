@@ -2,12 +2,12 @@ import Link from "next/link";
 import { Col, Container, Row } from "react-bootstrap";
 import { FaHome, FaAngleRight } from "react-icons/fa";
 
-const ShopBreadCrumb = ({ title, currentSlug, sectionPace }) => {
+const ShopBreadCrumb = ({ title, currentSlug, sectionPace, bgImage }) => {
   return (
     <>
       <div
         className={`ltn__breadcrumb-area text-center bg-overlay-white-30 bg-image ${sectionPace}`}
-        style={{ backgroundImage: `url("../img/bg/14.jpg")` }}
+        style={{ backgroundImage: `url("${bgImage}")` }}
       >
         <Container>
           <Row>

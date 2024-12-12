@@ -47,6 +47,7 @@ function Service() {
           title="What We Do"
           sectionPace=""
           currentSlug="Service"
+          bgImage="/img/bg/14.jpg"
         />
 
         <AboutUsStyletwo sectionSpace="pb-90" />
