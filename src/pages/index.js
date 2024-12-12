@@ -159,14 +159,14 @@ function HomePage(props) {
         <title>Prairies Hills - Luxury Real Estate</title>
         <meta property="og:title" content="Prairies Hills - Luxury Real Estate" />
         <meta property="og:description" content="Prairies Hills: Your partner for effortless luxury real estate in Dubai" />
-        <meta property="og:image" content="/favicon.ico" />
+        <meta property="og:image" content="/img/og-logo.png" />
         <meta property="og:url" content="https://prairies-hills.vercel.app/" />
         <meta property="og:type" content="website" />
       </Head>
       <LayoutOne topbar={true}>
         <MyHero/>
-        <HeroSectionStyleOne data={Herodata} />
-        <CarDealerSearchForm navMenuClass="d-none" customClasses="" />
+        {/* <HeroSectionStyleOne data={Herodata} /> */}
+        {/* <CarDealerSearchForm navMenuClass="d-none" customClasses="" /> */}
         <AboutUsStyleOne sectionSpace="pt-120 pb-90" />
         <CounterUp />
         <AboutUsStyleTwo sectionSpace="pt-120 pb-90" />

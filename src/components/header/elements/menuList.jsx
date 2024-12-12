@@ -20,7 +20,7 @@ const MenuList = ({ addListing }) => {
           <li>
             <Link href="/pakistan">PAKISTAN</Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/france/sale">FRANCE</Link>
           </li>
           <li>
@@ -46,7 +46,7 @@ const MenuList = ({ addListing }) => {
           </li>
           <li>
             <Link href="/morroco">MORROCO</Link>
-          </li>
+          </li> */}
         </ul>
       </li>
       <li className="menu-icon">
@@ -63,7 +63,7 @@ const MenuList = ({ addListing }) => {
               <li>
                 <Link href="/pakistan">PAKISTAN</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/france/seasonal-rental/">FRANCE</Link>
               </li>
               <li>
@@ -74,7 +74,7 @@ const MenuList = ({ addListing }) => {
               </li>
               <li>
                 <Link href="/portugal/seasonal-rental/">PORTUGAL</Link>
-              </li>
+              </li> */}
             </ul>
           </li>
           <li>
@@ -86,9 +86,9 @@ const MenuList = ({ addListing }) => {
               <li>
                 <Link href="/pakistan">PAKISTAN</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/france/event/">FRANCE</Link>
-              </li>
+              </li> */}
             </ul>
           </li>
           <li>
@@ -100,7 +100,7 @@ const MenuList = ({ addListing }) => {
               <li>
                 <Link href="/pakistan">PAKISTAN</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/united-states/rental/">UNITED STATES</Link>
               </li>
               <li>
@@ -120,7 +120,7 @@ const MenuList = ({ addListing }) => {
               </li>
               <li>
                 <Link href="/andorra/rental/">ANDORRA</Link>
-              </li>
+              </li> */}
             </ul>
           </li>
         </ul>
