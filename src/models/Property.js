@@ -2,7 +2,7 @@
 import mongoose from 'mongoose';
 
 const categoryEnum = ['Apartment', 'Villa', 'Mansion', 'Chalet', 'Land', 'Townhouse', 'Business Premise', 'Office'];
-const propertytypeEnum = ['Buy', 'Rent', 'Development'];
+const propertytypeEnum = ['Buy', 'Rent', 'Development', 'Sold'];
 
 const propertySchema = new mongoose.Schema({
     propertyid: { type: String, required: true },

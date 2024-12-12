@@ -411,6 +411,9 @@ function AddListingPage() {
                                   <option value="Development">
                                     Development
                                   </option>
+                                  <option value="Sold">
+                                    Sold
+                                  </option>
                                 </Form.Select>
                               </div>
                             </Col>

@@ -25,6 +25,7 @@ import featuresData from "@/data/service";
 import TitleSection2 from "@/components/titleSection/index2";
 import MyHero from "@/components/hero/myhero";
 import Head from 'next/head';
+import RecentSoldProperties from "@/components/recent-purchase";
 
 
 function HomePage(props) {
@@ -149,9 +150,6 @@ function HomePage(props) {
       },
     ],
   };
-  const { cartItems } = useSelector((state) => state.cart);
-  const { wishlistItems } = useSelector((state) => state.wishlist);
-  const { compareItems } = useSelector((state) => state.compare);
 
   return (
     <>
@@ -166,8 +164,6 @@ function HomePage(props) {
 
       <LayoutOne topbar={true}>
         <MyHero/>
-        {/* <HeroSectionStyleOne data={Herodata} /> */}
-        {/* <CarDealerSearchForm navMenuClass="d-none" customClasses="" /> */}
         <AboutUsStyleOne sectionSpace="pt-120 pb-90" />
         <CounterUp />
         <AboutUsStyleTwo sectionSpace="pt-120 pb-90" />
@@ -221,7 +217,7 @@ function HomePage(props) {
           </Container>
         </div>
         {/* PROPERTY SLIDER AREA END */}
-        <div className="ltn__apartments-plan-area pb-70">
+        <div className="ltn__apartments-plan-area">
           <Container>
             <Row>
               <Col>
@@ -526,11 +522,9 @@ function HomePage(props) {
             </Row>
           </Container>
         </div>
-        {/* <!-- VIDEO AREA START --> */}
-        {/* <div className="ltn__video-popup-area">
-          <VideoBanner />
-        </div> */}
-
+        <div className="ltn__testimonial-area pt-115 pb-70">
+  <RecentSoldProperties properties={properties} />
+</div>
         {/* <!-- TESTIMONIAL AREA START (testimonial-7) -->  */}
         <div
           className="ltn__testimonial-area bg-image-top pt-115 pb-70"
