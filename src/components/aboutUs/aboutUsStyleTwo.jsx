@@ -101,12 +101,12 @@ function AboutUsStyleTwo({ sectionSpace }) {
                 </ul>
 
                 <div className="ltn__list-item-2 ltn__list-item-2-img mb-50">
-                  <PhotoAlbum
+                  {/* <PhotoAlbum
                     layout="rows"
                     photos={slides}
                     targetRowHeight={150}
                     onClick={({ index: current }) => setIndex(current)}
-                  />
+                  /> */}
                 </div>
               </div>
             </Col>
