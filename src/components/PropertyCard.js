@@ -121,7 +121,7 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
             </li>
           </ul>
           <div className="product-hover-action">
-            <ul>
+            {/* <ul>
               <li>
                 <OverlayTrigger
                   placement="right"
@@ -150,7 +150,7 @@ const PropertyCard = ({ propertyData, wishlistItem }) => {
                   </button>
                 </OverlayTrigger>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
       </div>

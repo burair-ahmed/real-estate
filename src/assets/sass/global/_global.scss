@@ -300,6 +300,12 @@ body{
   color: #FFF !important;
 }
 
+.ltn__product-item {
+  height: 500px; /* Adjust this value as needed */
+  display: flex;
+  flex-direction: column;
+}
+
 .page-title{
   color: #6d5c6a !important;
 }
