@@ -165,8 +165,8 @@ function HomePage(props) {
 
       <LayoutOne topbar={true}>
         <MyHero/>
-        <AboutUsStyleOne sectionSpace="pt-120 pb-90" />
-        <CounterUp />
+        
+        {/* <CounterUp /> */}
         <AboutUsStyleTwo sectionSpace="pt-120 pb-90" />
         <Feature
           classes="section-bg-1"
@@ -180,6 +180,7 @@ function HomePage(props) {
             title: "Our Main Focus",
           }}
         />
+        <AboutUsStyleOne sectionSpace="pt-120 pb-90" />
         {/* PROPERTY SLIDER AREA START */}
         <div className="ltn__product-slider-area ltn__product-gutter pt-115 pb-90 plr--7">
           <Container fluid>
@@ -218,7 +219,7 @@ function HomePage(props) {
           </Container>
         </div>
         {/* PROPERTY SLIDER AREA END */}
-        <div className="ltn__apartments-plan-area">
+        {/* <div className="ltn__apartments-plan-area">
           <Container>
             <Row>
               <Col>
@@ -522,7 +523,7 @@ function HomePage(props) {
               </Col>
             </Row>
           </Container>
-        </div>
+        </div> */}
         <div className="ltn__testimonial-area pt-115 pb-70">
   <RecentSoldProperties properties={properties} />
 </div>
