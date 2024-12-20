@@ -172,7 +172,7 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
                   </div>
                 </div>
                 {/* <!-- user-menu --> */}
-                <div className="ltn__drop-menu user-menu">
+                {/* <div className="ltn__drop-menu user-menu">
                   <ul>
                     <li>
                       <Link href="#">
@@ -188,13 +188,11 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
                         <li>
                           <Link href="/my-account">My Account</Link>
                         </li>
-                        {/* <li>
-                          <Link href="/wishlist">Wishlist</Link>
-                        </li> */}
+                      
                       </ul>
                     </li>
                   </ul>
-                </div>
+                </div> */}
                 {/* <!-- mini-cart --> */}
                 {/* <div className="mini-cart-icon">
                   <button

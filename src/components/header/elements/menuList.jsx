@@ -62,11 +62,11 @@ const MenuList = ({ addListing }) => {
               </li>
         </ul>
       </li>
-      <li className="menu-icon">
+      {/* <li className="menu-icon">
         <Link href="/shop">
         PROPERTY 
         </Link>
-      </li>
+      </li> */}
       <li className="menu-icon">
         <Link href="/about">
           ABOUT 
