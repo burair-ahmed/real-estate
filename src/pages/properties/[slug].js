@@ -333,18 +333,18 @@ const PropertyDetail = () => {
                             <label>Property Status:</label>{" "}
                             <span className="slug-property-items-style">{type}</span>
                           </li>
-                          <li>
+                          {/* <li>
                             <label>Lot Area:</label>{" "}
-                            {/* <span>{property.propertyDetails.propertyId}</span> */}
-                          </li>
-                          <li>
+                            
+                          </li> */}
+                          {/* <li>
                             <label>Lot dimensions:</label>{" "}
-                            {/* <span>{property.propertyDetails.area} sqft</span> */}
-                          </li>
-                          <li>
+                            
+                          </li> */}
+                          {/* <li>
                             <label>Beds:</label>{" "}
-                            {/* <span>{property.propertyDetails.bedrooms}</span> */}
-                          </li>
+                          
+                          </li> */}
                         </ul>
                       </Col>
                     </Row>
