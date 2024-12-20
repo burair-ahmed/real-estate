@@ -12,7 +12,7 @@ function ContactUs() {
           title="Contact Us"
           sectionPace=""
           currentSlug="Contact"
-          bgImage="/img/bg/14.jpg"
+          bgImage="/img/bg/c-bg.jpg"
         />
 
         <Contact />

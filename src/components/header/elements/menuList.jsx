@@ -15,10 +15,10 @@ const MenuList = ({ addListing }) => {
         </Link>
         <ul>
           <li>
-            <Link href="/uae">UNITED ARAB OF EMIRATES</Link>
+            <Link href="/shop?propertytype=Buy&country=United+Arab+Emirates">UNITED ARAB OF EMIRATES</Link>
           </li>
           <li>
-            <Link href="/pakistan">PAKISTAN</Link>
+            <Link href="/shop?propertytype=Buy&country=Pakistan">PAKISTAN</Link>
           </li>
           {/* <li>
             <Link href="/france/sale">FRANCE</Link>
@@ -54,89 +54,18 @@ const MenuList = ({ addListing }) => {
           RENT <FaPlus />
         </Link>
         <ul>
-          <li>
-            <Link href="#">HOLIDAYS</Link>
-            <ul>
               <li>
-                <Link href="/uae">UNITED ARAB OF EMIRATES</Link>
+                <Link href="/shop?propertytype=Rent&country=United+Arab+Emirates">UNITED ARAB OF EMIRATES</Link>
               </li>
               <li>
-                <Link href="/pakistan">PAKISTAN</Link>
+                <Link href="/shop?propertytype=Rent&country=Pakistan">PAKISTAN</Link>
               </li>
-              {/* <li>
-                <Link href="/france/seasonal-rental/">FRANCE</Link>
-              </li>
-              <li>
-                <Link href="/switzerland/seasonal-rental/">SWITZERLAND</Link>
-              </li>
-              <li>
-                <Link href="/spain/seasonal-rental/">SPAIN</Link>
-              </li>
-              <li>
-                <Link href="/portugal/seasonal-rental/">PORTUGAL</Link>
-              </li> */}
-            </ul>
-          </li>
-          <li>
-            <Link href="#">EVENTS</Link>
-            <ul>
-              <li>
-                <Link href="/uae">UNITED ARAB OF EMIRATES</Link>
-              </li>
-              <li>
-                <Link href="/pakistan">PAKISTAN</Link>
-              </li>
-              {/* <li>
-                <Link href="/france/event/">FRANCE</Link>
-              </li> */}
-            </ul>
-          </li>
-          <li>
-            <Link href="#">LONG TERM</Link>
-            <ul>
-              <li>
-                <Link href="/uae">UNITED ARAB OF EMIRATES</Link>
-              </li>
-              <li>
-                <Link href="/pakistan">PAKISTAN</Link>
-              </li>
-              {/* <li>
-                <Link href="/united-states/rental/">UNITED STATES</Link>
-              </li>
-              <li>
-                <Link href="/switzerland/rental/">SWITZERLAND</Link>
-              </li>
-              <li>
-                <Link href="/italy/rental/">ITALY</Link>
-              </li>
-              <li>
-                <Link href="/spain/rental/">SPAIN</Link>
-              </li>
-              <li>
-                <Link href="/principality-of-monaco/rental/">PRINCIPALITY OF MONACO</Link>
-              </li>
-              <li>
-                <Link href="/france/rental/">FRANCE</Link>
-              </li>
-              <li>
-                <Link href="/andorra/rental/">ANDORRA</Link>
-              </li> */}
-            </ul>
-          </li>
         </ul>
       </li>
       <li className="menu-icon">
-        <Link href="/service">
-          SERVICES <FaPlus />
+        <Link href="/shop">
+        PROPERTY 
         </Link>
-        <ul>
-          <li>
-            <Link href="/shop">PROPERTY</Link>
-          </li>
-          <li>
-            <Link href="/locations">GOOGLE MAP LOCATIONS</Link>
-          </li>
-        </ul>
       </li>
       <li className="menu-icon">
         <Link href="/about">

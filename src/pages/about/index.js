@@ -100,7 +100,7 @@ function AboutUs() {
           title="About Us"
           sectionPace=""
           currentSlug="About Us"
-          bgImage="/img/bg/14.jpg"
+          bgImage="/img/bg/a-bg.jpg"
         />
 
         <AboutUsStyleOne sectionSpace="pb-90" />

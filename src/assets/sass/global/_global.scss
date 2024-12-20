@@ -526,9 +526,20 @@ margin-top: -7em !important;
 }
 
 
-.myheroinner{
-padding-top: 10em;  
-padding-bottom: 16em;
+.myhero {
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  justify-content: center; /* Horizontally center the content */
+  height: 100vh; /* Full screen height */
+  background-size: cover; /* Ensure the image covers the area without stretching */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+
+.myheroinner {
+  text-align: center; /* Center the text/form */
+  padding: 0 20px; /* Optional: Add padding to prevent content from touching the edges on small screens */
 }
 
 @media (max-width: 640px) {

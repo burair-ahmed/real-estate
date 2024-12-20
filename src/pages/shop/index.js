@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import {
   FaThLarge,
   FaThList,
@@ -23,6 +24,8 @@ const categoriesList = [
   "Office",
 ];
 
+const buyRentOptions = ["Buy", "Rent"];
+
 function Shop() {
   const [sortType, setSortType] = useState("");
   const [filters, setFilters] = useState({
@@ -30,57 +33,54 @@ function Shop() {
     priceMin: "",
     priceMax: "",
     categories: [],
-    propertytype: "",
+    propertytype: [],
     state: "",
     country: "",
     bedrooms: "",
     bathrooms: "",
   });
-  const [selectedCategories, setSelectedCategories] = useState([]); // Local state for selected categories
-  const [offset, setOffset] = useState(0);
+  const [properties, setProperties] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
-  const [properties, setProperties] = useState([]);
+  const [offset, setOffset] = useState(0);
   const pageLimit = 6;
+  const router = useRouter();
 
-  // Handle filter changes
-  const handleFilterChange = (e) => {
+  useEffect(() => {
+    const {
+      title = "",
+      priceMin = "",
+      priceMax = "",
+      categories = "",
+      propertytype = "",
+      state = "",
+      country = "",
+      bedrooms = "",
+      bathrooms = "",
+      sortBy = "",
+    } = router.query;
+
     setFilters({
-      ...filters,
-      [e.target.name]: e.target.value,
+      title,
+      priceMin,
+      priceMax,
+      categories: categories.split(",").filter(Boolean),
+      propertytype: propertytype.split(",").filter(Boolean),
+      state,
+      country,
+      bedrooms,
+      bathrooms,
     });
-  };
+    setSortType(sortBy);
+  }, [router.query]);
 
-  const handleCategoryChange = (e) => {
-    const value = e.target.value;
-    setSelectedCategories((prev) =>
-      prev.includes(value)
-        ? prev.filter((cat) => cat !== value)
-        : [...prev, value]
-    );
-  };
-
-  const applyFilters = () => {
-    setFilters((prev) => ({
-      ...prev,
-      categories: selectedCategories, // Set the categories from local state
-    }));
-  };
-
-  // Fetch filtered and sorted properties
   const fetchProperties = async () => {
     try {
       const response = await axios.get("/api/properties/search", {
         params: {
-          title: filters.title,
-          priceMin: filters.priceMin,
-          priceMax: filters.priceMax,
+          ...filters,
           categories: filters.categories.join(","),
-          propertytype: filters.propertytype,
-          state: filters.state,
-          country: filters.country,
-          bedrooms: filters.bedrooms,
-          bathrooms: filters.bathrooms,
+          propertytype: filters.propertytype.join(","),
           sortBy: sortType,
         },
       });
@@ -92,7 +92,7 @@ function Shop() {
 
   useEffect(() => {
     fetchProperties();
-  }, [filters, sortType, offset]);
+  }, [filters, sortType]);
 
   useEffect(() => {
     const endOffset = offset + pageLimit;
@@ -105,9 +105,61 @@ function Shop() {
     setOffset(newOffset);
   };
 
+  const applyFilters = () => {
+    const query = {};
+
+    Object.entries(filters).forEach(([key, value]) => {
+      if (Array.isArray(value) && value.length) {
+        query[key] = value.join(",");
+      } else if (value) {
+        query[key] = value;
+      }
+    });
+
+    if (sortType) query.sortBy = sortType;
+
+    router.push({
+      pathname: "/shop",
+      query,
+    });
+  };
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleCategoryChange = (e) => {
+    const value = e.target.value;
+    setFilters((prev) => ({
+      ...prev,
+      categories: prev.categories.includes(value)
+        ? prev.categories.filter((cat) => cat !== value)
+        : [...prev.categories, value],
+    }));
+  };
+
+  const handlePropertyTypeChange = (e) => {
+    const value = e.target.value;
+    setFilters((prev) => ({
+      ...prev,
+      propertytype: prev.propertytype.includes(value)
+        ? prev.propertytype.filter((type) => type !== value)
+        : [...prev.propertytype, value],
+    }));
+  };
+
   return (
     <LayoutOne topbar={true}>
-      <ShopBreadCrumb title="Property" sectionPace="" currentSlug="Property" />
+     <ShopBreadCrumb
+          title="Property Listings"
+          sectionPace=""
+          currentSlug="Property"
+          bgImage="/img/bg/55.jpg"
+        />
 
       <div className="ltn__product-area ltn__product-gutter mb-120">
         <Container>
@@ -160,7 +212,6 @@ function Shop() {
                       </Row>
                     </div>
                   </Tab.Pane>
-
                   <Tab.Pane eventKey="second">
                     <div className="ltn__product-tab-content-inner ltn__product-list-view">
                       <Row>
@@ -178,7 +229,6 @@ function Shop() {
                   </Tab.Pane>
                 </Tab.Content>
               </Tab.Container>
-
               <div className="ltn__pagination-area text-center">
                 <ReactPaginate
                   onPageChange={handlePageClick}
@@ -202,7 +252,6 @@ function Shop() {
                 />
               </div>
             </Col>
-
             <Col xs={12} lg={4}>
               <div className="filter-section ltn__contact-message-area mt-4">
                 <div className="container">
@@ -217,11 +266,10 @@ function Shop() {
                               name="title"
                               placeholder="Search by title"
                               onChange={handleFilterChange}
-                              className="input-item-name"
+                              value={filters.title}
                             />
                             <hr />
                           </div>
-
                           <div className="input-item ltn__custom-icon">
                             <Form.Group controlId="filterCategories">
                               <Form.Label>Category</Form.Label>
@@ -231,17 +279,27 @@ function Shop() {
                                   key={category}
                                   label={category}
                                   value={category}
-                                  checked={selectedCategories.includes(category)} // Use local state
+                                  checked={filters.categories.includes(category)}
                                   onChange={handleCategoryChange}
-                                  className={`category-checkbox ${
-                                    selectedCategories.includes(category) ? "checked" : ""
-                                  }`}
                                 />
                               ))}
                             </Form.Group>
                             <hr />
                           </div>
-
+                          <div className="input-item ltn__custom-icon">
+                            <Form.Label>Buy or Rent</Form.Label>
+                            {buyRentOptions.map((option) => (
+                              <Form.Check
+                                type="checkbox"
+                                key={option}
+                                label={option}
+                                value={option}
+                                checked={filters.propertytype.includes(option)}
+                                onChange={handlePropertyTypeChange}
+                              />
+                            ))}
+                            <hr />
+                          </div>
                           <div className="input-item ltn__custom-icon">
                             <Form.Label>Price Range</Form.Label>
                             <Form.Control
@@ -249,60 +307,36 @@ function Shop() {
                               name="priceMin"
                               placeholder="Min"
                               onChange={handleFilterChange}
-                              className="input-item"
+                              value={filters.priceMin}
                             />
                             <Form.Control
                               type="number"
                               name="priceMax"
                               placeholder="Max"
                               onChange={handleFilterChange}
-                              className="input-item mt-4"
+                              value={filters.priceMax}
+                              className="mt-4"
                             />
                             <hr />
                           </div>
-
                           <div className="input-item ltn__custom-icon">
-                            <Form.Label className="mt-0">Property Type</Form.Label>
+                            <Form.Label>Country</Form.Label>
                             <Form.Control
                               as="select"
-                              name="propertytype"
+                              name="country"
                               onChange={handleFilterChange}
-                              className="input-item "
+                              value={filters.country}
                             >
-                              <option value="">All</option>
-                              <option value="apartment">Apartment</option>
-                              <option value="house">House</option>
+                              <option value="">Select Country</option>
+                              <option value="United Arab Emirates">United Arab Emirates</option>
+                              <option value="Pakistan">Pakistan</option>
+                              {/* Add other countries as needed */}
                             </Form.Control>
                             <hr />
                           </div>
-
-                          <div className="input-item ltn__custom-icon">
-                            <Form.Label>Bedrooms</Form.Label>
-                            <Form.Control
-                              type="number"
-                              name="bedrooms"
-                              placeholder="Bedrooms"
-                              onChange={handleFilterChange}
-                              className="input-item"
-                            />
-                            <hr />
-                          </div>
-
-                          <div className="input-item ltn__custom-icon">
-                            <Form.Label>Bathrooms</Form.Label>
-                            <Form.Control
-                              type="number"
-                              name="bathrooms"
-                              placeholder="Bathrooms"
-                              onChange={handleFilterChange}
-                              className="input-item"
-                            />
-                            <hr />
-                          </div>
-
                           <button
                             type="button"
-                            onClick={applyFilters} // Call applyFilters to update filters
+                            onClick={applyFilters}
                             className="btn theme-btn-1 btn-effect-1"
                           >
                             Apply Filters

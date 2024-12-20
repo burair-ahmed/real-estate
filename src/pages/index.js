@@ -167,7 +167,8 @@ function HomePage(props) {
         <MyHero/>
         
         {/* <CounterUp /> */}
-        <AboutUsStyleTwo sectionSpace="pt-120 pb-90" />
+        <AboutUsStyleOne sectionSpace="pt-120 pb-90" />
+        {/* <AboutUsStyleTwo sectionSpace="pt-120 pb-90" /> */}
         <Feature
           classes="section-bg-1"
           servicebtn={true}
@@ -180,43 +181,42 @@ function HomePage(props) {
             title: "Our Main Focus",
           }}
         />
-        <AboutUsStyleOne sectionSpace="pt-120 pb-90" />
+    
         {/* PROPERTY SLIDER AREA START */}
-        <div className="ltn__product-slider-area ltn__product-gutter pt-115 pb-90 plr--7">
-          <Container fluid>
-            <Row>
-              <Col lg={12}>
-                <TitleSection2
-                  sectionClasses="text-center"
-                  headingClasses="section-subtitle-custom"
-                  titleSectionData2={{
-                    subTitle2: "Properties",
-                    title2: "Featured Listings",
-                  }}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col lg={12}>
-                {!!properties.length ? (
-                  <Slider
-                    {...propertyCarouselSettings}
-                    className="ltn__product-slider-item-four-active-full-width slick-arrow-1"
-                  >
-                    {properties.map((property) => (
-                      <PropertyCard
-                        key={property.slug} // Ensure this is unique
-                        propertyData={property}
-                        wishlistItem={null} // Pass your wishlist item logic here
-                      />
-                    ))}
-                  </Slider>
-                ) : (
-                  <p>No properties available</p>
-                )}
-              </Col>
-            </Row>
-          </Container>
+        <div className="ltn__product-slider-area ltn__product-gutter pt-115 plr--7">
+        <Container fluid>
+  <Row>
+    <Col lg={12}>
+      <TitleSection2
+        sectionClasses="text-center"
+        headingClasses="section-subtitle-custom"
+        titleSectionData2={{
+          subTitle2: "Properties",
+          title2: "Featured Listings",
+        }}
+      />
+    </Col>
+  </Row>
+  <Row>
+    <Col lg={12}>
+      {!!properties.length ? (
+        <Row>
+          {properties.map((property) => (
+            <Col key={property.slug} lg={4} md={6} sm={12}>
+              <PropertyCard
+                propertyData={property}
+                wishlistItem={null} // Pass your wishlist item logic here
+              />
+            </Col>
+          ))}
+        </Row>
+      ) : (
+        <p>No properties available</p>
+      )}
+    </Col>
+  </Row>
+</Container>
+
         </div>
         {/* PROPERTY SLIDER AREA END */}
         {/* <div className="ltn__apartments-plan-area">
